@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import './styles/App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Header from './Components/Header';
 import firebase from './firebase';
+// COMPONENTS
+import Header from './Components/Header';
 import ClassroomList from './Components/ClassroomList';
-import NotFound from './Components/NotFound';
+import UserManagement from './Components/UserManagement';
+// import NotFound from './Components/NotFound';
 
 const provider = new firebase.auth.GoogleAuthProvider();
 const auth = firebase.auth();
@@ -93,6 +95,7 @@ class App extends Component {
             ) : (
               <div>
                 <ClassroomList />
+                <Route path="/usermanagement" component={UserManagement} />
               </div>
             )}
           </div>
