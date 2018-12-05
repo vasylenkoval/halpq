@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import './styles/App.css';
 import firebase from './firebase';
 
-const dbRefAdmins = firebase.database().ref(`/Users/Admins`);
-const dbRefStudents = firebase.database().ref(`/Users/Students`);
-const dbRefClassrooms = firebase.database().ref(`/Classrooms`);
 const provider = new firebase.auth.GoogleAuthProvider();
 const auth = firebase.auth();
 
