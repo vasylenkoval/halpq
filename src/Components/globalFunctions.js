@@ -1,5 +1,4 @@
 import firebase from 'firebase';
-
 // Convert student to an admin
 export const makeAdmin = studentUID => {
   const dbRef = firebase.database();
