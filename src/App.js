@@ -13,7 +13,6 @@ class App extends Component {
     super();
 
     this.state = {
-      isAdmin: false,
       user: null,
     };
   }
@@ -29,6 +28,7 @@ class App extends Component {
       }
       // Check if user is an Admin
       this.isAdmin();
+      this.testEnroll('-LSx5XK-TR');
     });
   }
 
@@ -77,6 +77,7 @@ class App extends Component {
       });
   };
 
+  // Testing
   createTestClassRoom = () => {
     dbRefClassrooms.push({
       classRoomName: 'Test Classroom',
@@ -90,11 +91,34 @@ class App extends Component {
       .child(classroomRef)
       .child('classRoomQuestions')
       .push({
+        name: this.state.user.displayName,
         content: 'halp!',
         uid: this.state.user.uid,
         photoURL: this.state.user.photoURL,
         dateCreated: +new Date(),
+        dateHelped: 0,
+        dateCompleted: 0,
+        isCompleted: false,
+        location: 0,
       });
+  };
+
+  testEnroll = enrollPassword => {
+    dbRefClassrooms.once('value', snapshot => {
+      const classroomRef = Object.entries(snapshot.val()).filter(element =>
+        element[0].includes(enrollPassword)
+      );
+      console.log(classroomRef);
+      if (classroomRef.length > 0) {
+        dbRefClassrooms
+          .child(classroomRef[0][0])
+          .child('enrolledStudents')
+          .child(this.state.user.uid)
+          .set('test2');
+      } else {
+        console.log('Wrong key!');
+      }
+    });
   };
 
   render() {
