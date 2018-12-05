@@ -6,6 +6,7 @@ class UserManagement extends Component {
     super();
     this.state = {};
   }
+
   render() {
     return <h2>This is the user management component</h2>;
   }
