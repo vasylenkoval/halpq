@@ -9,6 +9,7 @@ const config = {
   storageBucket: 'halpq-project.appspot.com',
   messagingSenderId: '408437676969',
 };
+
 firebase.initializeApp(config);
 
 export default firebase;
