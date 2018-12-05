@@ -1,15 +1,13 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class ClassroomList extends Component {
   constructor() {
-    console.log("the constructor in Classroom List was called");
+    console.log('the constructor in Classroom List was called');
     super();
     this.state = {};
   }
   render() {
-      return(
-        
-      )
+    return <h2>This is the classroom list</h2>;
   }
 }
 
