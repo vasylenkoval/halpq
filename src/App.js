@@ -28,7 +28,6 @@ class App extends Component {
       }
       // Check if user is an Admin
       this.isAdmin();
-      this.testEnroll('-LSx5XK-TR');
     });
   }
 
@@ -40,11 +39,15 @@ class App extends Component {
         });
         // Check if new user
         if (result.additionalUserInfo.isNewUser) {
-          dbRefStudents.child(result.user.uid).set({
-            displayName: result.user.displayName,
-            email: result.user.email,
-            photoURL: result.user.photoURL,
-          });
+          firebase
+            .database()
+            .ref(`/Users/Students/${result.user.uid}`)
+            .set({
+              displayName: result.user.displayName,
+              email: result.user.email,
+              photoURL: result.user.photoURL,
+              enrolledClasses: 0,
+            });
         }
       }
     });
@@ -77,19 +80,49 @@ class App extends Component {
       });
   };
 
-  // Testing
-  createTestClassRoom = () => {
-    dbRefClassrooms.push({
-      classRoomName: 'Test Classroom',
-      classRoomQuestions: 0,
-      enrolledStudents: 0,
-    });
+  // Convert user to an admin
+  makeAdmin = studentUID => {
+    firebase
+      .database()
+      .ref(`/Users/Students/${studentUID}`)
+      .once('value', snapshot => {
+        if (snapshot.exists()) {
+          firebase
+            .database()
+            .ref(`/Users/Admins/${studentUID}`)
+            .set(snapshot.val());
+          firebase
+            .database()
+            .ref(`/Users/Students/${studentUID}`)
+            .remove();
+          console.log(
+            'USER IS PRESENT IN STUDENTS REF, MOVING TO ADMIN AND DELETING FROM STUDENTS'
+          );
+        } else {
+          console.log('NO SUCH USER');
+        }
+      });
   };
 
+  // Testing
+
+  // Method to create a classroom - only avilable to admins in Classroom List view.
+  createTestClassRoom = () => {
+    firebase
+      .database()
+      .ref(`/Classrooms/`)
+      .push({
+        classRoomName: 'Test Classroom',
+        classRoomQuestions: 0,
+        enrolledStudents: 0,
+      });
+  };
+
+  // Method to create a question in the classroom - needs a classroom reference. Should be moved to the HelpCue view.
   createTestQuestion = classroomRef => {
-    dbRefClassrooms
-      .child(classroomRef)
-      .child('classRoomQuestions')
+    firebase
+      .database()
+      .ref(`/Classrooms/${classroomRef}/classRoomQuestions`)
       .push({
         name: this.state.user.displayName,
         content: 'halp!',
@@ -103,22 +136,41 @@ class App extends Component {
       });
   };
 
+  // Method to enroll in the classroom - should be moved to the Classroom List view.
+  // Consider creating a duplicate shallow reference in the DB to store just the keys of the classrooms to prevent from downloading all nested data
   testEnroll = enrollPassword => {
-    dbRefClassrooms.once('value', snapshot => {
-      const classroomRef = Object.entries(snapshot.val()).filter(element =>
-        element[0].includes(enrollPassword)
-      );
-      console.log(classroomRef);
-      if (classroomRef.length > 0) {
-        dbRefClassrooms
-          .child(classroomRef[0][0])
-          .child('enrolledStudents')
-          .child(this.state.user.uid)
-          .set('test2');
-      } else {
-        console.log('Wrong key!');
-      }
-    });
+    firebase
+      .database()
+      .ref(`/Classrooms`)
+      .once('value', snapshot => {
+        const classroomMatch = Object.entries(snapshot.val()).filter(element =>
+          element[0].includes(enrollPassword)
+        );
+        console.log(classroomMatch);
+        if (classroomMatch.length > 0) {
+          // If there is a match - record a student in classroom ref
+          firebase
+            .database()
+            .ref(
+              `/Classrooms/${classroomMatch[0][0]}/enrolledStudents/${
+                this.state.user.uid
+              }`
+            )
+            .set('TEST');
+
+          // Also record a class key in student's own profile
+          firebase
+            .database()
+            .ref(
+              `/Users/Students/${this.state.user.uid}/enrolledClasses/${
+                classroomMatch[0][0]
+              }`
+            )
+            .set('TEST');
+        } else {
+          console.log('Wrong key!');
+        }
+      });
   };
 
   render() {
