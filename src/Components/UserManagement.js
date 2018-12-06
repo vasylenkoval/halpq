@@ -15,7 +15,7 @@ class UserManagement extends Component {
 
   componentDidMount() {
     const dbRef = firebase.database();
-    dbRef.ref().on('value', () => {});
+    dbRef.ref(`/Users`).on('value', () => {});
     dbRef.ref(`/Users/Students/`).on('value', snapshot => {
       if (!snapshot.exists()) {
         this.setState({ studentList: [] });
