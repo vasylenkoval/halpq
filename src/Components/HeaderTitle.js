@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-// import { render } from 'react-dom';
+import React from 'react';
+import { render } from 'react-dom';
 import Typed from 'react-typed';
 
-import React, { Component } from 'react';
+import Regitact, { Component } from 'react';
 
 class HeaderTitle extends Component {
   constructor() {
@@ -17,15 +17,15 @@ class HeaderTitle extends Component {
     margin: '50px 50px 0 0',
   };
 
-  // componentDidMount() {
-  //   strings = ['HALPQ', 'Classroom List'];
+  componentDidMount() {
+    strings = ['HALPQ', 'Classroom List'];
 
-  //   options = {
-  //     strings,
-  //     typeSpeed: 50,
-  //     backSpeed: 50,
-  //   };
-  // }
+    options = {
+      strings,
+      typeSpeed: 50,
+      backSpeed: 50,
+    };
+  }
 
   render() {
     return (
