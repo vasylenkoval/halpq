@@ -18,9 +18,9 @@ class HeaderTitle extends Component {
   };
 
   componentDidMount() {
-    strings = ['HALPQ', 'Classroom List'];
+    const strings = ['HALPQ', 'Classroom List'];
 
-    options = {
+    const options = {
       strings,
       typeSpeed: 50,
       backSpeed: 50,
