@@ -1,0 +1,10 @@
+.users {
+     border: 1px dashed black;
+     &--list {
+     border: 1px dashed red;
+     width: calc(50% - 40px);
+     margin: 0 20px;
+     float: left;
+     }
+}
+

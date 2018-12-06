@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import './styles/App.css';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import firebase from './firebase';
+// COMPONENTS
+import Header from './Components/Header';
 import ClassroomList from './Components/ClassroomList';
+import UserManagement from './Components/UserManagement';
+import NotFound from './Components/NotFound';
 
 const provider = new firebase.auth.GoogleAuthProvider();
 const auth = firebase.auth();
@@ -88,15 +93,35 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        {this.state.appReady ? (
-          <ClassroomList isAdmin={this.state.isAdmin} user={this.state.user} />
-        ) : null}
-        {this.state.user ? (
-          <button onClick={this.logOut}>LogOut</button>
-        ) : (
-          <button onClick={this.logIn}>LogIn</button>
-        )}
+      <div>
+        <Router>
+          <div className="App">
+            <Header />
+            <h2>I'm on the app</h2>
+            {this.state.user === null ? (
+              <button onClick={this.logIn}>LogIn</button>
+            ) : null}
+
+            {this.state.user !== null ? (
+              this.state.appReady ? (
+                <div>
+                  <button onClick={this.logOut}>LogOut</button>
+                  <Route
+                    exact
+                    path="/"
+                    component={() => (
+                      <ClassroomList
+                        isAdmin={this.state.isAdmin}
+                        user={this.state.user}
+                      />
+                    )}
+                  />
+                  <Route path="/usermanagement" component={UserManagement} />
+                </div>
+              ) : null
+            ) : null}
+          </div>
+        </Router>
       </div>
     );
   }
