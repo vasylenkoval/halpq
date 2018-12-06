@@ -6,7 +6,7 @@ import Regitact, { Component } from 'react';
 
 class HeaderTitle extends Component {
   constructor() {
-    console.log('the constructor was called');
+    // console.log('the constructor was called');
     super();
     this.state = {};
   }
@@ -25,6 +25,7 @@ class HeaderTitle extends Component {
       typeSpeed: 50,
       backSpeed: 50,
     };
+    // this.typed.start();
   }
 
   render() {

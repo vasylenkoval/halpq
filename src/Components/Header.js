@@ -20,7 +20,13 @@ class Header extends Component {
             </g>
           </svg>
         </div>
-        <HeaderTitle />
+        <HeaderTitle
+          strings={[
+            'Some <i>strings</i> are slanted',
+            'Some <strong>strings</strong> are bold',
+            'HTML characters &times; &copy;',
+          ]}
+        />
       </div>
     );
   }
@@ -36,5 +42,3 @@ const HeaderLogoStyle = {
 };
 
 export default Header;
-
-
