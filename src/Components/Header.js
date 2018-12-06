@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import HeaderTitle from './HeaderTitle';
+import UserManagementLink from './UserManagementLink';
 
 class Header extends Component {
   constructor() {
@@ -27,6 +28,7 @@ class Header extends Component {
             'HTML characters &times; &copy;',
           ]}
         />
+        <UserManagementLink />
       </div>
     );
   }
