@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './styles/App.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import firebase from './firebase';
 // COMPONENTS
 import Header from './Components/Header';
 import ClassroomList from './Components/ClassroomList';
 import UserManagement from './Components/UserManagement';
-// import NotFound from './Components/NotFound';
+import NotFound from './Components/NotFound';
 
 const provider = new firebase.auth.GoogleAuthProvider();
 const auth = firebase.auth();
@@ -89,15 +89,18 @@ class App extends Component {
           <div className="App">
             <h2>I'm on the app</h2>
             {this.state.user === null ? (
+              <button onClick={this.logIn}>LogIn</button>
+            ) : null}
+            {this.state.user !== null ? (
               <div>
-                <button onClick={this.logIn}>LogIn</button>
+                <button onClick={this.logOut}>LogOut</button>
+                <Switch>
+                  <ClassroomList />
+                  <Route path="/usermanagement" component={UserManagement} />
+                  <Route component={NotFound} />
+                </Switch>
               </div>
-            ) : (
-              <div>
-                <ClassroomList />
-                <Route path="/usermanagement" component={UserManagement} />
-              </div>
-            )}
+            ) : null}
           </div>
         </Router>
       </div>
