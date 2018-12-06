@@ -35,28 +35,31 @@ export const makeStudent = adminUID => {
 // Testing
 
 // Method to create a classroom - only avilable to admins in Classroom List view.
-export const createClassRoom = () => {
+export const createClassroom = name => {
   const dbRef = firebase.database();
   dbRef.ref(`/Classrooms/`).push({
-    classRoomName: 'Test Classroom',
-    classRoomQuestions: 0,
+    classroomName: name,
+    classroomQuestions: 0,
     enrolledStudents: 0,
   });
 };
 
 // Method to create a question in the classroom - needs a classroom reference. Should be moved to the HelpCue view.
-export const createQuestion = classroomRef => {
+export const createQuestion = (classroomRef, questionContent, userLocation) => {
   const dbRef = firebase.database();
-  dbRef.ref(`/Classrooms/${classroomRef}/classRoomQuestions`).push({
+  dbRef.ref(`/Classrooms/${classroomRef}/classroomQuestions`).push({
     name: this.state.user.displayName,
-    content: 'halp!',
+    content: questionContent,
     uid: this.state.user.uid,
     photoURL: this.state.user.photoURL,
     dateCreated: +new Date(),
     dateHelped: 0,
     dateCompleted: 0,
     isCompleted: false,
-    location: 0,
+    location: userLocation,
+    whoHelped: 0,
+    messages: 0,
+    isBeingHelped: false,
   });
 };
 
@@ -77,16 +80,16 @@ export const classroomEnroll = enrollPassword => {
             this.state.user.uid
           }`
         )
-        .set('TEST');
+        .set(this.state.user.displayName);
 
       // Also record a class key in student's own profile
       dbRef
         .ref(
-          `/Users/Students/${this.state.user.uid}/enrolledClasses/${
-            classroomMatch[0][0]
-          }`
+          `/Users/${this.state.isAdmin ? `Admins` : `Students`}/${
+            this.state.user.uid
+          }/enrolledClasses/${classroomMatch[0][0]}`
         )
-        .set('TEST');
+        .set(this.state.user.displayName);
     } else {
       console.log('Wrong key!');
     }
