@@ -84,9 +84,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header />
         <Router>
           <div className="App">
+             <Header />
             <h2>I'm on the app</h2>
             {this.state.user === null ? (
               <button onClick={this.logIn}>LogIn</button>
