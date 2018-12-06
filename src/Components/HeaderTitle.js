@@ -26,6 +26,7 @@ class HeaderTitle extends Component {
       backSpeed: 50,
     };
     // this.typed.start();
+    // this.typed = new Typed(this.el, options);
   }
 
   render() {
