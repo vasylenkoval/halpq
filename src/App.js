@@ -94,11 +94,8 @@ class App extends Component {
             {this.state.user !== null ? (
               <div>
                 <button onClick={this.logOut}>LogOut</button>
+                <Route exact path="/" component={ClassroomList} />
                 <Route path="/usermanagement" component={UserManagement} />
-                <Switch>
-                  <ClassroomList />
-                  <Route component={NotFound} />
-                </Switch>
               </div>
             ) : null}
           </div>
