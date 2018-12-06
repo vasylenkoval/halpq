@@ -20,7 +20,7 @@ class Header extends Component {
             </g>
           </svg>
         </div>
-        <HeaderTitle />
+        {/* <HeaderTitle /> */}
       </div>
     );
   }

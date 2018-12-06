@@ -238,6 +238,25 @@ p {
   clip: rect(0 0 0 0);
   overflow: hidden; }
 
+html {
+  font-size: 62.5%; }
+
+body {
+  font-size: 1.6rem; }
+
+.wrapper {
+  width: 85%;
+  max-width: 1240px;
+  margin: 0 auto; }
+
+.users {
+  border: 1px dashed black; }
+  .users--list {
+    border: 1px dashed red;
+    width: calc(50% - 40px);
+    margin: 0 20px;
+    float: left; }
+
 .App {
   text-align: center; }
 
