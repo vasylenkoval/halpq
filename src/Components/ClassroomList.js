@@ -97,6 +97,7 @@ class ClassroomList extends Component {
   createClassList = () => {
     const classArr = [];
     let keys = [];
+
     dbRef
       .ref(
         `Users/${this.state.isAdmin ? 'Admins' : 'Students'}/${
@@ -104,17 +105,25 @@ class ClassroomList extends Component {
         }/enrolledClasses`
       )
       .once('value', snapshot => {
-        keys = Object.entries(snapshot.val()).map(element => element[0]);
+        if (snapshot.val()) {
+          keys = Object.entries(snapshot.val()).map(element => element[0]);
 
-        keys.forEach(element => {
-          dbRef.ref(`Classrooms/${element}`).once('value', snapshot => {
-            classArr.push(snapshot.val());
-            this.setState({
-              classList: classArr,
-              classKeys: keys,
+          keys.forEach(element => {
+            dbRef.ref(`Classrooms/${element}`).once('value', snapshot => {
+              classArr.push(snapshot.val());
+              this.setState({
+                classList: classArr,
+                classKeys: keys,
+              });
             });
           });
-        });
+        } else {
+          console.log('You are not enrolled in any class');
+          this.setState({
+            classList: [],
+            classKeys: [],
+          });
+        }
       });
   };
 
