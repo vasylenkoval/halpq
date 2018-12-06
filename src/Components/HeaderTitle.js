@@ -1,5 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { render } from 'react-dom';
 import Typed from 'react-typed';
+
+import Regitact, { Component } from 'react';
 
 class HeaderTitle extends Component {
   constructor() {
@@ -28,7 +31,7 @@ class HeaderTitle extends Component {
   render() {
     return (
       <div className="wrap">
-        <h1>This is where TypeJS Goes</h1>
+        <h1>Typed.js</h1>
         <div className="type-wrap">
           <span
             style={{ whiteSpace: 'pre' }}
