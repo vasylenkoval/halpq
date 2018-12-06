@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import HeaderTitle from './HeaderTitle';
-import { Z_BLOCK } from 'zlib';
 
 class Header extends Component {
   constructor() {
@@ -8,6 +7,7 @@ class Header extends Component {
     super();
     this.state = {};
   }
+
   render() {
     return (
       <div style={HeaderStyle} className="Header">
@@ -28,11 +28,11 @@ class Header extends Component {
 
 const HeaderStyle = {
   width: '100%',
-  display: 'inline-block'
+  display: 'inline-block',
 };
 const HeaderLogoStyle = {
   width: '94px',
-  float: 'left'
+  float: 'left',
 };
 
 export default Header;
