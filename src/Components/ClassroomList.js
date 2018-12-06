@@ -50,6 +50,10 @@ class ClassroomList extends Component {
     this.createClassList();
   }
 
+  componentDidMount() {
+    this.refreshOnChange();
+  }
+
   createClassroom = name => {
     const dbRef = firebase.database();
     dbRef.ref(`/Classrooms/`).push({
@@ -99,7 +103,7 @@ class ClassroomList extends Component {
           this.state.user.uid
         }/enrolledClasses`
       )
-      .on('value', snapshot => {
+      .once('value', snapshot => {
         keys = Object.entries(snapshot.val()).map(element => element[0]);
 
         keys.forEach(element => {
@@ -111,6 +115,18 @@ class ClassroomList extends Component {
             });
           });
         });
+      });
+  };
+
+  refreshOnChange = () => {
+    dbRef
+      .ref(
+        `/Users/${this.state.isAdmin ? `Admins` : `Students`}/${
+          this.state.user.uid
+        }/enrolledClasses/`
+      )
+      .on('value', snapshot => {
+        this.createClassList();
       });
   };
 
@@ -139,13 +155,6 @@ class ClassroomList extends Component {
   };
 
   render() {
-    console.log(
-      this.state.classList.map(element =>
-        Object.entries(element.classroomQuestions)
-          .map(element => element[1].isBeingHelped)
-          .filter(element => element[0] === true)
-      )
-    );
     return (
       <div className="classroomlist">
         {this.state.classList.map((element, i) => (
