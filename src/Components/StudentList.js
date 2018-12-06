@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
-import { nakeStudent, makeStudent } from './globalFunctions';
+import { makeAdmin } from './globalFunctions';
 
 class StudentList extends Component {
   render() {
     return (
       // map list of students on firebase:
+
       <div className="student">
-        <div className="studentInfo">
-          <h3>Student Name</h3>
-          <p>Student Email</p>
-        </div>
-        <button type="button" onClick={makeStudent(PLACEHOLDER_FOR_ID)}>
-          CLICK ME
-        </button>
+        {this.props.students.map(student => (
+          <div key={student[0]} className="studentInfo">
+            <h3>{student[1].displayName}</h3>
+            <p>{student[1].email}</p>
+            <button
+              type="button"
+              onClick={() => {
+                makeAdmin(`${student[0]}`);
+              }}
+            >
+              CLICK ME
+            </button>
+          </div>
+        ))}
       </div>
     );
   }
