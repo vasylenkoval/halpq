@@ -17,17 +17,17 @@ class App extends Component {
     super();
 
     this.state = {
-      user: null
+      user: null,
     };
   }
 
   componentDidMount() {
     // Check if user was signed in before
-    auth.onAuthStateChanged((result) => {
+    auth.onAuthStateChanged(result => {
       console.log(result);
       if (result) {
         this.setState({
-          user: result
+          user: result,
         });
       }
       // Check if user is an Admin
@@ -36,10 +36,10 @@ class App extends Component {
   }
 
   logIn = () => {
-    auth.signInWithPopup(provider).then((result) => {
+    auth.signInWithPopup(provider).then(result => {
       if (result) {
         this.setState({
-          user: result.user
+          user: result.user,
         });
         // Check if new user
         if (result.additionalUserInfo.isNewUser) {
@@ -50,7 +50,7 @@ class App extends Component {
               displayName: result.user.displayName,
               email: result.user.email,
               photoURL: result.user.photoURL,
-              enrolledClassrooms: 0
+              enrolledClassrooms: 0,
             });
         }
       }
@@ -60,7 +60,7 @@ class App extends Component {
   logOut = () => {
     auth.signOut().then(() => {
       this.setState({
-        user: null
+        user: null,
       });
     });
   };
@@ -69,10 +69,10 @@ class App extends Component {
   isAdmin = () => {
     dbRef
       .ref(`/Users/Admins/${this.state.user.uid}`)
-      .once('value', (snapshot) => {
+      .once('value', snapshot => {
         if (snapshot.exists()) {
           this.setState({
-            isAdmin: true
+            isAdmin: true,
           });
           console.log('USER IS AN ADMIN');
         } else {
@@ -94,9 +94,9 @@ class App extends Component {
             {this.state.user !== null ? (
               <div>
                 <button onClick={this.logOut}>LogOut</button>
+                <Route path="/usermanagement" component={UserManagement} />
                 <Switch>
                   <ClassroomList />
-                  <Route path="/usermanagement" component={UserManagement} />
                   <Route component={NotFound} />
                 </Switch>
               </div>
