@@ -1,8 +1,5 @@
-import React from 'react';
-import { render } from 'react-dom';
-import Typed from 'react-typed';
-
 import React, { Component } from 'react';
+import Typed from 'react-typed';
 
 class HeaderTitle extends Component {
   constructor() {
@@ -18,9 +15,9 @@ class HeaderTitle extends Component {
   };
 
   componentDidMount() {
-    strings = ['HALPQ', 'Classroom List'];
+    const strings = ['HALPQ', 'Classroom List'];
 
-    options = {
+    const options = {
       strings,
       typeSpeed: 50,
       backSpeed: 50,
@@ -30,7 +27,7 @@ class HeaderTitle extends Component {
   render() {
     return (
       <div className="wrap">
-        <h1>Typed.js</h1>
+        <h1>This is where TypeJS Goes</h1>
         <div className="type-wrap">
           <span
             style={{ whiteSpace: 'pre' }}
