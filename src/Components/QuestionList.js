@@ -6,6 +6,7 @@ class QuestionList extends Component {
     return (
       <div>
         <h2>---Questions here---</h2>
+        {/* is gonna map through list of questions from firebase */}
       </div>
     );
   }

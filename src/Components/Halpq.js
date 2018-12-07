@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import firebase from 'firebase';
+// import firebase from 'firebase';
 import QuestionForm from './QuestionForm';
 import QuestionList from './QuestionList';
 
@@ -30,7 +30,7 @@ class Halpq extends Component {
     return (
       <div>
         <QuestionList />
-        <QuestionForm />
+        <QuestionForm classKey={this.props.match.params.classroomid}/>
       </div>
     );
   }

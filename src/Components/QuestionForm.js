@@ -6,7 +6,6 @@ class QuestionForm extends Component {
     this.state = {
       question: '',
       location: '',
-      postedQuestion: '',
     };
   }
 
@@ -14,7 +13,8 @@ class QuestionForm extends Component {
     e.preventDefault();
     this.question = this.state.question;
     this.location = this.state.location;
-    console.log("HOLLA AT THIS DOPE Q:", this.question, this.location);
+    this.classKey = this.props.classKey;
+    console.log("Q Details:", this.question, this.location, this.classKey);
     this.setState({
       question: '',
       location: '',
