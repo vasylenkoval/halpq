@@ -1,0 +1,26 @@
+.header {
+  width: '100%';
+  display: 'inline-block';
+
+  &--userImage {
+    float: right;
+    border-radius: 50%;
+    svg {
+      width: 60px;
+    }
+  }
+  &--userNameText {
+    display: 'block';
+    width: '50%';
+    float: 'right';
+  }
+}
+
+.header--logo {
+  width: '94px';
+  display: 'inline-block';
+}
+.userPanelStyle {
+  float: 'right';
+  display: 'inline-block';
+}
