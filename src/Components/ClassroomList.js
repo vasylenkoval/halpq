@@ -161,37 +161,6 @@ class ClassroomList extends Component {
     }
   };
 
-  createQuestion = (classroomRef, questionContent, userLocation) => {
-    const dbRef = firebase.database();
-    dbRef.ref(`/Questions/${classroomRef}`).push({
-      name: this.state.user.displayName,
-      content: questionContent,
-      uid: this.state.user.uid,
-      photoURL: this.state.user.photoURL,
-      dateCreated: +new Date(),
-      dateHelped: 0,
-      dateCompleted: 0,
-      isCompleted: false,
-      location: userLocation,
-      whoHelped: 0,
-      isBeingHelped: false,
-    });
-  };
-
-  // Work in progress
-  // archiveQuestion = (classroomRef, questionRef) => {
-  //   const currRef = firebase
-  //     .database()
-  //     .ref(`/Questions/${classroomRef}/${questionRef}`);
-  //   const archiveRef = firebase
-  //     .database()
-  //     .ref(`Archive/${classroomRef}/${questionRef}`);
-  //   currRef.once('value', snapshot => {
-  //     archiveRef.set(snapshot.val());
-  //     currRef.
-  //   });
-  // };
-
   render() {
     return (
       <div className="classroomlist">

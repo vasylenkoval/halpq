@@ -41,6 +41,7 @@ class App extends Component {
   logIn = () => {
     auth.signInWithPopup(provider).then(result => {
       if (result) {
+        console.log(result);
         this.setState({
           user: result.user,
         });
