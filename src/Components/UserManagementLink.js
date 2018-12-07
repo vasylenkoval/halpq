@@ -4,13 +4,14 @@ import UserManagement from './UserManagement';
 
 class UserManagementLink extends Component {
   render() {
-    return <div>
+    return (
+      <div>
         <Link to="/usermanagement">
-            BOO<img src="" alt="ICON (EVENTUALLY)" />
-        
-        
+          BOO
+          <img src="" alt="ICON (EVENTUALLY)" />
         </Link>
-      </div>  
+      </div>
+    );
   }
 }
 

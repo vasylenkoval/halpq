@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import firebase from 'firebase';
 import StudentList from './StudentList';
 import AdminList from './AdminList';
@@ -36,11 +37,20 @@ class UserManagement extends Component {
     });
   }
 
+  componentWillUnmount(){
+    const dbRef = firebase.database();
+    dbRef.ref(`/Users`).off();
+    dbRef.ref(`/Users/Admins/`).off();
+    dbRef.ref(`/Users/Students/`).off();
+  }
+
   render() {
     return (
       <div>
         <div className="wrapper">
-          <div className="returnLink">link</div>
+          <div className="returnLink">
+            <Link to="/">Back to Classlist</Link>
+          </div>
           <div className="users clearfix">
             <div className="users--list">
               <h2>students</h2>
