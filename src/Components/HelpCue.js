@@ -8,7 +8,9 @@ class HelpCue extends Component {
   }
   render() {
       return(
-        
+        <div className="wrapper">
+        <h2>HELPCUE</h2>
+        </div>
       )
   }
 }
