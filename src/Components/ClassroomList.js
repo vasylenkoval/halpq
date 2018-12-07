@@ -78,7 +78,6 @@ class ClassroomList extends Component {
       .once('value', snapshot => {
         if (snapshot.val()) {
           keys = Object.entries(snapshot.val()).map(element => element[0]);
-
           keys.forEach(element => {
             dbRef.ref(`Classrooms/${element}`).once('value', snapshot => {
               classArr.push(snapshot.val());
@@ -128,15 +127,17 @@ class ClassroomList extends Component {
     });
   };
 
-  joinClassroom = e => {
+  conditionalAction = e => {
     e.preventDefault();
     if (/\S/.test(this.state.userInput)) {
-      this.classroomEnroll(this.state.userInput);
+      this.state.isAdmin
+        ? this.createClassroom(this.state.userInput)
+        : this.classroomEnroll(this.state.userInput);
       this.setState({
         activateForm: false,
       });
     } else {
-      console.log('SUP');
+      console.log('User passed empty string');
     }
   };
 
@@ -166,17 +167,23 @@ class ClassroomList extends Component {
 
         {this.state.activateForm ? (
           <div>
-            <label htmlFor="conditional-input">Join Classroom</label>
+            <label htmlFor="conditional-input">
+              {this.state.isAdmin ? 'Create new classroom' : 'Join Classroom'}
+            </label>
             <input
               type="text"
               min
-              placeholder="Enter your classroom key"
+              placeholder={
+                this.state.isAdmin
+                  ? 'Enter classroom name'
+                  : 'Enter your classroom key'
+              }
               id="conditional-input"
               onChange={this.handleChange}
               value={this.state.userInput}
               minLength={8}
             />
-            <button type="button" onClick={this.joinClassroom}>
+            <button type="button" onClick={this.conditionalAction}>
               Submit
             </button>
           </div>
