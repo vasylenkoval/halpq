@@ -7,6 +7,7 @@ import Header from './Components/Header';
 import ClassroomList from './Components/ClassroomList';
 import UserManagement from './Components/UserManagement';
 import NotFound from './Components/NotFound';
+import Halpq from './Components/Halpq';
 
 const provider = new firebase.auth.GoogleAuthProvider();
 const auth = firebase.auth();
@@ -117,7 +118,7 @@ class App extends Component {
                     )}
                   />
                   <Route path="/usermanagement" component={UserManagement} />
-                  <Route path="/classroom/:classroomid" component={Helpq} />
+                  {/* <Route path="/classroom/:classroomid" component={Helpq} /> */}
                 </div>
               ) : null
             ) : null}
