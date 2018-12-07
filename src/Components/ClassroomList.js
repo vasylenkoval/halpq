@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import firebase from '../firebase';
 import { Link } from 'react-router-dom';
+import firebase from '../firebase';
 import ClassroomListItem from './ClassroomListItem';
 
 const dbRef = firebase.database();
 
 class ClassroomList extends Component {
   constructor(props) {
-    console.log('the constructor in Classroom List was called');
     super(props);
     this.state = {
       classList: [],
@@ -20,17 +19,22 @@ class ClassroomList extends Component {
 
   componentWillMount() {
     this.createClassList();
+    this.archiveQuestion('-LT3aMTnzHEvh1CtD5HG', '-LT9HXJ7mM4JLffr7cLz');
   }
 
   componentDidMount() {
     this.refreshOnChange();
   }
 
+  componentWillUnmount() {
+    dbRef.ref(`/Classrooms/`).off();
+    dbRef.ref(`/Users/Students/${this.state.user.uid}/enrolledClasses/`).off();
+  }
+
   createClassroom = name => {
     const dbRef = firebase.database();
     dbRef.ref(`/Classrooms/`).push({
       classroomName: name,
-      classroomQuestions: 0,
       enrolledStudents: 0,
     });
   };
@@ -67,47 +71,63 @@ class ClassroomList extends Component {
   };
 
   createClassList = () => {
-    const classArr = [];
-    let keys = [];
+    const studentClassList = [];
+    let studentKeys = [];
+    let adminKeys = [];
+    let adminClassList = [];
 
-    dbRef
-      .ref(
-        `Users/${this.state.isAdmin ? 'Admins' : 'Students'}/${
-          this.state.user.uid
-        }/enrolledClasses`
-      )
-      .once('value', snapshot => {
-        if (snapshot.val()) {
-          keys = Object.entries(snapshot.val()).map(element => element[0]);
-          keys.forEach(element => {
-            dbRef.ref(`Classrooms/${element}`).once('value', snapshot => {
-              classArr.push(snapshot.val());
-              this.setState({
-                classList: classArr,
-                classKeys: keys,
+    if (this.state.isAdmin) {
+      dbRef.ref('/Classrooms/').once('value', snapshot => {
+        adminKeys = Object.keys(snapshot.val());
+        adminClassList = Object.entries(snapshot.val()).map(
+          element => element[1]
+        );
+        this.setState({
+          classList: adminClassList,
+          classKeys: adminKeys,
+        });
+      });
+    } else {
+      dbRef
+        .ref(`Users/Students/${this.state.user.uid}/enrolledClasses`)
+        .once('value', snapshot => {
+          if (snapshot.val()) {
+            studentKeys = Object.entries(snapshot.val()).map(
+              element => element[0]
+            );
+            studentKeys.forEach(element => {
+              dbRef.ref(`Classrooms/${element}`).once('value', snapshot => {
+                studentClassList.push(snapshot.val());
+                console.log(studentKeys);
+                this.setState({
+                  classList: studentClassList,
+                  classKeys: studentKeys,
+                });
               });
             });
-          });
-        } else {
-          console.log('You are not enrolled in any class');
-          this.setState({
-            classList: [],
-            classKeys: [],
-          });
-        }
-      });
+          } else {
+            console.log('You are not enrolled in any class');
+            this.setState({
+              classList: [],
+              classKeys: [],
+            });
+          }
+        });
+    }
   };
 
   refreshOnChange = () => {
-    dbRef
-      .ref(
-        `/Users/${this.state.isAdmin ? `Admins` : `Students`}/${
-          this.state.user.uid
-        }/enrolledClasses/`
-      )
-      .on('value', snapshot => {
+    if (this.state.isAdmin) {
+      dbRef.ref(`/Classrooms/`).on('child_added', snapshot => {
         this.createClassList();
       });
+    } else {
+      dbRef
+        .ref(`/Users/Students/}/${this.state.user.uid}/enrolledClasses/`)
+        .on('value', snapshot => {
+          this.createClassList();
+        });
+    }
   };
 
   handleClick = e => {
@@ -142,17 +162,48 @@ class ClassroomList extends Component {
     }
   };
 
+  createQuestion = (classroomRef, questionContent, userLocation) => {
+    const dbRef = firebase.database();
+    dbRef.ref(`/Questions/${classroomRef}`).push({
+      name: this.state.user.displayName,
+      content: questionContent,
+      uid: this.state.user.uid,
+      photoURL: this.state.user.photoURL,
+      dateCreated: +new Date(),
+      dateHelped: 0,
+      dateCompleted: 0,
+      isCompleted: false,
+      location: userLocation,
+      whoHelped: 0,
+      isBeingHelped: false,
+    });
+  };
+
+  // Work in progress
+  // archiveQuestion = (classroomRef, questionRef) => {
+  //   const currRef = firebase
+  //     .database()
+  //     .ref(`/Questions/${classroomRef}/${questionRef}`);
+  //   const archiveRef = firebase
+  //     .database()
+  //     .ref(`Archive/${classroomRef}/${questionRef}`);
+  //   currRef.once('value', snapshot => {
+  //     archiveRef.set(snapshot.val());
+  //     currRef.
+  //   });
+  // };
+
   render() {
     return (
       <div className="classroomlist">
         {this.state.classList.map((element, i) => (
           <Link to={`/classroom/${this.state.classKeys[i]}`}>
-          <ClassroomListItem
-            classroomName={element.classroomName}
-            studentCount={Object.keys(element.enrolledStudents).length}
-            key={this.state.classKeys[i]}
-            password={this.state.classKeys[i].slice(1, 9)}
-          />
+            <ClassroomListItem
+              classroomName={element.classroomName}
+              studentCount={Object.keys(element.enrolledStudents).length}
+              key={this.state.classKeys[i]}
+              password={this.state.classKeys[i].slice(1, 9)}
+            />
           </Link>
         ))}
 
