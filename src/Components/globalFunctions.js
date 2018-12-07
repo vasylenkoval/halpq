@@ -40,7 +40,6 @@ export const createClassroom = name => {
   dbRef.ref(`/Classrooms/`).push({
     classKey: "",
     classroomName: name,
-    classroomQuestions: 0,
     enrolledStudents: 0,
   });
 };
@@ -48,7 +47,7 @@ export const createClassroom = name => {
 // Method to create a question in the classroom - needs a classroom reference. Should be moved to the HelpCue view.
 export const createQuestion = (classroomRef, questionContent, userLocation) => {
   const dbRef = firebase.database();
-  dbRef.ref(`/Classrooms/${classroomRef}/classroomQuestions`).push({
+  dbRef.ref(`/Questions/${classroomRef}`).push({
     name: this.state.user.displayName,
     content: questionContent,
     uid: this.state.user.uid,
@@ -59,7 +58,6 @@ export const createQuestion = (classroomRef, questionContent, userLocation) => {
     isCompleted: false,
     location: userLocation,
     whoHelped: 0,
-    messages: 0,
     isBeingHelped: false,
   });
 };
