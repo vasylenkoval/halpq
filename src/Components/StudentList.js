@@ -17,7 +17,7 @@ class StudentList extends Component {
                 makeAdmin(`${student[0]}`);
               }}
             >
-              CLICK ME
+              Make Baller
             </button>
           </div>
         ))}
