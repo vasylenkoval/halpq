@@ -93,39 +93,24 @@ class App extends Component {
   };
 
   render() {
-    return (
-      <div>
+    return <div>
         <Router>
           <div className="App">
             <Header user={this.state.user} isAdmin={this.state.isAdmin} />
             <h2>I'm on the app</h2>
-            {this.state.user === null ? (
-              <button onClick={this.logIn}>LogIn</button>
-            ) : null}
+            {this.state.user === null ? <button onClick={this.logIn}>
+                LogIn
+              </button> : null}
 
-            {this.state.user !== null ? (
-              this.state.appReady ? (
-                <div>
+            {this.state.user !== null ? this.state.appReady ? <div>
                   <button onClick={this.logOut}>LogOut</button>
-                  <Route
-                    exact
-                    path="/"
-                    component={() => (
-                      <ClassroomList
-                        isAdmin={this.state.isAdmin}
-                        user={this.state.user}
-                      />
-                    )}
-                  />
+                  <Route exact path="/" component={() => <ClassroomList isAdmin={this.state.isAdmin} user={this.state.user} />} />
                   <Route path="/usermanagement" component={UserManagement} />
-                  <Route path={"/classroom/:classroomid"} component={Halpq} />
-                </div>
-              ) : null
-            ) : null}
+                  <Route path={"/classroom/:classroomid"} render={props => <Halpq user={this.state.user} {...props}/>} />
+                </div> : null : null}
           </div>
         </Router>
-      </div>
-    );
+      </div>;
   }
 }
 

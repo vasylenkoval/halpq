@@ -11,12 +11,10 @@ class Halpq extends Component {
     };
   }
 
-
-
   render() {
     return <div>
         <QuestionList classKey={this.props.match.params.classroomid} />
-        <QuestionForm classKey={this.props.match.params.classroomid} />
+        <QuestionForm user={this.props.user} classKey={this.props.match.params.classroomid} />
       </div>;
   }
 }
