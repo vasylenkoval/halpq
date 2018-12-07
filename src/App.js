@@ -96,7 +96,7 @@ class App extends Component {
       <div>
         <Router>
           <div className="App">
-            <Header />
+            <Header user={this.state.user} isAdmin={this.state.isAdmin} />
             <h2>I'm on the app</h2>
             {this.state.user === null ? (
               <button onClick={this.logIn}>LogIn</button>
@@ -117,6 +117,7 @@ class App extends Component {
                     )}
                   />
                   <Route path="/usermanagement" component={UserManagement} />
+                  <Route path="/classroom/:classroomid" component={Helpq} />
                 </div>
               ) : null
             ) : null}

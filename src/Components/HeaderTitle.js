@@ -1,8 +1,5 @@
-import React from 'react';
-import { render } from 'react-dom';
-import Typed from 'react-typed';
-
-import Regitact, { Component } from 'react';
+import React, { Component } from 'react';
+import Typist from 'react-typist';
 
 class HeaderTitle extends Component {
   constructor() {
@@ -25,22 +22,18 @@ class HeaderTitle extends Component {
       typeSpeed: 50,
       backSpeed: 50,
     };
-    // this.typed.start();
-    // this.typed = new Typed(this.el, options);
   }
 
   render() {
     return (
-      <div className="wrap">
-        <h1>Typed.js</h1>
-        <div className="type-wrap">
-          <span
-            style={{ whiteSpace: 'pre' }}
-            ref={el => {
-              this.el = el;
-            }}
-          />
-        </div>
+      <div className="Header-Title">
+        <Typist>
+          <h1>HALPQ</h1>
+          <div className="container">
+            <Typist.Backspace count={0} typeSpeed={70} delay={1000} />
+            <h4> A place to ask your HackerYou questions. </h4>
+          </div>
+        </Typist>
       </div>
     );
   }
