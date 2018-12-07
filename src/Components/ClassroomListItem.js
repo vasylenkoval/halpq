@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Classroom item inside of the Classroom List
 const ClassroomListItem = props => (

@@ -145,12 +145,14 @@ class ClassroomList extends Component {
     return (
       <div className="classroomlist">
         {this.state.classList.map((element, i) => (
+          <Link to={`/classroom/${this.state.classKeys[i]}`}>
           <ClassroomListItem
             classroomName={element.classroomName}
             studentCount={Object.keys(element.enrolledStudents).length}
             key={this.state.classKeys[i]}
             password={this.state.classKeys[i].slice(1, 9)}
           />
+          </Link>
         ))}
 
         <button
