@@ -11,30 +11,14 @@ class Halpq extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   console.log('yo');
-  //   const dbRef = firebase.database();
-  //   dbRef
-  //     .ref(
-  //       `/Classrooms/${this.props.match.params.classroomid}/classroomQuestions`
-  //     )
-  //     .on('value', snapshot => {
-  //       console.log(snapshot.val());
-  //       const questionArray = Object.entries(snapshot.val());
-  //       console.log(questionArray);
-  //       this.setState({questions: questionArray});
-  //     });
-  // }
+
 
   render() {
-    return (
-      <div>
-        <QuestionList />
-        <QuestionForm classKey={this.props.match.params.classroomid}/>
-      </div>
-    );
+    return <div>
+        <QuestionList classKey={this.props.match.params.classroomid} />
+        <QuestionForm classKey={this.props.match.params.classroomid} />
+      </div>;
   }
-
 }
 
 export default Halpq;
