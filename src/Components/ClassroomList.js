@@ -171,7 +171,7 @@ class ClassroomList extends Component {
             classroomName={element.classroomName}
             studentCount={Object.keys(element.enrolledStudents).length}
             key={this.state.classKeys[i]}
-            password={this.state.classKeys[i].slice(0, 7)}
+            password={this.state.classKeys[i].slice(1, 9)}
           />
         ))}
 
@@ -191,10 +191,12 @@ class ClassroomList extends Component {
           <label htmlFor="conditional-input">Join Classroom</label>
           <input
             type="text"
+            min
             placeholder="Enter your classroom key"
             id="conditional-input"
             onChange={this.handleChange}
             value={this.state.userInput}
+            minLength={8}
           />
           <button type="button" onClick={this.joinClassroom}>
             Submit
