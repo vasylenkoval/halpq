@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import QuestionForm from './QuestionForm';
 
 class Halpq extends Component {
   constructor() {
@@ -7,6 +8,12 @@ class Halpq extends Component {
   }
 
   render() {
-    return <div>hi</div>;
+    return (
+      <div>
+        <QuestionForm />
+      </div>
+    );
   }
 }
+
+export default Halpq;
