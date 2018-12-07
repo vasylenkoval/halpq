@@ -19,7 +19,6 @@ class ClassroomList extends Component {
 
   componentWillMount() {
     this.createClassList();
-    this.archiveQuestion('-LT3aMTnzHEvh1CtD5HG', '-LT9HXJ7mM4JLffr7cLz');
   }
 
   componentDidMount() {
