@@ -1,38 +1,9 @@
 import React, { Component } from 'react';
 import firebase from '../firebase';
 import { Link } from 'react-router-dom';
+import ClassroomListItem from './ClassroomListItem';
 
 const dbRef = firebase.database();
-
-// Classroom item inside of the Classroom List
-const ClassroomListItem = props => (
-  <div className="classroomlist__item">
-    <div className="classroomlist__item__name">
-      <h2>{props.classroomName}</h2>
-    </div>
-
-    <div className="classroomlist__item__questions">
-      <div className="classroomlist__item__questions__count">
-        <p>Active questions: to be passed</p>
-      </div>
-    </div>
-
-    <div className="classroomlist__item__beinghelped">
-      <div className="classroomlist__item__beinghelped__count">
-        <p>Being helped questions: to be passed</p>
-      </div>
-    </div>
-
-    <div className="clasroom__item__password">
-      <p>Password: {props.password}</p>
-    </div>
-
-    <div className="classroomlist__item__studentsEnrolled">
-      <p>Number of Students: {props.studentCount}</p>
-    </div>
-    <button>Enter</button>
-  </div>
-);
 
 class ClassroomList extends Component {
   constructor(props) {
@@ -141,9 +112,15 @@ class ClassroomList extends Component {
   };
 
   handleClick = e => {
-    this.setState({
-      activateForm: true,
-    });
+    if (this.state.activateForm) {
+      this.setState({
+        activateForm: false,
+      });
+    } else {
+      this.setState({
+        activateForm: true,
+      });
+    }
   };
 
   handleChange = e => {
@@ -188,21 +165,23 @@ class ClassroomList extends Component {
           {this.state.isAdmin ? 'Add Classroom' : 'Join Classroom'}
         </button>
 
-        <div>
-          <label htmlFor="conditional-input">Join Classroom</label>
-          <input
-            type="text"
-            min
-            placeholder="Enter your classroom key"
-            id="conditional-input"
-            onChange={this.handleChange}
-            value={this.state.userInput}
-            minLength={8}
-          />
-          <button type="button" onClick={this.joinClassroom}>
-            Submit
-          </button>
-        </div>
+        {this.state.activateForm ? (
+          <div>
+            <label htmlFor="conditional-input">Join Classroom</label>
+            <input
+              type="text"
+              min
+              placeholder="Enter your classroom key"
+              id="conditional-input"
+              onChange={this.handleChange}
+              value={this.state.userInput}
+              minLength={8}
+            />
+            <button type="button" onClick={this.joinClassroom}>
+              Submit
+            </button>
+          </div>
+        ) : null}
       </div>
     );
   }
