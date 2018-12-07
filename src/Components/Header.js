@@ -17,17 +17,11 @@ const Header = props => (
         </svg>
       </Link>
     </div>
-    <HeaderTitle
-      strings={[
-        'Some <i>strings</i> are slanted',
-        'Some <strong>strings</strong> are bold',
-        'HTML characters &times; &copy;',
-      ]}
-    />
+    <HeaderTitle />
     {props.user !== null ? (
       <div className="UserPanelStyle clearfix">
         {/* <img style={UserImage} src={props.user.photoURL} alt="" /> */}
-        {props.isAdmin && <UserManagementLink />}
+        {props.isAdmin ? <UserManagementLink /> : null}
         <UserDetails
           photoURL={props.user.photoURL}
           displayName={props.user.displayName}

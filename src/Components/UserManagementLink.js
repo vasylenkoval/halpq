@@ -6,15 +6,13 @@ class UserManagementLink extends Component {
   render() {
     return (
       <div>
-        {this.props.isAdmin && (
-          <Link to="/usermanagement">
-            <img
-              style={userMgmt}
-              src={UserMgmtLogo}
-              alt="User Managment Panel Icon"
-            />
-          </Link>
-        )}
+        <Link to="/usermanagement">
+          <img
+            style={userMgmt}
+            src={UserMgmtLogo}
+            alt="User Managment Panel Icon"
+          />
+        </Link>
       </div>
     );
   }
