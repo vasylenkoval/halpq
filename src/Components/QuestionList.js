@@ -44,7 +44,7 @@ class QuestionList extends Component {
               <p>{question[1].name}</p>
               {/* <img src={question[1].photoURL} alt="" /> */}
             </div>
-            <div className="question__actions">
+            <div className="question__actions__admins">
               <CompleteQuestion/>
               <BeingHelped />
             </div>
