@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
+import CompleteQuestion from './CompleteQuestion';
+import BeingHelped from './BeingHelped';
 
 class QuestionList extends Component {
   constructor() {
@@ -10,7 +12,7 @@ class QuestionList extends Component {
   }
 
   componentDidMount() {
-    console.log('yo');
+    // console.log('yo');
     const dbRef = firebase.database();
     dbRef.ref(`/Questions/${this.props.classKey}`).on('value', snapshot => {
       if (!snapshot.exists()) {
@@ -41,6 +43,10 @@ class QuestionList extends Component {
             <div className="question__userInfo">
               <p>{question[1].name}</p>
               {/* <img src={question[1].photoURL} alt="" /> */}
+            </div>
+            <div className="question__actions__admins">
+              <CompleteQuestion/>
+              <BeingHelped />
             </div>
           </div>
         ))}
