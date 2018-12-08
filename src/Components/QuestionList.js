@@ -16,7 +16,7 @@ class QuestionList extends Component {
     const dbRef = firebase.database();
     dbRef.ref(`/Questions/${this.props.classKey}`).on('value', snapshot => {
       if (!snapshot.exists()) {
-        this.setState({ studentList: [] });
+        this.setState({ questions: [] });
       } else if (snapshot.val()) {
         // console.log(snapshot.val());
         const questionArray = Object.entries(snapshot.val());
