@@ -6,11 +6,11 @@ import firebase from './firebase';
 import Header from './Components/Header';
 import ClassroomList from './Components/ClassroomList';
 import UserManagement from './Components/UserManagement';
-import Halpq from './Components/Halpq';
+import HelpCue from './Components/HelpCue';
 import NotFound from './Components/NotFound';
 
 const provider = new firebase.auth.GoogleAuthProvider();
-const auth = firebase.auth();
+const auth = firebase.auth();   
 const dbRef = firebase.database();
 
 class App extends Component {
@@ -109,6 +109,7 @@ class App extends Component {
                   <Route path={"/classroom/:classroomid"} render={props => <Halpq user={this.state.user} {...props}/>} />
                 </div> : null : null}
           </div>
+          
         </Router>
       </div>;
   }
