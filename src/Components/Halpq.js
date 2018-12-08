@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import firebase from 'firebase';
+import { Link } from 'react-router-dom';
 import QuestionForm from './QuestionForm';
 import QuestionList from './QuestionList';
 
@@ -13,6 +13,9 @@ class Halpq extends Component {
 
   render() {
     return <div>
+        <div className="returnLink">
+          <Link to="/">Return to Classrooms</Link>
+        </div>
         <QuestionList classKey={this.props.match.params.classroomid} />
         <QuestionForm user={this.props.user} classKey={this.props.match.params.classroomid} />
       </div>;

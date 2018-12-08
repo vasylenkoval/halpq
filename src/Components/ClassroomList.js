@@ -197,7 +197,7 @@ class ClassroomList extends Component {
     return (
       <div className="classroomlist">
         {this.state.classList.map((element, i) => (
-          <Link to={`/classroom/${this.state.classKeys[i]}`} params={{user: this.state.user}}>
+          <Link to={`/classroom/${this.state.classKeys[i]}`} key={this.state.classKeys[i]} params={{user: this.state.user}}>
             <ClassroomListItem
               classroomName={element.classroomName}
               studentCount={Object.keys(element.enrolledStudents).length}

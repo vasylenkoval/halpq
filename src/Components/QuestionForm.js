@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import { createQuestion } from './globalFunctions';
 
 class QuestionForm extends Component {
   constructor() {
@@ -11,14 +10,29 @@ class QuestionForm extends Component {
     };
   }
 
+  createQuestion = (classroomRef, questionContent, userLocation) => {
+    const dbRef = firebase.database();
+    dbRef.ref(`/Questions/${classroomRef}`).push({
+      name: this.props.user.displayName,
+      content: questionContent,
+      uid: this.props.user.uid,
+      photoURL: this.props.user.photoURL,
+      dateCreated: +new Date(),
+      dateHelped: 0,
+      dateCompleted: 0,
+      isCompleted: false,
+      location: userLocation,
+      whoHelped: 0,
+      isBeingHelped: false
+    });
+  };
+
   handleSubmit = e => {
     e.preventDefault();
     const question = this.state.question;
     const location = this.state.location;
     const classKey = this.props.classKey;
-    createQuestion(classKey, question, location);
-
-    // console.log("Q Details:", this.question, this.location, this.classKey);
+    this.createQuestion(classKey, question, location);
     this.setState({
       question: "",
       location: ""
@@ -45,7 +59,7 @@ class QuestionForm extends Component {
             id="question"
           />
           <label htmlFor="location">Location</label>
-          <input
+          <input required
             value={this.state.location}
             onChange={this.handleChange}
             type="text"

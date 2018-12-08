@@ -44,24 +44,6 @@ export const createClassroom = name => {
   });
 };
 
-// Method to create a question in the classroom - needs a classroom reference. Should be moved to the HelpCue view.
-export const createQuestion = (classroomRef, questionContent, userLocation) => {
-  const dbRef = firebase.database();
-  dbRef.ref(`/Questions/${classroomRef}`).push({
-    name: this.state.user.displayName,
-    content: questionContent,
-    uid: this.state.user.uid,
-    photoURL: this.state.user.photoURL,
-    dateCreated: +new Date(),
-    dateHelped: 0,
-    dateCompleted: 0,
-    isCompleted: false,
-    location: userLocation,
-    whoHelped: 0,
-    isBeingHelped: false,
-  });
-};
-
 // Method to enroll in the classroom - should be moved to the Classroom List view.
 // Consider creating a duplicate shallow reference in the DB to store just the keys of the classrooms to prevent from downloading all nested data
 export const classroomEnroll = enrollPassword => {

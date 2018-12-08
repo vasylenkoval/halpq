@@ -10,7 +10,7 @@ class QuestionList extends Component {
   }
 
   componentDidMount() {
-    console.log('yo');
+    // console.log('yo');
     const dbRef = firebase.database();
     dbRef.ref(`/Questions/${this.props.classKey}`).on('value', snapshot => {
       if (!snapshot.exists()) {
