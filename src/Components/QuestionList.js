@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
+import CompleteQuestion from './CompleteQuestion';
+import BeingHelped from './BeingHelped';
 
 class QuestionList extends Component {
   constructor() {
@@ -41,6 +43,10 @@ class QuestionList extends Component {
             <div className="question__userInfo">
               <p>{question[1].name}</p>
               {/* <img src={question[1].photoURL} alt="" /> */}
+            </div>
+            <div className="question__actions">
+              <CompleteQuestion/>
+              <BeingHelped />
             </div>
           </div>
         ))}
