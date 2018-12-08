@@ -1,29 +1,47 @@
 import React, { Component } from 'react';
+import firebase from 'firebase';
 
 class QuestionForm extends Component {
   constructor() {
     super();
     this.state = {
-      question: '',
-      location: '',
-      postedQuestion: '',
+      question: "",
+      location: ""
     };
   }
 
+  createQuestion = (classroomRef, questionContent, userLocation) => {
+    const dbRef = firebase.database();
+    dbRef.ref(`/Questions/${classroomRef}`).push({
+      name: this.props.user.displayName,
+      content: questionContent,
+      uid: this.props.user.uid,
+      photoURL: this.props.user.photoURL,
+      dateCreated: +new Date(),
+      dateHelped: 0,
+      dateCompleted: 0,
+      isCompleted: false,
+      location: userLocation,
+      whoHelped: 0,
+      isBeingHelped: false
+    });
+  };
+
   handleSubmit = e => {
     e.preventDefault();
-    this.question = this.state.question;
-    this.location = this.state.location;
-    console.log("HOLLA AT THIS DOPE Q:", this.question, this.location);
+    const question = this.state.question;
+    const location = this.state.location;
+    const classKey = this.props.classKey;
+    this.createQuestion(classKey, question, location);
     this.setState({
-      question: '',
-      location: '',
+      question: "",
+      location: ""
     });
   };
 
   handleChange = e => {
     this.setState({
-      [e.target.id]: e.target.value,
+      [e.target.id]: e.target.value
     });
   };
 
@@ -41,7 +59,7 @@ class QuestionForm extends Component {
             id="question"
           />
           <label htmlFor="location">Location</label>
-          <input
+          <input required
             value={this.state.location}
             onChange={this.handleChange}
             type="text"

@@ -38,26 +38,9 @@ export const makeStudent = adminUID => {
 export const createClassroom = name => {
   const dbRef = firebase.database();
   dbRef.ref(`/Classrooms/`).push({
+    classKey: "",
     classroomName: name,
     enrolledStudents: 0,
-  });
-};
-
-// Method to create a question in the classroom - needs a classroom reference. Should be moved to the HelpCue view.
-export const createQuestion = (classroomRef, questionContent, userLocation) => {
-  const dbRef = firebase.database();
-  dbRef.ref(`/Questions/${classroomRef}`).push({
-    name: this.state.user.displayName,
-    content: questionContent,
-    uid: this.state.user.uid,
-    photoURL: this.state.user.photoURL,
-    dateCreated: +new Date(),
-    dateHelped: 0,
-    dateCompleted: 0,
-    isCompleted: false,
-    location: userLocation,
-    whoHelped: 0,
-    isBeingHelped: false,
   });
 };
 

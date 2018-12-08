@@ -192,11 +192,12 @@ class ClassroomList extends Component {
   //   });
   // };
 
+
   render() {
     return (
       <div className="classroomlist">
         {this.state.classList.map((element, i) => (
-          <Link to={`/classroom/${this.state.classKeys[i]}`}>
+          <Link to={`/classroom/${this.state.classKeys[i]}`} key={this.state.classKeys[i]} params={{user: this.state.user}}>
             <ClassroomListItem
               classroomName={element.classroomName}
               studentCount={Object.keys(element.enrolledStudents).length}
@@ -204,7 +205,8 @@ class ClassroomList extends Component {
               password={this.state.classKeys[i].slice(1, 9)}
             />
           </Link>
-        ))}
+        )
+        )}
 
         <button
           type="button"
