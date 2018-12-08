@@ -26,6 +26,11 @@ class QuestionList extends Component {
     });
   }
 
+  componentWillUnmount() {
+    const dbRef = firebase.database();
+    dbRef.ref(`/Questions/${this.props.classKey}`).off();
+  }
+
   render() {
     return (
       <div>
