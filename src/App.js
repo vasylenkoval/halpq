@@ -6,11 +6,11 @@ import firebase from './firebase';
 import Header from './Components/Header';
 import ClassroomList from './Components/ClassroomList';
 import UserManagement from './Components/UserManagement';
-import Halpq from './Components/Halpq';
+import HelpCue from './Components/HelpCue';
 import NotFound from './Components/NotFound';
 
 const provider = new firebase.auth.GoogleAuthProvider();
-const auth = firebase.auth();
+const auth = firebase.auth();   
 const dbRef = firebase.database();
 
 class App extends Component {
@@ -98,7 +98,6 @@ class App extends Component {
         <Router>
           <div className="App">
             <Header user={this.state.user} isAdmin={this.state.isAdmin} />
-            <h2>I'm on the app</h2>
             {this.state.user === null ? (
               <button onClick={this.logIn}>LogIn</button>
             ) : null}
@@ -117,12 +116,13 @@ class App extends Component {
                       />
                     )}
                   />
-                  <Route path="/usermanagement" component={UserManagement} />
-                  <Route path="/classroom/:classroomid" component={Halpq} />
+                  <Route path="/usermanagement" title={"User Management"} component={UserManagement} />
+                  <Route path="/classroom/:classroomid" component={HelpCue} />
                 </div>
               ) : null
             ) : null}
           </div>
+          
         </Router>
       </div>
     );
