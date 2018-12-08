@@ -6,7 +6,7 @@ import firebase from './firebase';
 import Header from './Components/Header';
 import ClassroomList from './Components/ClassroomList';
 import UserManagement from './Components/UserManagement';
-import HelpCue from './Components/HelpCue';
+import Halpq from './Components/Halpq';
 import NotFound from './Components/NotFound';
 
 const provider = new firebase.auth.GoogleAuthProvider();
