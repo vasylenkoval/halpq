@@ -107,6 +107,15 @@ class ClassroomList extends Component {
     }
   };
 
+  createClassroom = name => {
+    const dbRef = firebase.database();
+    dbRef.ref(`/Classrooms/`).push({
+      classKey: '',
+      classroomName: name,
+      enrolledStudents: 0,
+    });
+  };
+
   refreshOnChange = () => {
     if (this.state.isAdmin) {
       dbRef.ref(`/Classrooms/`).on('child_added', snapshot => {
@@ -156,7 +165,7 @@ class ClassroomList extends Component {
   render() {
     return (
       <div className="classroomlist">
-      <div className="Component--Title">
+        <div className="Component--Title">
           <h2>Classroom List</h2>
         </div>
         {this.state.classList.map((element, i) => (
