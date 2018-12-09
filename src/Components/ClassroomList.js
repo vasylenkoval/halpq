@@ -156,6 +156,9 @@ class ClassroomList extends Component {
   render() {
     return (
       <div className="classroomlist">
+      <div className="Component--Title">
+          <h2>Classroom List</h2>
+        </div>
         {this.state.classList.map((element, i) => (
           <Link
             to={`/classroom/${this.state.classKeys[i]}`}

@@ -51,6 +51,9 @@ class UserManagement extends Component {
           <div className="returnLink">
             <Link to="/">Back to Classlist</Link>
           </div>
+          <div className="Component--Title">
+            <h2>User Management</h2>
+          </div>
           <div className="users clearfix">
             <div className="users--list">
               <h2>students</h2>
