@@ -164,7 +164,7 @@ class ClassroomList extends Component {
           >
             <ClassroomListItem
               classroomName={element.classroomName}
-              studentCount={Object.keys(element.enrolledStudents).length}
+              studentCount={Object.keys(element.enrolledStudents).length || 0}
               key={this.state.classKeys[i]}
               password={this.state.classKeys[i].slice(1, 9)}
             />
