@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import QuestionForm from "./QuestionForm";
-import QuestionList from "./QuestionList";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import QuestionForm from './QuestionForm';
+import QuestionList from './QuestionList';
 
 class Halpq extends Component {
   constructor(props) {
@@ -9,7 +9,7 @@ class Halpq extends Component {
     this.state = {
       questions: [],
       isAdmin: this.props.isAdmin,
-      user: this.props.user
+      user: this.props.user,
     };
   }
 
