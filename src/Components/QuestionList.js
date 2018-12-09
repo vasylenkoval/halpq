@@ -39,8 +39,7 @@ class QuestionList extends Component {
   }
 
   render() {
-    return (
-      <div>
+    return <div>
         <h2>{this.state.classroomName}</h2>
         {this.state.questions.map(question => (
           <div
@@ -58,8 +57,20 @@ class QuestionList extends Component {
               {/* <img src={question[1].photoURL} alt="" /> */}
             </div>
             <div className="question__actions__admins">
-              <CompleteQuestion />
-              <BeingHelped />
+              <CompleteQuestion
+                user={this.state.user}
+                isAdmin={this.state.isAdmin}
+                classKey={this.state.classKey}
+                questionKey={question[0]}
+                questionOwner
+              />
+              <BeingHelped
+                user={this.state.user}
+                isAdmin={this.state.isAdmin}
+                classKey={this.state.classKey}
+                questionKey={question[0]}
+                questionOwner
+              />
               <QuestionConversation
                 user={this.state.user}
                 isAdmin={this.state.isAdmin}
@@ -70,8 +81,7 @@ class QuestionList extends Component {
             </div>
           </div>
         ))}
-      </div>
-    );
+      </div>;
   }
 }
 
