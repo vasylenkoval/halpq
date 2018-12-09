@@ -91,7 +91,6 @@ export const classroomEnroll = enrollPassword => {
     const classroomMatch = Object.entries(snapshot.val()).filter(element =>
       element[0].includes(enrollPassword)
     );
-    console.log(classroomMatch);
     if (classroomMatch.length > 0) {
       // If there is a match - record a student in classroom ref
       dbRef
@@ -109,7 +108,8 @@ export const classroomEnroll = enrollPassword => {
             this.state.user.uid
           }/enrolledClasses/${classroomMatch[0][0]}`
         )
-        .set(this.state.user.displayName);
+        .set(`${classroomMatch[0][1].classroomName}`);
+      this.createClassList();
     } else {
       console.log('Wrong key!');
     }

@@ -21,10 +21,6 @@ class ClassroomList extends Component {
     this.createClassList();
   }
 
-  componentDidMount() {
-    this.refreshOnChange();
-  }
-
   componentWillUnmount() {
     dbRef.ref(`/Classrooms/`).off();
     dbRef.ref(`/Users/Students/${this.state.user.uid}/enrolledClasses/`).off();
@@ -36,7 +32,6 @@ class ClassroomList extends Component {
       const classroomMatch = Object.entries(snapshot.val()).filter(element =>
         element[0].includes(enrollPassword)
       );
-      console.log(classroomMatch);
       if (classroomMatch.length > 0) {
         // If there is a match - record a student in classroom ref
         dbRef
@@ -55,6 +50,7 @@ class ClassroomList extends Component {
             }/enrolledClasses/${classroomMatch[0][0]}`
           )
           .set(`${classroomMatch[0][1].classroomName}`);
+        this.createClassList();
       } else {
         console.log('Wrong key!');
       }
@@ -89,7 +85,6 @@ class ClassroomList extends Component {
             studentKeys.forEach(element => {
               dbRef.ref(`Classrooms/${element}`).once('value', snapshot => {
                 studentClassList.push(snapshot.val());
-                console.log(studentKeys);
                 this.setState({
                   classList: studentClassList,
                   classKeys: studentKeys,
@@ -110,24 +105,10 @@ class ClassroomList extends Component {
   createClassroom = name => {
     const dbRef = firebase.database();
     dbRef.ref(`/Classrooms/`).push({
-      classKey: '',
       classroomName: name,
       enrolledStudents: 0,
     });
-  };
-
-  refreshOnChange = () => {
-    if (this.state.isAdmin) {
-      dbRef.ref(`/Classrooms/`).on('child_added', snapshot => {
-        this.createClassList();
-      });
-    } else {
-      dbRef
-        .ref(`/Users/Students/}/${this.state.user.uid}/enrolledClasses/`)
-        .on('value', snapshot => {
-          this.createClassList();
-        });
-    }
+    this.createClassList();
   };
 
   handleClick = e => {
