@@ -73,6 +73,14 @@ class ConversationModel extends Component {
   render() {
     return (
       <div style={modal}>
+        <button
+          type="button"
+          id="close"
+          onClick={this.props.closeModal}
+          style={{ display: 'block' }}
+        >
+          X
+        </button>
         <div style={modalMain}>
           {this.state.chats.map(chat => (
             <div className="chat" key={chat[0]}>
@@ -88,14 +96,6 @@ class ConversationModel extends Component {
               </div>
             </div>
           ))}
-          <button
-            type="button"
-            id="close"
-            onClick={this.props.closeModal}
-            style={{ display: 'block' }}
-          >
-            X
-          </button>
           <form
             action=""
             onSubmit={this.handleSubmit}
