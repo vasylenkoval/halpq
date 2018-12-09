@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import firebase from '../firebase';
-import HalpQContext from './HalpQContext';
 
 class ConversationModel extends Component {
   constructor(props) {
@@ -11,6 +10,7 @@ class ConversationModel extends Component {
       userInput: '',
       isAdmin: this.props.isAdmin,
       user: this.props.user,
+      questionKey: this.props.questionKey,
     };
   }
 
@@ -33,23 +33,26 @@ class ConversationModel extends Component {
 
   componentDidMount() {
     const dbRef = firebase.database();
-    dbRef.ref(`/Chat/`).on('value', snapshot => {
-      if (!snapshot.exists()) {
-        this.setState({ chats: [] });
-      } else if (snapshot.val()) {
-        // console.log(snapshot.val());
-        const chatArray = Object.entries(snapshot.val());
-        // console.log(questionArray);
-        this.setState({ chats: chatArray });
-      }
-    });
+    // console.log(dbRef.ref.parent);
+    dbRef
+      .ref(`/Chat/${this.state.classKey}/${this.state.questionKey}/`)
+      .on('value', snapshot => {
+        if (!snapshot.exists()) {
+          this.setState({ chats: [] });
+        } else if (snapshot.val()) {
+          // console.log(snapshot.val());
+          const chatArray = Object.entries(snapshot.val());
+          // console.log(questionArray);
+          this.setState({ chats: chatArray });
+        }
+      });
   }
 
   handleSubmit = e => {
     const dbRef = firebase.database();
     e.preventDefault();
     // post this new book to firebase
-    dbRef.ref(`/Chat/`).push({
+    dbRef.ref(`/Chat/${this.state.classKey}/${this.state.questionKey}/`).push({
       name: this.state.user.displayName,
       content: this.state.userInput,
       uid: this.state.user.uid,
@@ -57,6 +60,7 @@ class ConversationModel extends Component {
       dateCreated: +new Date(),
     });
     this.setState({ userInput: '' });
+    // console.log(dbRef.ref.parent.key);
   };
 
   handleChange = e => {
@@ -75,12 +79,23 @@ class ConversationModel extends Component {
               <div className="chat__chatContent" style={{ textAlign: 'right' }}>
                 <p>{chat[1].content}</p>
               </div>
-              <div className="chat__userInfo" style={{ textAlign: 'right' }}>
+              <div
+                className="chat__userInfo"
+                style={{ textAlign: 'right', fontWeight: 'bold' }}
+              >
                 <p>{chat[1].name}</p>
                 {/* <img src={chat[1].photoURL} alt="" /> */}
               </div>
             </div>
           ))}
+          <button
+            type="button"
+            id="close"
+            onClick={this.props.closeModal}
+            style={{ display: 'block' }}
+          >
+            X
+          </button>
           <form
             action=""
             onSubmit={this.handleSubmit}
@@ -95,16 +110,20 @@ class ConversationModel extends Component {
               style={{
                 display: 'inline-block',
                 marginTop: '50px',
-                width: '100%',
+                width: '90%',
               }}
             />
             {/* <label htmlFor="submitChatMessage">Submit</label> */}
+
             <input
               type="submit"
               id="submitChatMessage"
-              style={{ display: 'inline-block' }}
+              style={{ display: 'inline-block', width: '10%' }}
             />
           </form>
+          {console.log(
+            `i'm open and here is my question id: ${this.props.questionKey} `
+          )}
           {/* <button onClick={this.props.closeModal}>close</button> */}
         </div>
       </div>
@@ -119,7 +138,7 @@ const modal = {
   left: 0,
   width: '100%',
   display: 'block',
-  height: '1000px',
+  height: '100%',
   background: 'rgba(169, 169, 169, 0.8)',
 };
 

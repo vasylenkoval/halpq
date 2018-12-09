@@ -8,18 +8,19 @@ class QuestionConversation extends Component {
       isAdmin: this.props.isAdmin,
       user: this.props.user,
       isOpen: false,
+      classKey: this.props.classKey,
+      questionKey: this.props.questionKey,
     };
   }
 
   handleChange = e => {
-    console.log('button was clicked');
     e.preventDefault();
     !this.state.isOpen
       ? this.setState({
           isOpen: true,
         })
       : this.setState({
-          isOpen: true,
+          isOpen: false,
         });
   };
 
@@ -38,7 +39,8 @@ class QuestionConversation extends Component {
             isAdmin={this.state.isAdmin}
             user={this.props.user}
             closeModal={this.handleChange}
-            classKey="-LT-S0NclmfEtqcHul_W-LT-S0NclmfEtqcHul_W"
+            classKey={this.state.classKey}
+            questionKey={this.state.questionKey}
           />
         ) : null}
       </div>

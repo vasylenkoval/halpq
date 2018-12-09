@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import firebase from "firebase";
-import CompleteQuestion from "./CompleteQuestion";
-import BeingHelped from "./BeingHelped";
-import QuestionConversation from "./QuestionConversation";
-import ConversationModal from "./ConversationModal";
+import React, { Component } from 'react';
+import firebase from 'firebase';
+import CompleteQuestion from './CompleteQuestion';
+import BeingHelped from './BeingHelped';
+import QuestionConversation from './QuestionConversation';
+import ConversationModal from './ConversationModal';
 
 class QuestionList extends Component {
   constructor(props) {
@@ -12,14 +12,14 @@ class QuestionList extends Component {
       questions: [],
       isAdmin: this.props.isAdmin,
       user: this.props.user,
-      classKey: this.props.classKey
+      classKey: this.props.classKey,
     };
   }
 
   componentDidMount() {
     // console.log('yo');
     const dbRef = firebase.database();
-    dbRef.ref(`/Questions/${this.state.classKey}`).on("value", (snapshot) => {
+    dbRef.ref(`/Questions/${this.state.classKey}`).on('value', snapshot => {
       if (!snapshot.exists()) {
         this.setState({ questions: [] });
       } else if (snapshot.val()) {
@@ -40,11 +40,12 @@ class QuestionList extends Component {
     return (
       <div>
         <h2>---Questions here---</h2>
-        {this.state.questions.map((question) => (
+        {this.state.questions.map(question => (
           <div
             style={{ border: `1px solid green` }}
             className="question"
             key={question[0]}
+            // questionKey={question[0]}
           >
             <div className="question__questionContent">
               <p>{question[1].location}</p>
@@ -60,6 +61,8 @@ class QuestionList extends Component {
               <QuestionConversation
                 user={this.state.user}
                 isAdmin={this.state.isAdmin}
+                classKey={this.state.classKey}
+                questionKey={question[0]}
               />
             </div>
           </div>
