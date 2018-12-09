@@ -37,6 +37,7 @@ class ClassroomList extends Component {
         element[0].includes(enrollPassword)
       );
       console.log(classroomMatch);
+      console.log("yo")
       if (classroomMatch.length > 0) {
         // If there is a match - record a student in classroom ref
         dbRef
@@ -213,6 +214,7 @@ class ClassroomList extends Component {
             </button>
           </div>
         ) : null}
+
       </div>
     );
   }
