@@ -3,7 +3,6 @@ import firebase from 'firebase';
 import CompleteQuestion from './CompleteQuestion';
 import BeingHelped from './BeingHelped';
 import QuestionConversation from './QuestionConversation';
-import ConversationModal from './ConversationModal';
 
 class QuestionList extends Component {
   constructor(props) {
@@ -13,19 +12,22 @@ class QuestionList extends Component {
       isAdmin: this.props.isAdmin,
       user: this.props.user,
       classKey: this.props.classKey,
+      classroomName: '',
     };
   }
 
   componentDidMount() {
-    // console.log('yo');
     const dbRef = firebase.database();
+    dbRef.ref(`/Classrooms/${this.state.classKey}`).once('value', snapshot => {
+      this.setState({
+        classroomName: snapshot.val().classroomName,
+      });
+    });
     dbRef.ref(`/Questions/${this.state.classKey}`).on('value', snapshot => {
       if (!snapshot.exists()) {
         this.setState({ questions: [] });
       } else if (snapshot.val()) {
-        // console.log(snapshot.val());
         const questionArray = Object.entries(snapshot.val());
-        // console.log(questionArray);
         this.setState({ questions: questionArray });
       }
     });
@@ -39,7 +41,7 @@ class QuestionList extends Component {
   render() {
     return (
       <div>
-        <h2>---Questions here---</h2>
+        <h2>{this.state.classroomName}</h2>
         {this.state.questions.map(question => (
           <div
             style={{ border: `1px solid green` }}
@@ -63,6 +65,7 @@ class QuestionList extends Component {
                 isAdmin={this.state.isAdmin}
                 classKey={this.state.classKey}
                 questionKey={question[0]}
+                questionOwner
               />
             </div>
           </div>
