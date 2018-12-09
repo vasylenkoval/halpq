@@ -6,11 +6,11 @@ class ConversationModel extends Component {
     super(props);
     this.state = {
       classKey: this.props.classKey,
-      chats: [],
       userInput: '',
       isAdmin: this.props.isAdmin,
       user: this.props.user,
       questionKey: this.props.questionKey,
+      questionOwner: false
     };
   }
 
@@ -29,24 +29,6 @@ class ConversationModel extends Component {
     }
   };
 
-  checkQuestionOwner = () => {};
-
-  componentDidMount() {
-    const dbRef = firebase.database();
-    // console.log(dbRef.ref.parent);
-    dbRef
-      .ref(`/Chat/${this.state.classKey}/${this.state.questionKey}/`)
-      .on('value', snapshot => {
-        if (!snapshot.exists()) {
-          this.setState({ chats: [] });
-        } else if (snapshot.val()) {
-          // console.log(snapshot.val());
-          const chatArray = Object.entries(snapshot.val());
-          // console.log(questionArray);
-          this.setState({ chats: chatArray });
-        }
-      });
-  }
 
   handleSubmit = e => {
     const dbRef = firebase.database();
@@ -70,19 +52,31 @@ class ConversationModel extends Component {
     });
   };
 
+  componentDidMount() {
+    const dbRef = firebase.database();
+    dbRef.ref(`/Questions/${this.state.classKey}/${this.state.questionKey}`).once('value', snapshot => {
+    if (snapshot.val().uid === this.state.user.uid || this.state.isAdmin) {
+          this.setState({
+            questionOwner: true
+          })
+    } 
+    // console.log(this.state.questionOwner, snapshot.val().uid)
+    });
+  }
+
   render() {
     return (
       <div style={modal}>
-        <button
-          type="button"
-          id="close"
-          onClick={this.props.closeModal}
-          style={{ display: 'block' }}
-        >
-          X
-        </button>
         <div style={modalMain}>
-          {this.state.chats.map(chat => (
+          <button
+            type="button"
+            id="close"
+            onClick={this.props.closeModal}
+            style={{ display: 'block' }}
+          >
+            X
+          </button>
+          {this.props.chatArray.map(chat => (
             <div className="chat" key={chat[0]}>
               <div className="chat__chatContent" style={{ textAlign: 'right' }}>
                 <p>{chat[1].content}</p>
@@ -96,6 +90,7 @@ class ConversationModel extends Component {
               </div>
             </div>
           ))}
+          {this.state.questionOwner ? 
           <form
             action=""
             onSubmit={this.handleSubmit}
@@ -114,17 +109,12 @@ class ConversationModel extends Component {
               }}
             />
             {/* <label htmlFor="submitChatMessage">Submit</label> */}
-
             <input
               type="submit"
               id="submitChatMessage"
               style={{ display: 'inline-block', width: '10%' }}
             />
-          </form>
-          {console.log(
-            `i'm open and here is my question id: ${this.props.questionKey} `
-          )}
-          {/* <button onClick={this.props.closeModal}>close</button> */}
+          </form> : null }
         </div>
       </div>
     );

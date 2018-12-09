@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from '../firebase';
 import ConversationModal from './ConversationModal';
 
 class QuestionConversation extends Component {
@@ -10,8 +11,45 @@ class QuestionConversation extends Component {
       isOpen: false,
       classKey: this.props.classKey,
       questionKey: this.props.questionKey,
+      chatStarted: false,
+      chatArray: [],
     };
   }
+
+  // isAdmin = () => {
+  //   if (this.setState.isAdmin && this.state.chatStarted != true) {
+  //     return true;
+  //   }
+  // };
+
+  componentDidMount() {
+    const dbRef = firebase.database();
+    // console.log(dbRef.ref.parent);
+    dbRef
+      .ref(`/Chat/${this.state.classKey}/${this.state.questionKey}/`)
+      .on('value', snapshot => {
+        if (!snapshot.exists()) {
+          this.setState({ chatArray: [] });
+        } else if (snapshot.val()) {
+          // console.log(snapshot.val());
+          const chatArray = Object.entries(snapshot.val());
+          // console.log(questionArray);
+          this.setState({ chatArray }, () => {
+            if (this.state.chatArray[0]) {
+              this.setState({
+                chatStarted: true,
+              });
+            }
+          });
+        }
+      });
+  }
+
+  // handleConvo = () => {
+  //   this.setState({
+  //     chatStarted: true,
+  //   });
+  // };
 
   handleChange = e => {
     e.preventDefault();
@@ -27,13 +65,34 @@ class QuestionConversation extends Component {
   render() {
     return (
       <div>
-        <button
-          type="button"
-          onClick={this.handleChange}
-          className={QuestionConversation}
-        >
-          START CONVERATION
-        </button>
+        {this.state.isAdmin ? (
+          this.state.chatStarted ? (
+            <button
+              type="button"
+              onClick={this.handleChange}
+              className={QuestionConversation}
+            >
+              VIEW CONVERATION
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={this.handleChange}
+              className={QuestionConversation}
+            >
+              START CONVERATION
+            </button>
+          )
+        ) : this.state.chatStarted ? (
+          <button
+            type="button"
+            onClick={this.handleChange}
+            className={QuestionConversation}
+          >
+            VIEW CONVERATION
+          </button>
+        ) : null}
+
         {this.state.isOpen ? (
           <ConversationModal
             isAdmin={this.state.isAdmin}
@@ -41,6 +100,7 @@ class QuestionConversation extends Component {
             closeModal={this.handleChange}
             classKey={this.state.classKey}
             questionKey={this.state.questionKey}
+            chatArray={this.state.chatArray}
           />
         ) : null}
       </div>
