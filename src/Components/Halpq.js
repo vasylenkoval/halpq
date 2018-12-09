@@ -1,24 +1,36 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import QuestionForm from './QuestionForm';
-import QuestionList from './QuestionList';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import QuestionForm from "./QuestionForm";
+import QuestionList from "./QuestionList";
 
 class Halpq extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-         questions: [],
+      questions: [],
+      isAdmin: this.props.isAdmin,
+      user: this.props.user
     };
   }
 
   render() {
-    return <div>
+    return (
+      <div>
         <div className="returnLink">
           <Link to="/">Return to Classrooms</Link>
         </div>
-        <QuestionList classKey={this.props.match.params.classroomid} />
-        <QuestionForm user={this.props.user} classKey={this.props.match.params.classroomid} />
-      </div>;
+        <QuestionList
+          classKey={this.props.match.params.classroomid}
+          user={this.state.user}
+          isAdmin={this.state.isAdmin}
+        />
+        <QuestionForm
+          user={this.state.user}
+          isAdmin={this.state.isAdmin}
+          classKey={this.props.match.params.classroomid}
+        />
+      </div>
+    );
   }
 }
 

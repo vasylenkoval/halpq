@@ -1,20 +1,25 @@
-import React, { Component } from 'react';
-import firebase from 'firebase';
-import CompleteQuestion from './CompleteQuestion';
-import BeingHelped from './BeingHelped';
+import React, { Component } from "react";
+import firebase from "firebase";
+import CompleteQuestion from "./CompleteQuestion";
+import BeingHelped from "./BeingHelped";
+import QuestionConversation from "./QuestionConversation";
+import ConversationModal from "./ConversationModal";
 
 class QuestionList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       questions: [],
+      isAdmin: this.props.isAdmin,
+      user: this.props.user,
+      classKey: this.props.classKey
     };
   }
 
   componentDidMount() {
     // console.log('yo');
     const dbRef = firebase.database();
-    dbRef.ref(`/Questions/${this.props.classKey}`).on('value', snapshot => {
+    dbRef.ref(`/Questions/${this.state.classKey}`).on("value", (snapshot) => {
       if (!snapshot.exists()) {
         this.setState({ questions: [] });
       } else if (snapshot.val()) {
@@ -28,14 +33,14 @@ class QuestionList extends Component {
 
   componentWillUnmount() {
     const dbRef = firebase.database();
-    dbRef.ref(`/Questions/${this.props.classKey}`).off();
+    dbRef.ref(`/Questions/${this.state.classKey}`).off();
   }
 
   render() {
     return (
       <div>
         <h2>---Questions here---</h2>
-        {this.state.questions.map(question => (
+        {this.state.questions.map((question) => (
           <div
             style={{ border: `1px solid green` }}
             className="question"
@@ -50,8 +55,12 @@ class QuestionList extends Component {
               {/* <img src={question[1].photoURL} alt="" /> */}
             </div>
             <div className="question__actions__admins">
-              <CompleteQuestion/>
+              <CompleteQuestion />
               <BeingHelped />
+              <QuestionConversation
+                user={this.state.user}
+                isAdmin={this.state.isAdmin}
+              />
             </div>
           </div>
         ))}
