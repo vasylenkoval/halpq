@@ -37,7 +37,6 @@ class ClassroomList extends Component {
         element[0].includes(enrollPassword)
       );
       console.log(classroomMatch);
-      console.log("yo")
       if (classroomMatch.length > 0) {
         // If there is a match - record a student in classroom ref
         dbRef
@@ -55,7 +54,7 @@ class ClassroomList extends Component {
               this.state.user.uid
             }/enrolledClasses/${classroomMatch[0][0]}`
           )
-          .set(this.state.user.displayName);
+          .set(`${classroomMatch[0][1].classroomName}`);
       } else {
         console.log('Wrong key!');
       }
@@ -108,6 +107,15 @@ class ClassroomList extends Component {
     }
   };
 
+  createClassroom = name => {
+    const dbRef = firebase.database();
+    dbRef.ref(`/Classrooms/`).push({
+      classKey: '',
+      classroomName: name,
+      enrolledStudents: 0,
+    });
+  };
+
   refreshOnChange = () => {
     if (this.state.isAdmin) {
       dbRef.ref(`/Classrooms/`).on('child_added', snapshot => {
@@ -157,7 +165,7 @@ class ClassroomList extends Component {
   render() {
     return (
       <div className="classroomlist">
-      <div className="Component--Title">
+        <div className="Component--Title">
           <h2>Classroom List</h2>
         </div>
         {this.state.classList.map((element, i) => (
@@ -168,7 +176,11 @@ class ClassroomList extends Component {
           >
             <ClassroomListItem
               classroomName={element.classroomName}
-              studentCount={Object.keys(element.enrolledStudents).length}
+              studentCount={
+                element.enrolledStudents
+                  ? Object.keys(element.enrolledStudents).length
+                  : 0
+              }
               key={this.state.classKeys[i]}
               password={this.state.classKeys[i].slice(1, 9)}
             />
@@ -210,7 +222,6 @@ class ClassroomList extends Component {
             </button>
           </div>
         ) : null}
-
       </div>
     );
   }
