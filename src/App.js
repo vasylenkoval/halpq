@@ -71,7 +71,7 @@ class App extends Component {
   isAdmin = () => {
     dbRef
       .ref(`/Users/Admins/${this.state.user.uid}`)
-      .once('value', snapshot => {
+      .once('value', (snapshot) => {
         if (snapshot.exists()) {
           this.setState(
             {
@@ -119,7 +119,16 @@ class App extends Component {
                     )}
                   />
                   <Route path="/usermanagement" component={UserManagement} />
-                  <Route path={"/classroom/:classroomid"} component={Halpq} />
+                  <Route
+                    path="/classroom/:classroomid"
+                    render={props => (
+                      <Halpq
+                        user={this.state.user}
+                        isAdmin={this.state.isAdmin}
+                        {...props}
+                      />
+                    )}
+                  />
                 </div>
               ) : null
             ) : null}

@@ -38,7 +38,7 @@ export const makeStudent = adminUID => {
 export const createClassroom = name => {
   const dbRef = firebase.database();
   dbRef.ref(`/Classrooms/`).push({
-    classKey: "",
+    classKey: '',
     classroomName: name,
     enrolledStudents: 0,
   });

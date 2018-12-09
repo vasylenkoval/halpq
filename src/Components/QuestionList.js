@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
+import CompleteQuestion from './CompleteQuestion';
+import BeingHelped from './BeingHelped';
+import QuestionConversation from './QuestionConversation';
+import ConversationModal from './ConversationModal';
 
 class QuestionList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       questions: [],
+      isAdmin: this.props.isAdmin,
+      user: this.props.user,
+      classKey: this.props.classKey,
     };
   }
 
   componentDidMount() {
-    console.log('yo');
+    // console.log('yo');
     const dbRef = firebase.database();
-    dbRef.ref(`/Questions/${this.props.classKey}`).on('value', snapshot => {
+    dbRef.ref(`/Questions/${this.state.classKey}`).on('value', snapshot => {
       if (!snapshot.exists()) {
-        this.setState({ studentList: [] });
+        this.setState({ questions: [] });
       } else if (snapshot.val()) {
         // console.log(snapshot.val());
         const questionArray = Object.entries(snapshot.val());
@@ -22,6 +29,11 @@ class QuestionList extends Component {
         this.setState({ questions: questionArray });
       }
     });
+  }
+
+  componentWillUnmount() {
+    const dbRef = firebase.database();
+    dbRef.ref(`/Questions/${this.state.classKey}`).off();
   }
 
   render() {
@@ -33,6 +45,7 @@ class QuestionList extends Component {
             style={{ border: `1px solid green` }}
             className="question"
             key={question[0]}
+            // questionKey={question[0]}
           >
             <div className="question__questionContent">
               <p>{question[1].location}</p>
@@ -41,6 +54,16 @@ class QuestionList extends Component {
             <div className="question__userInfo">
               <p>{question[1].name}</p>
               {/* <img src={question[1].photoURL} alt="" /> */}
+            </div>
+            <div className="question__actions__admins">
+              <CompleteQuestion />
+              <BeingHelped />
+              <QuestionConversation
+                user={this.state.user}
+                isAdmin={this.state.isAdmin}
+                classKey={this.state.classKey}
+                questionKey={question[0]}
+              />
             </div>
           </div>
         ))}

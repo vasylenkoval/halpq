@@ -30,14 +30,6 @@ class ClassroomList extends Component {
     dbRef.ref(`/Users/Students/${this.state.user.uid}/enrolledClasses/`).off();
   }
 
-  createClassroom = name => {
-    const dbRef = firebase.database();
-    dbRef.ref(`/Classrooms/`).push({
-      classroomName: name,
-      enrolledStudents: 0,
-    });
-  };
-
   classroomEnroll = enrollPassword => {
     const dbRef = firebase.database();
     dbRef.ref(`/Classrooms`).once('value', snapshot => {
@@ -165,7 +157,11 @@ class ClassroomList extends Component {
     return (
       <div className="classroomlist">
         {this.state.classList.map((element, i) => (
-          <Link to={`/classroom/${this.state.classKeys[i]}`}>
+          <Link
+            to={`/classroom/${this.state.classKeys[i]}`}
+            key={this.state.classKeys[i]}
+            params={{ user: this.state.user }}
+          >
             <ClassroomListItem
               classroomName={element.classroomName}
               studentCount={Object.keys(element.enrolledStudents).length}
