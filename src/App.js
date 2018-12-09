@@ -51,7 +51,6 @@ class App extends Component {
             displayName: result.user.displayName,
             email: result.user.email,
             photoURL: result.user.photoURL,
-            enrolledClassrooms: 0,
           });
         }
       }
@@ -71,7 +70,7 @@ class App extends Component {
   isAdmin = () => {
     dbRef
       .ref(`/Users/Admins/${this.state.user.uid}`)
-      .once('value', (snapshot) => {
+      .once('value', snapshot => {
         if (snapshot.exists()) {
           this.setState(
             {
@@ -118,7 +117,12 @@ class App extends Component {
                       />
                     )}
                   />
-                  <Route path="/usermanagement" component={UserManagement} />
+                  {this.state.isAdmin ? (
+                    <Route path="/usermanagement" component={UserManagement} />
+                  ) : (
+                    <Route path="/usermanagement" component={UserManagement} />
+                    // switch it back to 404 pls
+                  )}
                   <Route
                     path="/classroom/:classroomid"
                     render={props => (
