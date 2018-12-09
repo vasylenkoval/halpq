@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import "./styles/App.css";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import firebase from "./firebase";
+import React, { Component } from 'react';
+import './styles/App.css';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import firebase from './firebase';
 // COMPONENTS
-import Header from "./Components/Header";
-import ClassroomList from "./Components/ClassroomList";
-import UserManagement from "./Components/UserManagement";
-import Halpq from "./Components/Halpq";
-import NotFound from "./Components/NotFound";
+import Header from './Components/Header';
+import ClassroomList from './Components/ClassroomList';
+import UserManagement from './Components/UserManagement';
+import Halpq from './Components/Halpq';
+import NotFound from './Components/NotFound';
 
 const provider = new firebase.auth.GoogleAuthProvider();
 const auth = firebase.auth();
@@ -18,17 +18,17 @@ class App extends Component {
     super();
 
     this.state = {
-      user: null
+      user: null,
     };
   }
 
   componentDidMount() {
     // Check if user was signed in before
-    auth.onAuthStateChanged((result) => {
+    auth.onAuthStateChanged(result => {
       if (result) {
         this.setState(
           {
-            user: result
+            user: result,
           },
           () => {
             this.isAdmin();
@@ -39,10 +39,11 @@ class App extends Component {
   }
 
   logIn = () => {
-    auth.signInWithPopup(provider).then((result) => {
+    auth.signInWithPopup(provider).then(result => {
       if (result) {
+        console.log(result);
         this.setState({
-          user: result.user
+          user: result.user,
         });
         // Check if new user
         if (result.additionalUserInfo.isNewUser) {
@@ -50,7 +51,6 @@ class App extends Component {
             displayName: result.user.displayName,
             email: result.user.email,
             photoURL: result.user.photoURL,
-            enrolledClassrooms: 0
           });
         }
       }
@@ -61,7 +61,7 @@ class App extends Component {
     auth.signOut().then(() => {
       this.setState({
         user: null,
-        isAdmin: null
+        isAdmin: null,
       });
     });
   };
@@ -70,24 +70,24 @@ class App extends Component {
   isAdmin = () => {
     dbRef
       .ref(`/Users/Admins/${this.state.user.uid}`)
-      .once("value", (snapshot) => {
+      .once('value', snapshot => {
         if (snapshot.exists()) {
           this.setState(
             {
-              isAdmin: true
+              isAdmin: true,
             },
             () => {
               this.setState({
-                appReady: true
+                appReady: true,
               });
             }
           );
-          console.log("USER IS AN ADMIN");
+          console.log('USER IS AN ADMIN');
         } else {
           this.setState({
-            appReady: true
+            appReady: true,
           });
-          console.log("USER IS A STUDENT");
+          console.log('USER IS A STUDENT');
         }
       });
   };
@@ -116,10 +116,15 @@ class App extends Component {
                       />
                     )}
                   />
-                  <Route path="/usermanagement" component={UserManagement} />
+                  {this.state.isAdmin ? (
+                    <Route path="/usermanagement" component={UserManagement} />
+                  ) : (
+                    <Route path="/usermanagement" component={UserManagement} />
+                    // switch it back to 404 pls
+                  )}
                   <Route
-                    path={"/classroom/:classroomid"}
-                    render={(props) => (
+                    path="/classroom/:classroomid"
+                    render={props => (
                       <Halpq
                         user={this.state.user}
                         isAdmin={this.state.isAdmin}
