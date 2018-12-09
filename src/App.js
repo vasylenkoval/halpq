@@ -98,7 +98,6 @@ class App extends Component {
         <Router>
           <div className="App">
             <Header user={this.state.user} isAdmin={this.state.isAdmin} />
-            <h2>I'm on the app</h2>
             {this.state.user === null ? (
               <button onClick={this.logIn}>LogIn</button>
             ) : null}

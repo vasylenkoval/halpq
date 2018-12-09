@@ -108,7 +108,6 @@ class ConversationModel extends Component {
                 width: '90%',
               }}
             />
-            {/* <label htmlFor="submitChatMessage">Submit</label> */}
             <input
               type="submit"
               id="submitChatMessage"
@@ -129,7 +128,7 @@ const modal = {
   width: '100%',
   display: 'block',
   height: '100%',
-  background: 'rgba(169, 169, 169, 0.8)',
+  background: 'rgba(35, 31, 31, 0.8)',
 };
 
 const modalMain = {
