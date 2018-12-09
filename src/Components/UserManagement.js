@@ -5,9 +5,9 @@ import StudentList from './StudentList';
 import AdminList from './AdminList';
 
 class UserManagement extends Component {
-  constructor() {
+  constructor(props) {
     console.log('the constructor in User Management was called');
-    super();
+    super(props);
     this.state = {
       studentList: [],
       adminList: [],
@@ -37,7 +37,7 @@ class UserManagement extends Component {
     });
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     const dbRef = firebase.database();
     dbRef.ref(`/Users`).off();
     dbRef.ref(`/Users/Admins/`).off();

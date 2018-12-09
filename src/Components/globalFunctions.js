@@ -34,13 +34,52 @@ export const makeStudent = adminUID => {
 
 // Testing
 
-// Method to create a classroom - only avilable to admins in Classroom List view.
+// Function to create a classroom - only avilable to admins in Classroom List view.
 export const createClassroom = name => {
   const dbRef = firebase.database();
   dbRef.ref(`/Classrooms/`).push({
-    classKey: "",
+    classKey: '',
     classroomName: name,
     enrolledStudents: 0,
+  });
+};
+
+// Function to delete a classroom
+export const deleteClassroom = classKey => {
+  const dbRef = firebase.database();
+  dbRef.ref(`/Classrooms/${classKey}`).remove();
+};
+
+// Method to create a question in the classroom - needs a classroom reference. Should be moved to the HelpCue view.
+export const createQuestion = (classroomRef, questionContent, userLocation) => {
+  const dbRef = firebase.database();
+  dbRef.ref(`/Questions/${classroomRef}`).push({
+    name: this.state.user.displayName,
+    content: questionContent,
+    uid: this.state.user.uid,
+    photoURL: this.state.user.photoURL,
+    dateCreated: +new Date(),
+    dateHelped: 0,
+    dateCompleted: 0,
+    isCompleted: false,
+    location: userLocation,
+    whoHelped: 0,
+    isBeingHelped: false,
+  });
+};
+
+// Function to archive a question
+
+export const archiveQuestion = (classroomRef, questionRef) => {
+  const currRef = firebase
+    .database()
+    .ref(`/Questions/${classroomRef}/${questionRef}`);
+  const archiveRef = firebase
+    .database()
+    .ref(`Archive/${classroomRef}/${questionRef}`);
+  currRef.once('value', snapshot => {
+    archiveRef.set(snapshot.val());
+    currRef.remove();
   });
 };
 

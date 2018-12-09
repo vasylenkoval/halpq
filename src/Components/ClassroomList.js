@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import firebase from "../firebase";
-import ClassroomListItem from "./ClassroomListItem";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import firebase from '../firebase';
+import ClassroomListItem from './ClassroomListItem';
 
 const dbRef = firebase.database();
 
@@ -13,7 +13,7 @@ class ClassroomList extends Component {
       isAdmin: this.props.isAdmin,
       user: this.props.user,
       activateForm: false,
-      userInput: ""
+      userInput: '',
     };
   }
 
@@ -30,10 +30,10 @@ class ClassroomList extends Component {
     dbRef.ref(`/Users/Students/${this.state.user.uid}/enrolledClasses/`).off();
   }
 
-  classroomEnroll = (enrollPassword) => {
+  classroomEnroll = enrollPassword => {
     const dbRef = firebase.database();
-    dbRef.ref(`/Classrooms`).once("value", (snapshot) => {
-      const classroomMatch = Object.entries(snapshot.val()).filter((element) =>
+    dbRef.ref(`/Classrooms`).once('value', snapshot => {
+      const classroomMatch = Object.entries(snapshot.val()).filter(element =>
         element[0].includes(enrollPassword)
       );
       console.log(classroomMatch);
@@ -56,7 +56,7 @@ class ClassroomList extends Component {
           )
           .set(this.state.user.displayName);
       } else {
-        console.log("Wrong key!");
+        console.log('Wrong key!');
       }
     });
   };
@@ -68,39 +68,39 @@ class ClassroomList extends Component {
     let adminClassList = [];
 
     if (this.state.isAdmin) {
-      dbRef.ref("/Classrooms/").once("value", (snapshot) => {
+      dbRef.ref('/Classrooms/').once('value', snapshot => {
         adminKeys = Object.keys(snapshot.val());
         adminClassList = Object.entries(snapshot.val()).map(
-          (element) => element[1]
+          element => element[1]
         );
         this.setState({
           classList: adminClassList,
-          classKeys: adminKeys
+          classKeys: adminKeys,
         });
       });
     } else {
       dbRef
         .ref(`Users/Students/${this.state.user.uid}/enrolledClasses`)
-        .once("value", (snapshot) => {
+        .once('value', snapshot => {
           if (snapshot.val()) {
             studentKeys = Object.entries(snapshot.val()).map(
-              (element) => element[0]
+              element => element[0]
             );
-            studentKeys.forEach((element) => {
-              dbRef.ref(`Classrooms/${element}`).once("value", (snapshot) => {
+            studentKeys.forEach(element => {
+              dbRef.ref(`Classrooms/${element}`).once('value', snapshot => {
                 studentClassList.push(snapshot.val());
                 console.log(studentKeys);
                 this.setState({
                   classList: studentClassList,
-                  classKeys: studentKeys
+                  classKeys: studentKeys,
                 });
               });
             });
           } else {
-            console.log("You are not enrolled in any class");
+            console.log('You are not enrolled in any class');
             this.setState({
               classList: [],
-              classKeys: []
+              classKeys: [],
             });
           }
         });
@@ -109,81 +109,49 @@ class ClassroomList extends Component {
 
   refreshOnChange = () => {
     if (this.state.isAdmin) {
-      dbRef.ref(`/Classrooms/`).on("child_added", (snapshot) => {
+      dbRef.ref(`/Classrooms/`).on('child_added', snapshot => {
         this.createClassList();
       });
     } else {
       dbRef
         .ref(`/Users/Students/}/${this.state.user.uid}/enrolledClasses/`)
-        .on("value", (snapshot) => {
+        .on('value', snapshot => {
           this.createClassList();
         });
     }
   };
 
-  handleClick = (e) => {
+  handleClick = e => {
     if (this.state.activateForm) {
       this.setState({
-        activateForm: false
+        activateForm: false,
       });
     } else {
       this.setState({
-        activateForm: true
+        activateForm: true,
       });
     }
   };
 
-  handleChange = (e) => {
+  handleChange = e => {
     this.setState({
-      userInput: e.target.value
+      userInput: e.target.value,
     });
   };
 
-  conditionalAction = (e) => {
+  conditionalAction = e => {
     e.preventDefault();
     if (/\S/.test(this.state.userInput)) {
       this.state.isAdmin
         ? this.createClassroom(this.state.userInput)
         : this.classroomEnroll(this.state.userInput);
       this.setState({
-        activateForm: false
+        activateForm: false,
       });
     } else {
-      console.log("User passed empty string");
+      console.log('User passed empty string');
     }
   };
-
-  // This looks like duplicated code from another function
-  // createQuestion = (classroomRef, questionContent, userLocation) => {
-  //   const dbRef = firebase.database();
-  //   dbRef.ref(`/Questions/${classroomRef}`).push({
-  //     name: this.state.user.displayName,
-  //     content: questionContent,
-  //     uid: this.state.user.uid,
-  //     photoURL: this.state.user.photoURL,
-  //     dateCreated: +new Date(),
-  //     dateHelped: 0,
-  //     dateCompleted: 0,
-  //     isCompleted: false,
-  //     location: userLocation,
-  //     whoHelped: 0,
-  //     isBeingHelped: false
-  //   });
-  // };
-
-  // Work in progress
-  // archiveQuestion = (classroomRef, questionRef) => {
-  //   const currRef = firebase
-  //     .database()
-  //     .ref(`/Questions/${classroomRef}/${questionRef}`);
-  //   const archiveRef = firebase
-  //     .database()
-  //     .ref(`Archive/${classroomRef}/${questionRef}`);
-  //   currRef.once('value', snapshot => {
-  //     archiveRef.set(snapshot.val());
-  //     currRef.
-  //   });
-  // };
 
   render() {
     return (
@@ -208,25 +176,25 @@ class ClassroomList extends Component {
           onClick={this.handleClick}
           name={
             this.state.isAdmin
-              ? "classroomBeingCreated"
-              : "classroomBeingJoined"
+              ? 'classroomBeingCreated'
+              : 'classroomBeingJoined'
           }
         >
-          {this.state.isAdmin ? "Add Classroom" : "Join Classroom"}
+          {this.state.isAdmin ? 'Add Classroom' : 'Join Classroom'}
         </button>
 
         {this.state.activateForm ? (
           <div>
             <label htmlFor="conditional-input">
-              {this.state.isAdmin ? "Create new classroom" : "Join Classroom"}
+              {this.state.isAdmin ? 'Create new classroom' : 'Join Classroom'}
             </label>
             <input
               type="text"
               min
               placeholder={
                 this.state.isAdmin
-                  ? "Enter classroom name"
-                  : "Enter your classroom key"
+                  ? 'Enter classroom name'
+                  : 'Enter your classroom key'
               }
               id="conditional-input"
               onChange={this.handleChange}
