@@ -54,7 +54,7 @@ class ClassroomList extends Component {
               this.state.user.uid
             }/enrolledClasses/${classroomMatch[0][0]}`
           )
-          .set(this.state.user.displayName);
+          .set(`${classroomMatch[0][1].classroomName}`);
       } else {
         console.log('Wrong key!');
       }
@@ -164,7 +164,11 @@ class ClassroomList extends Component {
           >
             <ClassroomListItem
               classroomName={element.classroomName}
-              studentCount={Object.keys(element.enrolledStudents).length}
+              studentCount={
+                element.enrolledStudents
+                  ? Object.keys(element.enrolledStudents).length
+                  : 0
+              }
               key={this.state.classKeys[i]}
               password={this.state.classKeys[i].slice(1, 9)}
             />
