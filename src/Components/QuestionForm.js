@@ -1,29 +1,33 @@
 import React, { Component } from 'react';
+import firebase from 'firebase';
+import { createQuestion } from './globalFunctions';
 
 class QuestionForm extends Component {
   constructor() {
     super();
     this.state = {
-      question: '',
-      location: '',
-      postedQuestion: '',
+      question: "",
+      location: ""
     };
   }
 
   handleSubmit = e => {
     e.preventDefault();
-    this.question = this.state.question;
-    this.location = this.state.location;
-    console.log("HOLLA AT THIS DOPE Q:", this.question, this.location);
+    const question = this.state.question;
+    const location = this.state.location;
+    const classKey = this.props.classKey;
+    createQuestion(classKey, question, location);
+
+    // console.log("Q Details:", this.question, this.location, this.classKey);
     this.setState({
-      question: '',
-      location: '',
+      question: "",
+      location: ""
     });
   };
 
   handleChange = e => {
     this.setState({
-      [e.target.id]: e.target.value,
+      [e.target.id]: e.target.value
     });
   };
 
