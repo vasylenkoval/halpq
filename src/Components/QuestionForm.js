@@ -5,8 +5,8 @@ class QuestionForm extends Component {
   constructor() {
     super();
     this.state = {
-      question: "",
-      location: ""
+      question: '',
+      location: '',
     };
   }
 
@@ -23,7 +23,7 @@ class QuestionForm extends Component {
       isCompleted: false,
       location: userLocation,
       whoHelped: 0,
-      isBeingHelped: false
+      isBeingHelped: false,
     });
   };
 
@@ -32,16 +32,26 @@ class QuestionForm extends Component {
     const question = this.state.question;
     const location = this.state.location;
     const classKey = this.props.classKey;
-    this.createQuestion(classKey, question, location);
-    this.setState({
-      question: "",
-      location: ""
-    });
+    if (
+      /^\s+$/.test(this.state.question) ||
+      /^\s+$/.test(this.state.location)
+    ) {
+      this.setState({
+        question: '',
+        location: '',
+      });
+    } else {
+      this.createQuestion(classKey, question, location);
+      this.setState({
+        question: '',
+        location: '',
+      });
+    }
   };
 
   handleChange = e => {
     this.setState({
-      [e.target.id]: e.target.value
+      [e.target.id]: e.target.value,
     });
   };
 
@@ -59,7 +69,8 @@ class QuestionForm extends Component {
             id="question"
           />
           <label htmlFor="location">Location</label>
-          <input required
+          <input
+            required
             value={this.state.location}
             onChange={this.handleChange}
             type="text"
