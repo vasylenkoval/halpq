@@ -18,11 +18,11 @@ class QuestionList extends Component {
 
   componentDidMount() {
     const dbRef = firebase.database();
-    dbRef.ref(`/Classrooms/${this.state.classKey}`).once('value', snapshot => {
-      this.setState({
-        classroomName: snapshot.val().classroomName,
-      });
-    });
+    // dbRef.ref(`/Classrooms/${this.state.classKey}`).once('value', snapshot => {
+    //   this.setState({
+    //     classroomName: snapshot.val().classroomName,
+    //   });
+    // });
     dbRef.ref(`/Questions/${this.state.classKey}`).on('value', snapshot => {
       if (!snapshot.exists()) {
         this.setState({ questions: [] });
@@ -41,7 +41,7 @@ class QuestionList extends Component {
   render() {
     return (
       <div>
-        <h2>{this.state.classroomName}</h2>
+        <h3>Active Questions</h3>
         {this.state.questions.map(question => (
           <div
             style={{ border: `1px solid green` }}
