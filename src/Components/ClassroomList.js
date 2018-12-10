@@ -14,7 +14,6 @@ class ClassroomList extends Component {
       user: this.props.user,
       activateForm: false,
       userInput: '',
-      classroomName: '',
     };
   }
 
@@ -34,13 +33,6 @@ class ClassroomList extends Component {
       const classroomMatch = Object.entries(snapshot.val()).filter(element =>
         element[0].includes(enrollPassword)
       );
-      dbRef
-        .ref(`/Classrooms/${this.state.classKey}`)
-        .once('value', snapshot => {
-          this.setState({
-            classroomName: snapshot.val().classroomName,
-          });
-        });
       if (classroomMatch.length > 0) {
         // If there is a match - record a student in classroom ref
         dbRef
@@ -146,6 +138,7 @@ class ClassroomList extends Component {
         : this.classroomEnroll(userInput);
       this.setState({
         activateForm: false,
+        userInput: '',
       });
     } else {
       console.log('User passed empty string');
@@ -201,7 +194,7 @@ class ClassroomList extends Component {
           </button>
 
           {activateForm ? (
-            <div>
+            <form onSubmit={this.conditionalAction}>
               <label htmlFor="conditional-input">
                 {isAdmin ? 'Create new classroom' : 'Join Classroom'}
               </label>
@@ -216,10 +209,8 @@ class ClassroomList extends Component {
                 value={userInput}
                 minLength={8}
               />
-              <button type="button" onClick={this.conditionalAction}>
-                Submit
-              </button>
-            </div>
+              <button type="submit">Submit</button>
+            </form>
           ) : null}
         </div>
       </div>

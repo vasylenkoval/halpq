@@ -27,6 +27,8 @@
     margin-bottom: 40px;
     &__name {
       padding-bottom: 13px;
+      font-size: 2.4rem;
+      transition: color 0.1s;
     }
     &:hover {
       box-shadow: 0 3px 15px 0 #0000003a;
@@ -46,8 +48,10 @@
     position: fixed;
     bottom: 60px;
     right: 60px;
+    transition: transform 0.5s;
     &:hover {
-      background-color: darken($primaryAccent, 10%);
+      background-color: darken($primaryAccent, 2%);
+      transform: rotateZ(90deg);
     }
   }
 }
