@@ -344,11 +344,13 @@ h2 {
   font-size: 6rem; }
 
 .userManagement {
-  background: #f6f7f9; }
+  background: #f6f7f9;
+  height: 90vh; }
   .userManagement p, .userManagement h4 {
     color: #231f1f; }
 
 .users {
+  margin: 10px 0;
   padding: 20px 0; }
   .users__panel {
     width: calc(50% - 5px);
@@ -357,37 +359,34 @@ h2 {
     margin-right: 10px; }
   .users__panelTitle {
     font-size: 3rem;
-    line-height: 2rem;
+    padding-left: 5px;
     color: #231f1f; }
   .users__panelTitle--admin {
+    padding-right: 5px;
     text-align: right; }
 
-.returnLink__img {
-  width: 20px;
-  margin: 0 5px 0 0;
-  float: left; }
-
-.returnLink p {
-  font-size: 1.8rem;
-  float: left;
-  color: #231f1f; }
+.returnLink {
+  width: 175px; }
+  .returnLink__img {
+    width: 20px;
+    margin: 0 5px 0 0;
+    float: left; }
+  .returnLink p {
+    font-size: 1.8rem;
+    float: left;
+    color: #231f1f; }
 
 .userList {
-  border: 1px solid #787e8b;
-  border-top: 10px solid #787e8b;
-  border-bottom: 10px solid #787e8b;
-  background: #787e8b;
-  padding: 0 9px;
-  border-radius: 5px;
-  max-height: 50vh;
+  padding: 5px;
+  max-height: 60vh;
   overflow-x: scroll; }
   .userList__user {
-    background: #f6f7f9;
-    border-radius: 5px;
+    background: #ffffff;
+    box-shadow: 0px 2px 5px 0 #0000003a, 0px 2px 5px 0 #0000003a;
     padding: 10px;
     margin-bottom: 10px; }
   .userList__user:last-child {
-    margin-bottom: 0px; }
+    margin-bottom: 5px; }
   .userList .user__details {
     float: left; }
     .userList .user__details p {
@@ -396,7 +395,7 @@ h2 {
     float: right; }
 
 .user__button {
-  background: #f6f7f9;
+  background: transparent;
   border: none;
   padding: 2px;
   cursor: pointer; }
@@ -404,6 +403,9 @@ h2 {
     width: 35px;
     height: 35px;
     margin: 2px; }
+
+.noAdmin {
+  text-align: right; }
 
 .admin .user__details {
   float: right;
