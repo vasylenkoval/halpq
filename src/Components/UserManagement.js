@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import firebase from 'firebase';
 import StudentList from './StudentList';
 import AdminList from './AdminList';
+import backChevron from '../assets/back-chevron.svg';
 
 class UserManagement extends Component {
   constructor(props) {
@@ -45,36 +46,37 @@ class UserManagement extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <div className="wrapper userManagement">
-          <div className="returnLink">
-            <Link to="/">Back to Classlist</Link>
-          </div>
-          <div className="Component--Title">
+    return <div className="userManagement">
+        <div className="wrapper">
+          <div className="Component__Title">
             <h2>User Management</h2>
           </div>
+          <Link to="/">
+            <div className="returnLink clearfix">
+              <div className="returnLink__img">
+                <img src={backChevron} alt="" />
+              </div>
+              <p>Back to Classlist</p>
+            </div>
+          </Link>
           <div className="users clearfix">
             <div className="users__panel">
-              <h2 className="users__panelTitle">Students</h2>
-              {this.state.studentList[0] ? (
-                <StudentList students={this.state.studentList} />
-              ) : (
-                <p>There are no students</p>
-              )}
+              <h3 className="users__panelTitle">Students</h3>
+              {this.state.studentList[0] ? <StudentList students={this.state.studentList} /> : <p>
+                  There are no students
+                </p>}
             </div>
             <div className="users__panel">
-              <h2 className="users__panelTitle">Admins</h2>
-              {this.state.adminList[0] ? (
-                <AdminList admins={this.state.adminList} />
-              ) : (
-                <p>There are no admins</p>
-              )}
+              <h3 className="users__panelTitle users__panelTitle--admin">
+                Admins
+              </h3>
+              {this.state.adminList[0] ? <AdminList admins={this.state.adminList} /> : <p>
+                  There are no admins
+                </p>}
             </div>
           </div>
         </div>
-      </div>
-    );
+      </div>;
   }
 }
 

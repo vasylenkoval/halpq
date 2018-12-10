@@ -1,9 +1,18 @@
 .userManagement {
   background: $lightColor;
+  p, h4 {
+    color: $darkColor;
+  }
+  h2 {
+    font-size: 4rem;
+  }
 }
 
+
+
 .users {
-  border: 1px dashed black;
+  // border: 1px dashed black;
+  padding: 20px 0;
   &__panel {
     // border: 1px dashed red;
     width: calc(50% - 5px);
@@ -13,45 +22,84 @@
   &__panel:first-child {
     margin-right: 10px
   }
+  &__panelTitle {
+    font-size: 3rem;
+    line-height: 2rem;
+    color: $darkColor;
+  }
+  &__panelTitle--admin {
+    text-align: right; 
+  }
+}
+
+.returnLink {
+  // margin-top: 10px;
+  // border: 1px solid green;
+
+  &__img {
+    width: 20px;
+    margin: 0 5px 0 0;
+    float: left;
+
+  }
+  p {
+    font-size: 1.8rem;
+    float: left;
+    color: $darkColor;
+  }
 }
 
 .userList {
-    // border: 1px solid black;
+    border: 1px solid $darkNeutral;
+    border-top: 10px solid $darkNeutral;
+    border-bottom: 10px solid $darkNeutral;
     background: $darkNeutral;
-    padding: 10px;
+    padding: 0 9px; //Yes. 9. to account for side borders 1px making it 10px. Not about to go for 11px.
     border-radius: 5px;
-    text-align: center;
+    max-height: 50vh;
+    overflow: scroll;
     &__user {
       background: $lightColor;
       border-radius: 5px;
       padding: 10px;
       margin-bottom: 10px; 
-
+    }
+    &__user:last-child {
+      margin-bottom: 0px; 
     }
     .user__details {
-      // width: 75%;
       float: left;
+      p {
+        font-size: 1.4rem;
+      }
+    }
+    .user__action {
+      float: right;
     }
 }
 .user__button {
+  background: $lightColor;
   border: none;
-  padding: 5px;
-  font-family: $font;
-  line-height: 3.3rem;
+  padding: 2px;
   cursor: pointer;
 
   .buttonImage {
-    width: 25px;
-    height: 25px;
-    float: right;
-    margin: 5px;
+    width: 35px;
+    height: 35px;
+    margin: 2px;
   }
 }
 
-
+//specific to Admin side. just aligning opposite to rest
 .admin {
+  .user__details {
+    float: right;
+    text-align: right;
+  }
+  .user__action {
+    float: left;
+  }
   .buttonImage {
     float: left;
   }
-
 }
