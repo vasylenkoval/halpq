@@ -15,9 +15,11 @@ class AchiveList extends Component {
   componentDidMount() {
     const dbRef = firebase.database();
     dbRef.ref(`/Archive/${this.props.classKey}`).once('value', snapshot => {
-      this.setState({
-        classroomName: snapshot.val().classroomName,
-      });
+      if (snapshot.exists()) {
+        this.setState({
+          classroomName: snapshot.val().classroomName,
+        });
+      }
     });
     dbRef.ref(`/Archive/${this.props.classKey}`).on('value', snapshot => {
       if (!snapshot.exists()) {
