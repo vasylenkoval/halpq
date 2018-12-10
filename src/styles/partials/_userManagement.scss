@@ -1,14 +1,57 @@
+.userManagement {
+  background: $lightColor;
+}
+
 .users {
   border: 1px dashed black;
-  &--list {
-    border: 1px dashed red;
-    width: calc(50% - 40px);
-    margin: 0 20px;
+  &__panel {
+    // border: 1px dashed red;
+    width: calc(50% - 5px);
+    // margin: 0 10px;
     float: left;
+  }
+  &__panel:first-child {
+    margin-right: 10px
   }
 }
 
-.usermgmt-logo {
-  width: 60px;
-  float: right;
+.userList {
+    // border: 1px solid black;
+    background: $darkNeutral;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    &__user {
+      background: $lightColor;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px; 
+
+    }
+    .user__details {
+      // width: 75%;
+      float: left;
+    }
+}
+.user__button {
+  border: none;
+  padding: 5px;
+  font-family: $font;
+  line-height: 3.3rem;
+  cursor: pointer;
+
+  .buttonImage {
+    width: 25px;
+    height: 25px;
+    float: right;
+    margin: 5px;
+  }
+}
+
+
+.admin {
+  .buttonImage {
+    float: left;
+  }
+
 }
