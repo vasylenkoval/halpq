@@ -163,60 +163,65 @@ class ClassroomList extends Component {
     } = this.state;
     return (
       <div className="classroomlist">
-        <div className="Component--Title">
-          <h2>Classroom List</h2>
-        </div>
-        {classList.map((element, i) => (
-          <Link
-            to={`/classroom/${classKeys[i]}`}
-            key={classKeys[i]}
-            params={{ user }}
-          >
-            <ClassroomListItem
-              classroomName={element.classroomName}
-              studentCount={
-                element.enrolledStudents
-                  ? Object.keys(element.enrolledStudents).length
-                  : 0
-              }
-              key={classKeys[i]}
-              password={classKeys[i].slice(1, 9)}
-              isDisabled={
-                !(element.disabled === undefined || element.disabled === false)
-              }
-            />
-          </Link>
-        ))}
-
-        <button
-          type="button"
-          onClick={this.handleClick}
-          name={isAdmin ? 'classroomBeingCreated' : 'classroomBeingJoined'}
-        >
-          {isAdmin ? 'Add Classroom' : 'Join Classroom'}
-        </button>
-
-        {activateForm ? (
-          <div>
-            <label htmlFor="conditional-input">
-              {isAdmin ? 'Create new classroom' : 'Join Classroom'}
-            </label>
-            <input
-              type="text"
-              min
-              placeholder={
-                isAdmin ? 'Enter classroom name' : 'Enter your classroom key'
-              }
-              id="conditional-input"
-              onChange={this.handleChange}
-              value={userInput}
-              minLength={8}
-            />
-            <button type="button" onClick={this.conditionalAction}>
-              Submit
-            </button>
+        <div className="classroomlist__wrapper">
+          <div className="classroomlist__title">
+            <h2>Classroom List</h2>
           </div>
-        ) : null}
+          {classList.map((element, i) => (
+            <Link
+              to={`/classroom/${classKeys[i]}`}
+              key={classKeys[i]}
+              params={{ user }}
+            >
+              <ClassroomListItem
+                classroomName={element.classroomName}
+                studentCount={
+                  element.enrolledStudents
+                    ? Object.keys(element.enrolledStudents).length
+                    : 0
+                }
+                key={classKeys[i]}
+                password={classKeys[i].slice(1, 9)}
+                isDisabled={
+                  !(
+                    element.disabled === undefined || element.disabled === false
+                  )
+                }
+              />
+            </Link>
+          ))}
+
+          <button
+            type="button"
+            className="classroomlist__addbutton"
+            onClick={this.handleClick}
+            name={isAdmin ? 'classroomBeingCreated' : 'classroomBeingJoined'}
+          >
+            ＋
+          </button>
+
+          {activateForm ? (
+            <div>
+              <label htmlFor="conditional-input">
+                {isAdmin ? 'Create new classroom' : 'Join Classroom'}
+              </label>
+              <input
+                type="text"
+                min
+                placeholder={
+                  isAdmin ? 'Enter classroom name' : 'Enter your classroom key'
+                }
+                id="conditional-input"
+                onChange={this.handleChange}
+                value={userInput}
+                minLength={8}
+              />
+              <button type="button" onClick={this.conditionalAction}>
+                Submit
+              </button>
+            </div>
+          ) : null}
+        </div>
       </div>
     );
   }

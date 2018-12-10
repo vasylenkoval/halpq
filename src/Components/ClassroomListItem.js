@@ -6,7 +6,7 @@ const ClassroomListItem = props => {
   return (
     <div className="classroomlist__item">
       <div className="classroomlist__item__name">
-        <h2>{classroomName}</h2>
+        <h3>{classroomName}</h3>
       </div>
 
       <div className="classroomlist__item__questions">
