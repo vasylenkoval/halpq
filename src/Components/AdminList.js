@@ -1,22 +1,30 @@
 import React, { Component } from 'react';
 import { makeStudent } from './globalFunctions';
+import arrow from '../assets/arrow-left.svg';
 
 class AdminList extends Component {
   render() {
     return (
-      <div>
+      <div className="userList">
         {this.props.admins.map(admin => (
-          <div className="admin" key={admin[0]}>
-            <h3>{admin[1].displayName}</h3>
-            <p>{admin[1].email}</p>
-            <button
-              type="button"
-              onClick={() => {
-                makeStudent(`${admin[0]}`);
-              }}
-            >
-              Make me a student
-            </button>
+          <div className="userList__user admin clearfix" key={admin[0]}>
+            <div className="user__details">
+              <h3>{admin[1].displayName}</h3>
+              <p>{admin[1].email}</p>
+            </div>
+            <div className="user__action">
+              <button className="user__button"
+                type="button"
+                onClick={() => {
+                  makeStudent(`${admin[0]}`);
+                }}
+              >
+                Pleb-ize
+                <div className="buttonImage">
+                  <img src={arrow} alt="make user a student" />
+                </div>
+              </button>
+            </div>
           </div>
         ))}
       </div>

@@ -304,14 +304,41 @@ body {
   max-width: 1240px;
   margin: 0 auto; }
 
+.userManagement {
+  background: #F6F7F9; }
+
 .users {
   border: 1px dashed black; }
-  .users--list {
-    border: 1px dashed red;
-    width: calc(50% - 40px);
-    margin: 0 20px;
+  .users__panel {
+    width: calc(50% - 5px);
+    float: left; }
+  .users__panel:first-child {
+    margin-right: 10px; }
+
+.userList {
+  background: #787E8B;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center; }
+  .userList__user {
+    background: #F6F7F9;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px; }
+  .userList .user__details {
     float: left; }
 
-.usermgmt-logo {
-  width: 60px;
-  float: right; }
+.user__button {
+  border: none;
+  padding: 5px;
+  font-family: "Raleway", sans-serif;
+  line-height: 3.3rem;
+  cursor: pointer; }
+  .user__button .buttonImage {
+    width: 25px;
+    height: 25px;
+    float: right;
+    margin: 5px; }
+
+.admin .buttonImage {
+  float: left; }
