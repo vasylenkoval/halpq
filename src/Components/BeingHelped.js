@@ -18,7 +18,7 @@ class BeingHelped extends Component {
             this.beingHelped(this.props.classKey, this.props.questionKey);
           }}
         >
-          BEING HELPED
+          MARKE AS BEING HELPED
         </button>
       </div>
     );

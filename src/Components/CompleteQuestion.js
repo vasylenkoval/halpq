@@ -24,7 +24,7 @@ class CompleteQuestion extends Component {
             this.archiveQuestion(this.props.classKey, this.props.questionKey);
           }}
         >
-          COMPLETE QUESTION
+          MARK AS COMPLETE
         </button>
       </div>
     );
