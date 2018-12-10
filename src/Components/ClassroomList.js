@@ -18,7 +18,29 @@ class ClassroomList extends Component {
   }
 
   componentWillMount() {
-    this.createClassList();
+    dbRef
+      .ref(`/Users/Admins/${this.state.user.uid}`)
+      .once('value', snapshot => {
+        if (snapshot.exists()) {
+          this.setState(
+            {
+              isAdmin: true,
+            },
+            () => {
+              this.createClassList();
+            }
+          );
+        } else {
+          this.setState(
+            {
+              isAdmin: false,
+            },
+            () => {
+              this.createClassList();
+            }
+          );
+        }
+      });
   }
 
   componentWillUnmount() {
