@@ -41,7 +41,6 @@ class App extends Component {
   logIn = () => {
     auth.signInWithPopup(provider).then(result => {
       if (result) {
-        console.log(result);
         this.setState({
           user: result.user,
         });
@@ -70,70 +69,52 @@ class App extends Component {
   isAdmin = () => {
     dbRef.ref(`/Users/Admins/${this.state.user.uid}`).on('value', snapshot => {
       if (snapshot.exists()) {
-        this.setState(
-          {
-            isAdmin: true,
-          },
-          () => {
-            this.setState({
-              appReady: true,
-            });
-          }
-        );
-        console.log('USER IS AN ADMIN');
+        this.setState({
+          isAdmin: true,
+          appReady: true,
+        });
       } else {
         this.setState({
           isAdmin: false,
           appReady: true,
         });
-        console.log('USER IS A STUDENT');
       }
     });
   };
 
   render() {
+    const { user, isAdmin, appReady } = this.state;
     return (
       <div>
         <Router>
           <div className="App">
-            <Header user={this.state.user} isAdmin={this.state.isAdmin} />
-            {this.state.user === null ? (
-              <button onClick={this.logIn}>LogIn</button>
-            ) : null}
-
-            {this.state.user !== null ? (
-              this.state.appReady ? (
-                <div>
-                  <button onClick={this.logOut}>LogOut</button>
-                  <Route
-                    exact
-                    path="/"
-                    component={() => (
-                      <ClassroomList
-                        isAdmin={this.state.isAdmin}
-                        user={this.state.user}
-                      />
-                    )}
-                  />
-                  {this.state.isAdmin ? (
-                    <Route path="/usermanagement" component={UserManagement} />
-                  ) : (
-                    <Route path="/usermanagement" component={UserManagement} />
-                    // switch it back to 404 pls
+            <Header user={user} isAdmin={isAdmin} />
+            {user && appReady ? (
+              <div>
+                <button onClick={this.logOut}>LogOut</button>
+                <Route
+                  exact
+                  path="/"
+                  component={() => (
+                    <ClassroomList isAdmin={isAdmin} user={user} />
                   )}
-                  <Route
-                    path="/classroom/:classroomid"
-                    render={props => (
-                      <Halpq
-                        user={this.state.user}
-                        isAdmin={this.state.isAdmin}
-                        {...props}
-                      />
-                    )}
-                  />
-                </div>
-              ) : null
-            ) : null}
+                />
+                {isAdmin ? (
+                  <Route path="/usermanagement" component={UserManagement} />
+                ) : (
+                  <Route path="/usermanagement" component={UserManagement} />
+                  // switch it back to 404 pls
+                )}
+                <Route
+                  path="/classroom/:classroomid"
+                  render={props => (
+                    <Halpq user={user} isAdmin={isAdmin} {...props} />
+                  )}
+                />
+              </div>
+            ) : (
+              <button onClick={this.logIn}>LogIn</button>
+            )}
           </div>
         </Router>
       </div>
