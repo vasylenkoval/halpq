@@ -31,9 +31,7 @@ class QuestionConversation extends Component {
         if (!snapshot.exists()) {
           this.setState({ chatArray: [] });
         } else if (snapshot.val()) {
-          // console.log(snapshot.val());
           const chatArray = Object.entries(snapshot.val());
-          // console.log(questionArray);
           this.setState({ chatArray }, () => {
             if (this.state.chatArray[0]) {
               this.setState({
@@ -44,12 +42,6 @@ class QuestionConversation extends Component {
         }
       });
   }
-
-  // handleConvo = () => {
-  //   this.setState({
-  //     chatStarted: true,
-  //   });
-  // };
 
   handleChange = e => {
     e.preventDefault();

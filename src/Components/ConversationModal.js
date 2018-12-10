@@ -60,50 +60,43 @@ class ConversationModel extends Component {
     return (
       <div style={modal}>
         <div style={modalMain}>
-          <button
-            type="button"
-            id="close"
-            onClick={this.props.closeModal}
-            style={{ display: 'block' }}
-          >
+          <button type="button" id="close" onClick={this.props.closeModal}>
             X
           </button>
           {this.props.chatArray.map(chat => (
-            <div className="chat" key={chat[0]}>
-              <div className="chat__chatContent" style={{ textAlign: 'right' }}>
-                <p>{chat[1].content}</p>
-              </div>
-              <div
-                className="chat__userInfo"
-                style={{ textAlign: 'right', fontWeight: 'bold' }}
-              >
-                <p>{chat[1].name}</p>
-                {/* <img src={chat[1].photoURL} alt="" /> */}
+            <div className="" key={chat[0]}>
+              <div className="chat__messageContent">
+                <div
+                  className="chat__chatContent"
+                  style={{ textAlign: 'right' }}
+                >
+                  <p>{chat[1].content}</p>
+                </div>
+                <div
+                  className="chat__userInfo"
+                  style={{ textAlign: 'right', fontWeight: 'bold' }}
+                >
+                  <p>{chat[1].name}</p>
+                  {/* <img src={chat[1].photoURL} alt="" /> */}
+                </div>
               </div>
             </div>
           ))}
           {this.state.questionOwner ? (
-            <form
-              action=""
-              onSubmit={this.handleSubmit}
-              style={{ textAlign: 'right' }}
-            >
+            <form action="" onSubmit={this.handleSubmit} className="chat__form">
               <input
                 type="text"
                 name=""
                 onChange={this.handleChange}
                 value={this.state.userInput}
                 id="submitInput"
-                style={{
-                  display: 'inline-block',
-                  marginTop: '50px',
-                  width: '90%',
-                }}
+                className="chat__messageInput"
               />
               <input
                 type="submit"
                 id="submitChatMessage"
                 style={{ display: 'inline-block', width: '10%' }}
+                className="chat_buttonSubmit"
               />
             </form>
           ) : null}
@@ -112,7 +105,6 @@ class ConversationModel extends Component {
     );
   }
 }
-const ConversationModelStyle = {};
 
 const modal = {
   position: 'fixed',
