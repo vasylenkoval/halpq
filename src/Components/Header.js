@@ -35,6 +35,9 @@ class Header extends Component {
               photoURL={this.props.user.photoURL}
               displayName={this.props.user.displayName}
             />
+            <button type="button" onClick={this.props.logOut}>
+              LogOut
+            </button>
           </div>
         ) : null}
       </div>
