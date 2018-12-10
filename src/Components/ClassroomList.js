@@ -138,6 +138,7 @@ class ClassroomList extends Component {
         : this.classroomEnroll(userInput);
       this.setState({
         activateForm: false,
+        userInput: '',
       });
     } else {
       console.log('User passed empty string');
@@ -208,7 +209,7 @@ class ClassroomList extends Component {
                 value={userInput}
                 minLength={8}
               />
-              <button>Submit</button>
+              <button type="submit">Submit</button>
             </form>
           ) : null}
         </div>
