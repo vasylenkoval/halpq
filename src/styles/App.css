@@ -313,8 +313,10 @@ p {
     padding: 30px;
     font-size: 2rem;
     margin-bottom: 45px; }
+    .classroomlist__item__questions__count {
+      padding-bottom: 4px; }
     .classroomlist__item__name {
-      padding-bottom: 13px;
+      padding-bottom: 25px;
       font-size: 2.6rem;
       transition: color 0.1s;
       display: inline-block; }
@@ -324,8 +326,6 @@ p {
       color: #e40015; }
     .classroomlist__item__password {
       float: right; }
-      .classroomlist__item__password span {
-        font-weight: bold; }
   .classroomlist__addbutton {
     height: 70px;
     width: 70px;
@@ -372,12 +372,32 @@ p {
   font-weight: bold;
   line-height: 40px; }
 
+span.highlighted {
+  font-weight: bold;
+  color: #e40015;
+  font-size: 1.8rem; }
+
 @supports (-moz-appearance: none) {
   .classroomlist__addbutton {
     padding: 19px;
     line-height: 38px;
     height: 70px;
     width: 70px; } }
+
+@media (max-width: 800px) {
+  .classroomlist__item__password {
+    float: none; }
+  .disabled__text {
+    float: none; }
+  .classroomlist__item__name {
+    padding-bottom: 15px; } }
+
+@media (max-width: 560px) {
+  .classroomlist a {
+    width: 100%; }
+  .classroomlist__addbutton {
+    bottom: 20px;
+    right: 20px; } }
 
 .chat {
   position: fixed;

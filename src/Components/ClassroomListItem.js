@@ -19,18 +19,19 @@ const ClassroomListItem = props => {
 
       <div className="classroomlist__item__questions">
         <div className="classroomlist__item__questions__count">
-          <p>Active questions: to be passed</p>
+          <span className="highlighted">Active questions:</span> to be passed
         </div>
       </div>
 
       <div className="classroomlist__item__password">
         <div>
-          <span>Code:</span> {password}
+          <span className="highlighted">Code:</span> {password}
         </div>
       </div>
 
       <div className="classroomlist__item__studentsEnrolled">
-        <p>Number of Students: {studentCount}</p>
+        <span className="highlighted">Students:</span>{' '}
+        <span className="number">{studentCount}</span>
       </div>
     </div>
   );
