@@ -81,9 +81,11 @@ class Halpq extends Component {
         <button type="button" onClick={this.handleClick} name="Completed">
           Completed Questions
         </button>
-        <button type="button" onClick={this.disableClassroom}>
-          {isClassroomDisabled ? 'Enable classroom' : 'Disable classroom'}
-        </button>
+        {isAdmin ? (
+          <button type="button" onClick={this.disableClassroom}>
+            {isClassroomDisabled ? 'Enable classroom' : 'Disable classroom'}
+          </button>
+        ) : null}
         {!archiveToggle ? (
           <div>
             <QuestionList classKey={classKey} user={user} isAdmin={isAdmin} />

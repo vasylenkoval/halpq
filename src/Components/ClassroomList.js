@@ -181,6 +181,9 @@ class ClassroomList extends Component {
               }
               key={classKeys[i]}
               password={classKeys[i].slice(1, 9)}
+              isDisabled={
+                !(element.disabled === undefined || element.disabled === false)
+              }
             />
           </Link>
         ))}
