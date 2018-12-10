@@ -1,25 +1,28 @@
 import React from 'react';
+import log from "../assets/logOut.svg";
+
 
 const UserDetails = props => (
-  <div className="UserDetails">
-    <h3 style={UserNameText} className="clearfix">
-      <div>Welcome</div>
-      <div style={UserNameText}>{props.displayName}</div>
-    </h3>
-    <div className="UserDetails--Image">
-      <img style={UserDetailsImage} src={props.photoURL} alt="" />
+  <div className="userDetails">
+    <button className="logOut" type="button" onClick={props.logOut}>
+      <div className="logOut__img">
+        <img src={log} alt="log out" />
+      </div>
+    </button>
+    <div className="userDetails__image">
+      <img src={props.photoURL} alt="user photo" />
+    </div>
+    <div className="userDetails__text">
+        <p>Welcome</p>
+      <p className="clearfix">{props.displayName}</p>
     </div>
   </div>
 );
 
-const UserDetailsImage = {
-  width: '60px',
-  float: 'right',
-  borderRadius: '50%',
-};
+
 const UserNameText = {
   textAlign: 'left',
-  float: 'right',
+  // float: 'right',
 };
 
 export default UserDetails;
