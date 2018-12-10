@@ -88,10 +88,9 @@ class App extends Component {
       <div>
         <Router>
           <div className="App">
-            <Header user={user} isAdmin={isAdmin} />
+            <Header user={user} isAdmin={isAdmin} logOut={this.logOut} />
             {user && appReady ? (
               <div>
-                <button onClick={this.logOut}>LogOut</button>
                 <Route
                   exact
                   path="/"

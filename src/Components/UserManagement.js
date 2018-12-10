@@ -51,7 +51,7 @@ class UserManagement extends Component {
           <div className="Component__Title">
             <h2>User Management</h2>
           </div>
-          <Link to="/">
+          <Link className="backLink" to="/">
             <div className="returnLink clearfix">
               <div className="returnLink__img">
                 <img src={backChevron} alt="" />
@@ -70,7 +70,7 @@ class UserManagement extends Component {
               <h3 className="users__panelTitle users__panelTitle--admin">
                 Admins
               </h3>
-              {this.state.adminList[0] ? <AdminList admins={this.state.adminList} /> : <p>
+              {this.state.adminList[0] ? <AdminList admins={this.state.adminList} /> : <p className="noAdmin">
                   There are no admins
                 </p>}
             </div>
