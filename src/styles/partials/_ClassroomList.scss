@@ -1,8 +1,53 @@
 .classroomlist {
+  color: $darkColor;
+  button {
+    outline: 0;
+  }
+  a {
+    text-decoration: none;
+    color: $darkColor;
+    width: 70%;
+    display: inline-block;
+  }
+  background-color: $lightColor;
+  &__title {
+    padding: 50px 0;
+  }
+  &__wrapper {
+    width: 90%;
+    margin: 0 auto;
+  }
+
   &__item {
-    padding: 20px 0;
-    border: 1px solid black;
+    min-height: 200px;
+    background-color: $white;
+    box-shadow: 0 3px 15px 0 #00000021;
+    padding: 30px;
     font-size: 2rem;
-    margin: 30px;
+    margin-bottom: 40px;
+    &__name {
+      padding-bottom: 13px;
+    }
+    &:hover {
+      box-shadow: 0 3px 15px 0 #0000003a;
+    }
+    &:hover &__name {
+      color: $primaryAccent;
+    }
+  }
+  &__addbutton {
+    width: 70px;
+    height: 70px;
+    border: none;
+    background-color: $primaryAccent;
+    border-radius: 100%;
+    font-size: 3rem;
+    color: $white;
+    position: fixed;
+    bottom: 60px;
+    right: 60px;
+    &:hover {
+      background-color: darken($primaryAccent, 10%);
+    }
   }
 }
