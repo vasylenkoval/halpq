@@ -306,39 +306,74 @@ body {
 
 .userManagement {
   background: #F6F7F9; }
+  .userManagement p, .userManagement h4 {
+    color: #231F1F; }
+  .userManagement h2 {
+    font-size: 4rem; }
 
 .users {
-  border: 1px dashed black; }
+  padding: 20px 0; }
   .users__panel {
     width: calc(50% - 5px);
     float: left; }
   .users__panel:first-child {
     margin-right: 10px; }
+  .users__panelTitle {
+    font-size: 3rem;
+    line-height: 2rem;
+    color: #231F1F; }
+  .users__panelTitle--admin {
+    text-align: right; }
+
+.returnLink__img {
+  width: 20px;
+  margin: 0 5px 0 0;
+  float: left; }
+
+.returnLink p {
+  font-size: 1.8rem;
+  float: left;
+  color: #231F1F; }
 
 .userList {
+  border: 1px solid #787E8B;
+  border-top: 10px solid #787E8B;
+  border-bottom: 10px solid #787E8B;
   background: #787E8B;
-  padding: 10px;
+  padding: 0 9px;
   border-radius: 5px;
-  text-align: center; }
+  max-height: 50vh;
+  overflow: scroll; }
   .userList__user {
     background: #F6F7F9;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px; }
+  .userList__user:last-child {
+    margin-bottom: 0px; }
   .userList .user__details {
     float: left; }
+    .userList .user__details p {
+      font-size: 1.4rem; }
+  .userList .user__action {
+    float: right; }
 
 .user__button {
+  background: #F6F7F9;
   border: none;
-  padding: 5px;
-  font-family: "Raleway", sans-serif;
-  line-height: 3.3rem;
+  padding: 2px;
   cursor: pointer; }
   .user__button .buttonImage {
-    width: 25px;
-    height: 25px;
-    float: right;
-    margin: 5px; }
+    width: 35px;
+    height: 35px;
+    margin: 2px; }
+
+.admin .user__details {
+  float: right;
+  text-align: right; }
+
+.admin .user__action {
+  float: left; }
 
 .admin .buttonImage {
   float: left; }

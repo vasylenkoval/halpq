@@ -11,17 +11,17 @@ class StudentList extends Component {
         {this.props.students.map(student => (
           <div key={student[0]} className="userList__user student clearfix">
             <div className="user__details">
-              <h3>{student[1].displayName}</h3>
+              <h4>{student[1].displayName}</h4>
               <p>{student[1].email}</p>
             </div>
             <div className="user__action">
-              <button className="user__button"
+              <button className="user__button clearfix"
                 type="button"
                 onClick={() => {
                   makeAdmin(`${student[0]}`);
                 }}
               >
-                Baller-ize
+                {/* Baller-ize */}
                 <div className="buttonImage">
                   <img src={arrow} alt="make user a student" />
                 </div>

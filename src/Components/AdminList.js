@@ -9,17 +9,17 @@ class AdminList extends Component {
         {this.props.admins.map(admin => (
           <div className="userList__user admin clearfix" key={admin[0]}>
             <div className="user__details">
-              <h3>{admin[1].displayName}</h3>
+              <h4>{admin[1].displayName}</h4>
               <p>{admin[1].email}</p>
             </div>
             <div className="user__action">
-              <button className="user__button"
+              <button className="user__button clearfix"
                 type="button"
                 onClick={() => {
                   makeStudent(`${admin[0]}`);
                 }}
               >
-                Pleb-ize
+                {/* Pleb-ize */}
                 <div className="buttonImage">
                   <img src={arrow} alt="make user a student" />
                 </div>
