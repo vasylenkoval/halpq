@@ -302,7 +302,7 @@ p {
     width: 70%;
     display: inline-block; }
   .classroomlist__title {
-    padding: 50px 0; }
+    padding: 80px 0 50px 0; }
   .classroomlist__wrapper {
     width: 90%;
     margin: 0 auto; }
@@ -312,7 +312,7 @@ p {
     box-shadow: 0 3px 15px 0 #00000028;
     padding: 30px;
     font-size: 2rem;
-    margin-bottom: 40px; }
+    margin-bottom: 45px; }
     .classroomlist__item__name {
       padding-bottom: 13px;
       font-size: 2.6rem;
@@ -327,8 +327,8 @@ p {
       .classroomlist__item__password span {
         font-weight: bold; }
   .classroomlist__addbutton {
-    width: 70px;
     height: 70px;
+    width: 70px;
     border: none;
     background-color: #e40015;
     border-radius: 100%;
@@ -371,6 +371,13 @@ p {
   float: right;
   font-weight: bold;
   line-height: 40px; }
+
+@supports (-moz-appearance: none) {
+  .classroomlist__addbutton {
+    padding: 19px;
+    line-height: 38px;
+    height: 70px;
+    width: 70px; } }
 
 .chat {
   position: fixed;

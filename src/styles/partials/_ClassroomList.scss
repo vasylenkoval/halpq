@@ -11,7 +11,7 @@
   }
   background-color: $lightColor;
   &__title {
-    padding: 50px 0;
+    padding: 80px 0 50px 0;
   }
   &__wrapper {
     width: 90%;
@@ -24,7 +24,7 @@
     box-shadow: 0 3px 15px 0 #00000028;
     padding: 30px;
     font-size: 2rem;
-    margin-bottom: 40px;
+    margin-bottom: 45px;
     &__name {
       padding-bottom: 13px;
       font-size: 2.6rem;
@@ -45,8 +45,8 @@
     }
   }
   &__addbutton {
-    width: 70px;
     height: 70px;
+    width: 70px;
     border: none;
     background-color: $primaryAccent;
     border-radius: 100%;
@@ -58,6 +58,7 @@
     transition: transform 0.5s;
     box-shadow: 3px 3px 15px 0 #00000028;
     cursor: pointer;
+
     &:hover {
       background-color: darken($primaryAccent, 2%);
       transform: rotateZ(90deg);
@@ -98,4 +99,13 @@
   float: right;
   font-weight: bold;
   line-height: 40px;
+}
+
+@supports (-moz-appearance: none) {
+  .classroomlist__addbutton {
+    padding: 19px;
+    line-height: 38px;
+    height: 70px;
+    width: 70px;
+  }
 }
