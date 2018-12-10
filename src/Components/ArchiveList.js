@@ -39,7 +39,7 @@ class AchiveList extends Component {
   render() {
     return (
       <div>
-        <h3>Completed Questions</h3>
+        <h3 className="question__list__title">Completed Questions</h3>
 
         {this.state.questions.map(question => (
           <div

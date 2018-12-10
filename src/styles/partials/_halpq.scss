@@ -1,0 +1,36 @@
+.halpq {
+  color: $darkColor;
+  background: $lightColor;
+  &__filter {
+    background: $lightColor;
+    color: $darkColor;
+    padding: 10px;
+    margin: 10px 0;
+    border: 0;
+    font-size: 2rem;
+    &__active {
+      background: $secondaryAccent;
+    }
+  }
+  &__title {
+    padding: 50px 0 10px 0;
+  }
+  button {
+    cursor: pointer;
+  }
+}
+
+.returnLink {
+  width: 175px;
+  padding-bottom: 50px;
+  &__img {
+    width: 20px;
+    margin: 0 5px 0 0;
+    float: left;
+  }
+  p {
+    font-size: 1.8rem;
+    float: left;
+    color: $darkColor;
+  }
+}

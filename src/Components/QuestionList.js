@@ -3,6 +3,9 @@ import firebase from 'firebase';
 import CompleteQuestion from './CompleteQuestion';
 import BeingHelped from './BeingHelped';
 import QuestionConversation from './QuestionConversation';
+import backChevron from '../assets/back-chevron.svg';
+
+const dbRef = firebase.database();
 
 class QuestionList extends Component {
   constructor(props) {
@@ -17,12 +20,6 @@ class QuestionList extends Component {
   }
 
   componentDidMount() {
-    const dbRef = firebase.database();
-    // dbRef.ref(`/Classrooms/${this.state.classKey}`).once('value', snapshot => {
-    //   this.setState({
-    //     classroomName: snapshot.val().classroomName,
-    //   });
-    // });
     dbRef.ref(`/Questions/${this.state.classKey}`).on('value', snapshot => {
       if (!snapshot.exists()) {
         this.setState({ questions: [] });
@@ -34,17 +31,16 @@ class QuestionList extends Component {
   }
 
   componentWillUnmount() {
-    const dbRef = firebase.database();
     dbRef.ref(`/Questions/${this.state.classKey}`).off();
   }
 
   render() {
     return (
-      <div>
-        <h3>Active Questions</h3>
+      <div className="question__list">
+        <h3 className="question__list__title">Active Questions</h3>
         {this.state.questions.map(question => (
           <div
-            style={{ border: `1px solid green` }}
+            // style={{ border: `1px solid green` }}
             className={
               question[1].isBeingHelped
                 ? 'question question__beingHelped'
