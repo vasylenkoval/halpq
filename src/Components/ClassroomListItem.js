@@ -4,10 +4,18 @@ import React from 'react';
 const ClassroomListItem = props => {
   const { classroomName, password, studentCount, isDisabled } = props;
   return (
-    <div className="classroomlist__item">
+    <div
+      className={
+        isDisabled
+          ? 'classroomlist__item clearfix classroomlist__disabled'
+          : 'classroomlist__item clearfix'
+      }
+    >
       <div className="classroomlist__item__name">
         <h3>{classroomName}</h3>
       </div>
+
+      {isDisabled ? <div className="disabled__text"> Disabled</div> : null}
 
       <div className="classroomlist__item__questions">
         <div className="classroomlist__item__questions__count">
@@ -15,14 +23,15 @@ const ClassroomListItem = props => {
         </div>
       </div>
 
-      <div className="clasroom__item__password">
-        <p>Password: {password}</p>
+      <div className="classroomlist__item__password">
+        <div>
+          <span>Code:</span> {password}
+        </div>
       </div>
 
       <div className="classroomlist__item__studentsEnrolled">
         <p>Number of Students: {studentCount}</p>
       </div>
-      {isDisabled ? <p>This classroom has been disabled for now🌚</p> : null}
     </div>
   );
 };
