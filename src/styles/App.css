@@ -239,24 +239,53 @@ p {
   overflow: hidden; }
 
 .header {
-  width: '100%'; }
-  .header--userImage {
-    float: right;
-    border-radius: 50%; }
-    .header--userImage svg {
-      width: 60px; }
-  .header--userNameText {
-    display: 'block';
-    width: '50%';
-    float: 'right'; }
+  width: 100%; }
+  .header__logo {
+    width: 94px;
+    height: 94px;
+    margin-right: 10px;
+    float: left; }
 
-.header--logo {
-  width: '94px';
-  display: 'inline-block'; }
+.logOut {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer; }
+  .logOut__img {
+    width: 40px; }
+  .logOut img {
+    width: 100%; }
+
+.header__heading {
+  padding-top: 10px;
+  float: left; }
+  .header__heading h1 {
+    margin: 0;
+    font-size: 4rem;
+    color: #231f1f; }
 
 .userPanelStyle {
-  float: 'right';
-  display: 'inline-block'; }
+  padding: 23px 10px 0 0;
+  float: right;
+  display: inline-block; }
+
+.userManagementLink {
+  float: left; }
+
+.userDetails {
+  float: left; }
+  .userDetails__image {
+    width: 40px;
+    float: left;
+    margin: 0 10px; }
+    .userDetails__image img {
+      border-radius: 50%;
+      filter: grayscale(10); }
+  .userDetails .logOut {
+    float: left;
+    margin-left: 10px; }
+  .userDetails__text {
+    float: left; }
 
 .userMgmt {
   width: '60px';
@@ -403,7 +432,7 @@ body {
   font-family: "Raleway", sans-serif; }
 
 .wrapper {
-  width: 85%;
+  width: 90%;
   max-width: 1240px;
   margin: 0 auto; }
 
@@ -418,6 +447,9 @@ img {
   height: 90vh; }
   .userManagement p, .userManagement h4 {
     color: #231f1f; }
+
+.Component__Title {
+  padding: 50px 0 0 0; }
 
 .users {
   margin: 10px 0;

@@ -1,26 +1,76 @@
 .header {
-  width: '100%';
-  // display: 'inline-block';
+  width: 100%;
 
-  &--userImage {
-    float: right;
-    border-radius: 50%;
-    svg {
-      width: 60px;
+
+  &__logo {
+    width: 94px;
+    height: 94px;
+    margin-right: 10px;
+    float: left;
+  }
+  
+}
+.logOut {
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  &__img {
+    width: 40px;
+  }
+
+  img{
+    width: 100%;
+  }
+
+}
+
+.header__heading {
+  padding-top: 10px;
+  // border: 1px solid green;
+  float: left;
+  h1 {
+    margin: 0;
+    font-size: 4rem;
+    color: $darkColor;
+  }
+}
+
+.userPanelStyle {
+  // border: 1px solid red;
+  padding: 23px 10px 0 0;
+  float: right;
+  display: inline-block;
+}
+.userManagementLink {
+  // border: 1px solid purple;
+  float: left;
+
+}
+.userDetails {
+  // border: 1px solid blue;
+  float: left;
+  &__image {
+    // border: 1px dashed black;
+    width: 40px;
+    float: left;
+    margin: 0 10px;
+    img {
+      border-radius: 50%;
+      filter: grayscale(10);
     }
   }
-  &--userNameText {
-    display: 'block';
-    width: '50%';
-    float: 'right';
-  }
-}
 
-.header--logo {
-  width: '94px';
-  display: 'inline-block';
-}
-.userPanelStyle {
-  float: 'right';
-  display: 'inline-block';
-}
+  .logOut {
+    // border: 1px dashed black;
+    float: left;
+    margin-left: 10px;
+  }
+
+  &__text {
+    float: left;
+  }
+
+
+} 

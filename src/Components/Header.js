@@ -14,8 +14,8 @@ class Header extends Component {
 
   render() {
     return (
-      <div style={HeaderStyle} className="Header">
-        <div className="Header--Logo" style={HeaderLogoStyle}>
+      <div className="header clearfix">
+        <div className="header__logo">
           <Link to="/">
             <svg viewBox="0 0 93.21 93" xmlns="http://www.w3.org/2000/svg">
               <path d="m0 93h93v-93h-93z" fill="#d11f26" />
@@ -26,37 +26,30 @@ class Header extends Component {
             </svg>
           </Link>
         </div>
-        <HeaderTitle />
+        <div className="header__heading">
+          <HeaderTitle />
+        </div>
+
         {this.props.user !== null ? (
-          <div className="UserPanelStyle clearfix">
-            {/* <img style={UserImage} src={props.user.photoURL} alt="" /> */}
+          <div className="userPanelStyle clearfix">
             {this.props.isAdmin && <UserManagementLink />}
             <UserDetails
+              logOut={this.props.logOut}
               photoURL={this.props.user.photoURL}
               displayName={this.props.user.displayName}
             />
-            <button type="button" onClick={this.props.logOut}>
-              LogOut
-            </button>
+            
           </div>
         ) : null}
+
       </div>
     );
   }
 }
-const HeaderStyle = {
-  width: '100%',
-  display: 'inline-block',
-};
-
-const UserPanelStyle = {
-  float: 'right',
-  display: 'inline-block',
-};
 
 const HeaderLogoStyle = {
   width: '94px',
-  display: 'inline-block',
+  // display: 'inline-block',
 };
 
 export default Header;

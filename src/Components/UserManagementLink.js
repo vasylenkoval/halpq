@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import UserMgmtLogo from '../assets/UserMgmtIcon.png';
+import user from '../assets/user.svg';
+
 
 class UserManagementLink extends Component {
   render() {
     return (
-      <div>
+      <div className="userManagementLink">
         <Link to="/usermanagement">
-          <img
-            style={userMgmt}
-            src={UserMgmtLogo}
-            alt="User Managment Panel Icon"
-          />
+          <img style={userMgmt} src={user} alt="User Managment Panel Icon" />
         </Link>
       </div>
     );
@@ -19,8 +16,9 @@ class UserManagementLink extends Component {
 }
 
 const userMgmt = {
-  width: '70px',
-  float: 'right',
+  width: '40px',
+  // height: '40px',
+  // float: 'right',
 };
 
 export default UserManagementLink;

@@ -25,7 +25,7 @@ class HeaderTitle extends Component {
 
   render() {
     return (
-      <div className="Header-Title">
+      <div className="header__title">
         <Typist>
           <h1>HALPQ</h1>
           <div className="container">
