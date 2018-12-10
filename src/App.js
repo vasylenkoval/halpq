@@ -68,28 +68,27 @@ class App extends Component {
 
   // Method to check if the user is an Admin
   isAdmin = () => {
-    dbRef
-      .ref(`/Users/Admins/${this.state.user.uid}`)
-      .once('value', snapshot => {
-        if (snapshot.exists()) {
-          this.setState(
-            {
-              isAdmin: true,
-            },
-            () => {
-              this.setState({
-                appReady: true,
-              });
-            }
-          );
-          console.log('USER IS AN ADMIN');
-        } else {
-          this.setState({
-            appReady: true,
-          });
-          console.log('USER IS A STUDENT');
-        }
-      });
+    dbRef.ref(`/Users/Admins/${this.state.user.uid}`).on('value', snapshot => {
+      if (snapshot.exists()) {
+        this.setState(
+          {
+            isAdmin: true,
+          },
+          () => {
+            this.setState({
+              appReady: true,
+            });
+          }
+        );
+        console.log('USER IS AN ADMIN');
+      } else {
+        this.setState({
+          isAdmin: false,
+          appReady: true,
+        });
+        console.log('USER IS A STUDENT');
+      }
+    });
   };
 
   render() {
