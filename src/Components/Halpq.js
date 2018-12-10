@@ -4,6 +4,7 @@ import firebase from '../firebase';
 import QuestionForm from './QuestionForm';
 import QuestionList from './QuestionList';
 import ArchiveList from './ArchiveList';
+import backChevron from '../assets/back-chevron.svg';
 
 const dbRef = firebase.database();
 
@@ -69,37 +70,48 @@ class Halpq extends Component {
       classroomName,
     } = this.state;
     return (
-      <div>
-        <h2>{classroomName}</h2>
-        <div className="returnLink">
-          <Link to="/">Return to Classrooms</Link>
-        </div>
+      <div className="halpq">
+        <div className="wrapper">
+          <h2 class="halpq__title">{classroomName}</h2>
+          <Link className="backLink" to="/">
+            <div className="returnLink clearfix">
+              <div className="returnLink__img">
+                <img src={backChevron} alt="" />
+              </div>
+              <p>Back to Classlist</p>
+            </div>
+          </Link>
 
-        <button type="button" onClick={this.handleClick} name="Active">
-          Active Questions
-        </button>
-        <button type="button" onClick={this.handleClick} name="Completed">
-          Completed Questions
-        </button>
-        {isAdmin ? (
-          <button type="button" onClick={this.disableClassroom}>
-            {isClassroomDisabled ? 'Enable classroom' : 'Disable classroom'}
+          <button type="button" onClick={this.handleClick} className={!this.state.archiveToggle ? 'halpq__filter halpq__filter__active' : 'halpq__filter'} name="Active">
+            Active Questions
           </button>
-        ) : null}
-        {!archiveToggle ? (
-          <div>
-            <QuestionList classKey={classKey} user={user} isAdmin={isAdmin} />
-            {isClassroomDisabled ? (
-              <p>
-                <strong>This classroom is temporarily disabled 🙊</strong>
-              </p>
-            ) : (
-              <QuestionForm user={user} isAdmin={isAdmin} classKey={classKey} />
-            )}
-          </div>
-        ) : (
-          <ArchiveList classKey={classKey} user={user} isAdmin={isAdmin} />
-        )}
+          <button type="button" onClick={this.handleClick} className={this.state.archiveToggle ? 'halpq__filter halpq__filter__active' : 'halpq__filter'} name="Completed">
+            Completed Questions
+          </button>
+          {isAdmin ? (
+            <button type="button" onClick={this.disableClassroom}>
+              {isClassroomDisabled ? 'Enable classroom' : 'Disable classroom'}
+            </button>
+          ) : null}
+          {!archiveToggle ? (
+            <div>
+              <QuestionList classKey={classKey} user={user} isAdmin={isAdmin} />
+              {isClassroomDisabled ? (
+                <p>
+                  <strong>This classroom is temporarily disabled 🙊</strong>
+                </p>
+              ) : (
+                <QuestionForm
+                  user={user}
+                  isAdmin={isAdmin}
+                  classKey={classKey}
+                />
+              )}
+            </div>
+          ) : (
+            <ArchiveList classKey={classKey} user={user} isAdmin={isAdmin} />
+          )}
+        </div>
       </div>
     );
   }
