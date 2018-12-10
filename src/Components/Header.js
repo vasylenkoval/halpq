@@ -4,6 +4,7 @@ import HeaderTitle from './HeaderTitle';
 import UserManagementLink from './UserManagementLink';
 import UserDetails from './UserDetails';
 // import Context from './Components/Context';
+import log from '../assets/logOut.svg';
 
 class Header extends Component {
   constructor() {
@@ -14,8 +15,8 @@ class Header extends Component {
 
   render() {
     return (
-      <div style={HeaderStyle} className="Header">
-        <div className="Header--Logo" style={HeaderLogoStyle}>
+      <div className="header">
+        <div className="header__logo" style={HeaderLogoStyle}>
           <Link to="/">
             <svg viewBox="0 0 93.21 93" xmlns="http://www.w3.org/2000/svg">
               <path d="m0 93h93v-93h-93z" fill="#d11f26" />
@@ -35,8 +36,10 @@ class Header extends Component {
               photoURL={this.props.user.photoURL}
               displayName={this.props.user.displayName}
             />
-            <button type="button" onClick={this.props.logOut}>
-              LogOut
+            <button className="logOut" type="button" onClick={this.props.logOut}>
+              <div className="logOut__img">
+                <img src={log} alt="log out" />
+              </div>
             </button>
           </div>
         ) : null}
@@ -56,7 +59,7 @@ const UserPanelStyle = {
 
 const HeaderLogoStyle = {
   width: '94px',
-  display: 'inline-block',
+  // display: 'inline-block',
 };
 
 export default Header;

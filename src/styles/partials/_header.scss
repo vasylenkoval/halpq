@@ -9,11 +9,29 @@
       width: 60px;
     }
   }
+
+  &__logo {
+    width: '94px';
+    // display: 'inline-block';
+  }
   &--userNameText {
     display: 'block';
     width: '50%';
     float: 'right';
   }
+}
+.logOut {
+  padding: 0;
+  border: none;
+
+  &__img {
+    width: 30px;
+  }
+
+  img{
+    width: 100%;
+  }
+
 }
 
 .header--logo {

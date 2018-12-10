@@ -239,17 +239,26 @@ p {
   overflow: hidden; }
 
 .header {
-  width: '100%';
-  display: 'inline-block'; }
+  width: '100%'; }
   .header--userImage {
     float: right;
     border-radius: 50%; }
     .header--userImage svg {
       width: 60px; }
+  .header__logo {
+    width: '94px'; }
   .header--userNameText {
     display: 'block';
     width: '50%';
     float: 'right'; }
+
+.logOut {
+  padding: 0;
+  border: none; }
+  .logOut__img {
+    width: 30px; }
+  .logOut img {
+    width: 100%; }
 
 .header--logo {
   width: '94px';
