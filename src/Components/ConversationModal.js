@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import firebase from '../firebase';
 
+const dbRef = firebase.database();
+
 class ConversationModel extends Component {
   constructor(props) {
     super(props);
@@ -10,28 +12,11 @@ class ConversationModel extends Component {
       isAdmin: this.props.isAdmin,
       user: this.props.user,
       questionKey: this.props.questionKey,
-      questionOwner: false
+      questionOwner: false,
     };
   }
 
-  refreshOnChange = () => {
-    if (this.state.isAdmin) {
-      // dbRef.ref(`/Chat/`).on("child_added", (snapshot) => {
-      // this.refreshMessageList();
-      // });
-      // } else {
-      // dbRef
-      //   .ref(`/Users/Students/}/${this.state.user.uid}/enrolledClasses/`)
-      //   .on("value", (snapshot) => {
-      //     this.createClassList();
-      //   });
-      // }
-    }
-  };
-
-
   handleSubmit = e => {
-    const dbRef = firebase.database();
     e.preventDefault();
     // post this new book to firebase
     dbRef.ref(`/Chat/${this.state.classKey}/${this.state.questionKey}/`).push({
@@ -53,15 +38,22 @@ class ConversationModel extends Component {
   };
 
   componentDidMount() {
-    const dbRef = firebase.database();
-    dbRef.ref(`/Questions/${this.state.classKey}/${this.state.questionKey}`).once('value', snapshot => {
-    if (snapshot.val().uid === this.state.user.uid || this.state.isAdmin) {
+    dbRef
+      .ref(`/Questions/${this.state.classKey}/${this.state.questionKey}`)
+      .once('value', snapshot => {
+        if (snapshot.val().uid === this.state.user.uid || this.state.isAdmin) {
           this.setState({
-            questionOwner: true
-          })
-    } 
-    // console.log(this.state.questionOwner, snapshot.val().uid)
-    });
+            questionOwner: true,
+          });
+        }
+        // console.log(this.state.questionOwner, snapshot.val().uid)
+      });
+  }
+
+  componentWillUnmount() {
+    dbRef
+      .ref(`/Questions/${this.state.classKey}/${this.state.questionKey}`)
+      .off();
   }
 
   render() {
@@ -90,30 +82,31 @@ class ConversationModel extends Component {
               </div>
             </div>
           ))}
-          {this.state.questionOwner ? 
-          <form
-            action=""
-            onSubmit={this.handleSubmit}
-            style={{ textAlign: 'right' }}
-          >
-            <input
-              type="text"
-              name=""
-              onChange={this.handleChange}
-              value={this.state.userInput}
-              id="submitInput"
-              style={{
-                display: 'inline-block',
-                marginTop: '50px',
-                width: '90%',
-              }}
-            />
-            <input
-              type="submit"
-              id="submitChatMessage"
-              style={{ display: 'inline-block', width: '10%' }}
-            />
-          </form> : null }
+          {this.state.questionOwner ? (
+            <form
+              action=""
+              onSubmit={this.handleSubmit}
+              style={{ textAlign: 'right' }}
+            >
+              <input
+                type="text"
+                name=""
+                onChange={this.handleChange}
+                value={this.state.userInput}
+                id="submitInput"
+                style={{
+                  display: 'inline-block',
+                  marginTop: '50px',
+                  width: '90%',
+                }}
+              />
+              <input
+                type="submit"
+                id="submitChatMessage"
+                style={{ display: 'inline-block', width: '10%' }}
+              />
+            </form>
+          ) : null}
         </div>
       </div>
     );
