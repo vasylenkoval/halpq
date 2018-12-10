@@ -54,18 +54,12 @@
 }
 
 .userList {
-    // border: 1px solid $white;
-    // border-top: 10px solid $white;
-    // border-bottom: 10px solid $white;
-    // background: $white;
-    // box-shadow: 0 3px 15px 0 #0000003a;
-    padding: 5px; //Yes. 9. to account for side borders 1px making it 10px. Not about to go for 11px.
+    padding: 5px;
     max-height: 60vh;
     overflow-x: scroll;
     &__user {
       background: $white;
       box-shadow: 0px 2px 5px 0 #0000003a, 0px 2px 5px 0 #0000003a;
-      // border-radius: 5px;
       padding: 10px;
       margin-bottom: 10px; 
     }
