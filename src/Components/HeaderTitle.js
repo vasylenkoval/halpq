@@ -15,13 +15,12 @@ class HeaderTitle extends Component {
   };
 
   componentDidMount() {
-    const strings = ['HALPQ', 'Classroom List'];
-
-    const options = {
-      strings,
-      typeSpeed: 50,
-      backSpeed: 50,
-    };
+    // const strings = ['HALPQ', 'Classroom List'];
+    // const options = {
+    //   strings,
+    //   typeSpeed: 50,
+    //   backSpeed: 50,
+    // };
   }
 
   render() {
