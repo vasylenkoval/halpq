@@ -239,8 +239,7 @@ p {
   overflow: hidden; }
 
 .header {
-  width: '100%';
-  display: 'inline-block'; }
+  width: '100%'; }
   .header--userImage {
     float: right;
     border-radius: 50%; }
@@ -306,27 +305,56 @@ p {
       background-color: #b10010; }
 
 .chat {
+  position: fixed;
   display: block;
-  position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  z-index: 9998;
-  background: rgba(0, 0, 0, 0.3); }
-  .chat__Main {
+  background: rgba(35, 31, 31, 0.9); }
+  .chat__convo {
     position: fixed;
-    display: block;
-    background: white;
-    width: 80%;
-    height: auto;
+    background: #f6f7f9;
+    width: 70%;
+    height: 70%;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); }
-  .chat__chatContent __content {
-    bottom: 100px;
-    top: 100px;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
     overflow-y: auto; }
+  .chat__closeIcon {
+    position: fixed;
+    top: 2%;
+    left: 1%;
+    height: 100px;
+    width: 100px;
+    color: black; }
+  .chat__message {
+    padding-right: 20px; }
+  .chat__chatContent, .chat__userInfo {
+    text-align: right; }
+  .chat__userInfo {
+    font-weight: bold; }
+  .chat__inputArea {
+    bottom: 0;
+    left: 0;
+    position: absolute; }
+  .chat__messageInput, .chat__buttonSubmit {
+    height: 50px;
+    display: inline-block;
+    bottom: 0;
+    left: 0;
+    border: 0; }
+  .chat__messageInput {
+    padding: 10px;
+    width: 90%;
+    border-top: 2px solid #e44e48;
+    border-bottom-left-radius: 10px; }
+  .chat__buttonSubmit {
+    width: 10%;
+    background: #e44e48;
+    color: #fff;
+    border-bottom-right-radius: 10px; }
 
 html {
   font-size: 62.5%; }
