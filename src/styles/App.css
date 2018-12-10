@@ -239,6 +239,7 @@ p {
   overflow: hidden; }
 
 .header {
+<<<<<<< HEAD
   width: 100%; }
   .header__logo {
     width: 94px;
@@ -286,6 +287,26 @@ p {
     margin-left: 10px; }
   .userDetails__text {
     float: left; }
+=======
+  width: '100%'; }
+  .header--userImage {
+    float: right;
+    border-radius: 50%; }
+    .header--userImage svg {
+      width: 60px; }
+  .header--userNameText {
+    display: 'block';
+    width: '50%';
+    float: 'right'; }
+
+.header--logo {
+  width: '94px';
+  display: 'inline-block'; }
+
+.userPanelStyle {
+  float: 'right';
+  display: 'inline-block'; }
+>>>>>>> 81ce858a836e73aedccabd7115abbb9244ff7c04
 
 .userMgmt {
   width: '60px';
@@ -309,18 +330,36 @@ p {
   .classroomlist__item {
     min-height: 200px;
     background-color: #ffffff;
+<<<<<<< HEAD
     box-shadow: 0 3px 15px 0 #00000021;
+=======
+    box-shadow: 0 3px 15px 0 #00000028;
+>>>>>>> 81ce858a836e73aedccabd7115abbb9244ff7c04
     padding: 30px;
     font-size: 2rem;
     margin-bottom: 40px; }
     .classroomlist__item__name {
       padding-bottom: 13px;
+<<<<<<< HEAD
       font-size: 2.4rem;
       transition: color 0.1s; }
     .classroomlist__item:hover {
       box-shadow: 0 3px 15px 0 #0000003a; }
     .classroomlist__item:hover .classroomlist__item__name {
       color: #e40015; }
+=======
+      font-size: 2.6rem;
+      transition: color 0.1s;
+      display: inline-block; }
+    .classroomlist__item:hover {
+      box-shadow: 0 3px 15px 0 #0000004f; }
+    .classroomlist__item:hover .classroomlist__item__name {
+      color: #e40015; }
+    .classroomlist__item__password {
+      float: right; }
+      .classroomlist__item__password span {
+        font-weight: bold; }
+>>>>>>> 81ce858a836e73aedccabd7115abbb9244ff7c04
   .classroomlist__addbutton {
     width: 70px;
     height: 70px;
@@ -332,10 +371,47 @@ p {
     position: fixed;
     bottom: 60px;
     right: 60px;
+<<<<<<< HEAD
     transition: transform 0.5s; }
     .classroomlist__addbutton:hover {
       background-color: #da0014;
       transform: rotateZ(90deg); }
+=======
+    transition: transform 0.5s;
+    box-shadow: 3px 3px 15px 0 #00000028;
+    cursor: pointer; }
+    .classroomlist__addbutton:hover {
+      background-color: #da0014;
+      transform: rotateZ(90deg); }
+  .classroomlist__form {
+    width: 300px;
+    background: #ffffff;
+    position: fixed;
+    bottom: 150px;
+    right: 60px;
+    box-shadow: 0 3px 15px 0 #00000021; }
+    .classroomlist__form__input, .classroomlist__form__submit {
+      height: 50px;
+      text-align: center;
+      display: block;
+      width: 100%;
+      border: 0;
+      outline: 0; }
+    .classroomlist__form__submit {
+      background-color: #e40015;
+      color: #ffffff; }
+      .classroomlist__form__submit:hover {
+        background-color: #da0014;
+        cursor: pointer; }
+  .classroomlist__disabled {
+    background-color: rgba(0, 0, 0, 0.151);
+    color: rgba(0, 0, 0, 0.63); }
+
+.disabled__text {
+  float: right;
+  font-weight: bold;
+  line-height: 40px; }
+>>>>>>> 81ce858a836e73aedccabd7115abbb9244ff7c04
 
 .chat {
   position: fixed;
@@ -412,9 +488,12 @@ img {
   height: 90vh; }
   .userManagement p, .userManagement h4 {
     color: #231f1f; }
+<<<<<<< HEAD
 
 .Component__Title {
   padding: 50px 0 0 0; }
+=======
+>>>>>>> 81ce858a836e73aedccabd7115abbb9244ff7c04
 
 .users {
   margin: 10px 0;
