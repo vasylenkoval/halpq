@@ -86,6 +86,8 @@ class QuestionList extends Component {
                 questionKey={question[0]}
                 questionOwner
               />
+              {question[1].isBeingHelped ? <p>I'm being helped!</p> : null}
+              {/* Make being helped p tag into an icon or nicer thing to show they are currently being helped */}
             </div>
           </div>
         ))}
