@@ -319,6 +319,35 @@ p {
   width: '60px';
   float: 'right'; }
 
+.halpq {
+  color: #231f1f;
+  background: #f6f7f9; }
+  .halpq__filter {
+    background: #f6f7f9;
+    color: #231f1f;
+    padding: 10px;
+    margin: 10px 0;
+    border: 0;
+    font-size: 2rem; }
+    .halpq__filter__active {
+      background: #e44e48; }
+  .halpq__title {
+    padding: 50px 0 10px 0; }
+  .halpq button {
+    cursor: pointer; }
+
+.returnLink {
+  width: 175px;
+  padding-bottom: 50px; }
+  .returnLink__img {
+    width: 20px;
+    margin: 0 5px 0 0;
+    float: left; }
+  .returnLink p {
+    font-size: 1.8rem;
+    float: left;
+    color: #231f1f; }
+
 .classroomlist {
   color: #231f1f;
   background-color: #f6f7f9; }
@@ -399,6 +428,29 @@ p {
   float: right;
   font-weight: bold;
   line-height: 40px; }
+
+.question__list {
+  color: #231f1f;
+  background: #f6f7f9; }
+  .question__list__title {
+    padding: 50px 0;
+    font-size: 4rem; }
+
+.question__wrapper {
+  width: 90%;
+  margin: 0 auto; }
+
+.question {
+  background: #ffffff;
+  margin: 10px 0;
+  min-height: 200px;
+  background-color: #ffffff;
+  box-shadow: 0 3px 15px 0 #00000028;
+  padding: 20px;
+  font-size: 2rem;
+  margin-bottom: 20px; }
+  .question__questionContent {
+    font-size: 2rem; }
 
 .chat {
   position: fixed;
