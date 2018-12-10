@@ -1,6 +1,6 @@
 .userManagement {
   background: $lightColor;
-  height: 90vh;
+  // min-height: 86.8vh;
   p, h4 {
     color: $darkColor;
   }
@@ -17,7 +17,7 @@
   padding: 20px 0;
   &__panel {
     width: calc(50% - 5px);
-    float: left;
+    float: right;
   }
   &__panel:first-child {
     margin-right: 10px
@@ -86,7 +86,9 @@
     width: 35px;
     height: 35px;
     margin: 2px;
+    
   }
+
 
 }
 .noAdmin {
@@ -104,5 +106,28 @@
   }
   .buttonImage {
     float: left;
+  }
+}
+
+@media (max-width: 670px) {
+  .users {
+    &__panel {
+      width: 100%;
+      // max-height: 30vh;
+    }
+    &__panel:first-child {
+    margin-right: 0px
+    }
+  }
+  .userList {
+    max-height: 50vh;
+    .user__action {
+      transform: rotate(-90deg);
+    }
+  }
+}
+@media (max-width: 600px) {
+  h2 {
+    font-size: 3.8rem;
   }
 }

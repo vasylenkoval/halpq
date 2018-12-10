@@ -239,7 +239,8 @@ p {
   overflow: hidden; }
 
 .header {
-  width: 100%; }
+  width: 100%;
+  background: #ffffff; }
   .header__logo {
     width: 94px;
     height: 94px;
@@ -457,7 +458,8 @@ html {
 
 body {
   font-size: 1.6rem;
-  font-family: "Raleway", sans-serif; }
+  font-family: "Raleway", sans-serif;
+  background: #f6f7f9; }
 
 .wrapper {
   width: 90%;
@@ -471,8 +473,7 @@ img {
   width: 100%; }
 
 .userManagement {
-  background: #f6f7f9;
-  height: 90vh; }
+  background: #f6f7f9; }
   .userManagement p, .userManagement h4 {
     color: #231f1f; }
 
@@ -484,7 +485,7 @@ img {
   padding: 20px 0; }
   .users__panel {
     width: calc(50% - 5px);
-    float: left; }
+    float: right; }
   .users__panel:first-child {
     margin-right: 10px; }
   .users__panelTitle {
@@ -546,3 +547,17 @@ img {
 
 .admin .buttonImage {
   float: left; }
+
+@media (max-width: 670px) {
+  .users__panel {
+    width: 100%; }
+  .users__panel:first-child {
+    margin-right: 0px; }
+  .userList {
+    max-height: 50vh; }
+    .userList .user__action {
+      transform: rotate(-90deg); } }
+
+@media (max-width: 600px) {
+  h2 {
+    font-size: 3.8rem; } }
