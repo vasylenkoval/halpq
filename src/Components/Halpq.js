@@ -5,6 +5,8 @@ import QuestionForm from './QuestionForm';
 import QuestionList from './QuestionList';
 import ArchiveList from './ArchiveList';
 
+const dbRef = firebase.database();
+
 class Halpq extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +17,20 @@ class Halpq extends Component {
       archiveToggle: false,
       classKey: this.props.match.params.classroomid,
       classroomName: '',
+      isClassroomDisabled: false,
     };
+  }
+
+  componentDidMount() {
+    dbRef.ref(`/Classrooms/${this.state.classKey}`).once('value', snapshot => {
+      this.setState({
+        classroomName: snapshot.val().classroomName,
+        isClassroomDisabled: !(
+          snapshot.val().disabled === undefined ||
+          snapshot.val().disabled === false
+        ),
+      });
+    });
   }
 
   handleClick = e => {
@@ -30,48 +45,58 @@ class Halpq extends Component {
     }
   };
 
-  componentDidMount() {
-    const dbRef = firebase.database();
-    dbRef.ref(`/Classrooms/${this.state.classKey}`).once('value', snapshot => {
+  disableClassroom = () => {
+    if (this.state.isClassroomDisabled) {
+      dbRef.ref(`/Classrooms/${this.state.classKey}/disabled`).set(false);
       this.setState({
-        classroomName: snapshot.val().classroomName,
+        isClassroomDisabled: false,
       });
-    });
-  }
+    } else {
+      dbRef.ref(`/Classrooms/${this.state.classKey}/disabled`).set(true);
+      this.setState({
+        isClassroomDisabled: true,
+      });
+    }
+  };
 
   render() {
+    const {
+      isClassroomDisabled,
+      archiveToggle,
+      classKey,
+      user,
+      isAdmin,
+      classroomName,
+    } = this.state;
     return (
       <div>
-        <h2>{this.state.classroomName}</h2>
+        <h2>{classroomName}</h2>
         <div className="returnLink">
           <Link to="/">Return to Classrooms</Link>
         </div>
 
-        <button onClick={this.handleClick} name="Active">
+        <button type="button" onClick={this.handleClick} name="Active">
           Active Questions
         </button>
-        <button onClick={this.handleClick} name="Completed">
+        <button type="button" onClick={this.handleClick} name="Completed">
           Completed Questions
         </button>
-        {!this.state.archiveToggle ? (
+        <button type="button" onClick={this.disableClassroom}>
+          {isClassroomDisabled ? 'Enable classroom' : 'Disable classroom'}
+        </button>
+        {!archiveToggle ? (
           <div>
-            <QuestionList
-              classKey={this.state.classKey}
-              user={this.state.user}
-              isAdmin={this.state.isAdmin}
-            />
-            <QuestionForm
-              user={this.state.user}
-              isAdmin={this.state.isAdmin}
-              classKey={this.state.classKey}
-            />
+            <QuestionList classKey={classKey} user={user} isAdmin={isAdmin} />
+            {isClassroomDisabled ? (
+              <p>
+                <strong>This classroom is temporarily disabled 🙊</strong>
+              </p>
+            ) : (
+              <QuestionForm user={user} isAdmin={isAdmin} classKey={classKey} />
+            )}
           </div>
         ) : (
-          <ArchiveList
-            classKey={this.state.classKey}
-            user={this.state.user}
-            isAdmin={this.state.isAdmin}
-          />
+          <ArchiveList classKey={classKey} user={user} isAdmin={isAdmin} />
         )}
       </div>
     );

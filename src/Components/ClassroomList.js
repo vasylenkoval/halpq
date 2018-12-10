@@ -34,11 +34,13 @@ class ClassroomList extends Component {
       const classroomMatch = Object.entries(snapshot.val()).filter(element =>
         element[0].includes(enrollPassword)
       );
-      dbRef.ref(`/Classrooms/${this.state.classKey}`).once('value', snapshot => {
-     this.setState({
-       classroomName: snapshot.val().classroomName,
-     });
-     });
+      dbRef
+        .ref(`/Classrooms/${this.state.classKey}`)
+        .once('value', snapshot => {
+          this.setState({
+            classroomName: snapshot.val().classroomName,
+          });
+        });
       if (classroomMatch.length > 0) {
         // If there is a match - record a student in classroom ref
         dbRef
