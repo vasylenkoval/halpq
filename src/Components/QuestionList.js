@@ -62,23 +62,25 @@ class QuestionList extends Component {
               {/* <img src={question[1].photoURL} alt="" /> */}
             </div>
             <div className="question__actions__admins">
-              {question[1].isBeingHelped ? (
-                <CompleteQuestion
-                  user={this.state.user}
-                  isAdmin={this.state.isAdmin}
-                  classKey={this.state.classKey}
-                  questionKey={question[0]}
-                  questionOwner
-                />
-              ) : (
-                <BeingHelped
-                  user={this.state.user}
-                  isAdmin={this.state.isAdmin}
-                  classKey={this.state.classKey}
-                  questionKey={question[0]}
-                  questionOwner
-                />
-              )}
+              {this.state.isAdmin ? (
+                question[1].isBeingHelped ? (
+                  <CompleteQuestion
+                    user={this.state.user}
+                    isAdmin={this.state.isAdmin}
+                    classKey={this.state.classKey}
+                    questionKey={question[0]}
+                    questionOwner
+                  />
+                ) : (
+                  <BeingHelped
+                    user={this.state.user}
+                    isAdmin={this.state.isAdmin}
+                    classKey={this.state.classKey}
+                    questionKey={question[0]}
+                    questionOwner
+                  />
+                )
+              ) : null}
               <QuestionConversation
                 user={this.state.user}
                 isAdmin={this.state.isAdmin}
