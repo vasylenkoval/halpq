@@ -263,11 +263,47 @@ p {
   width: '60px';
   float: 'right'; }
 
-.classroomlist__item {
-  padding: 20px 0;
-  border: 1px solid black;
-  font-size: 2rem;
-  margin: 30px; }
+.classroomlist {
+  color: #231f1f;
+  background-color: #f6f7f9; }
+  .classroomlist button {
+    outline: 0; }
+  .classroomlist a {
+    text-decoration: none;
+    color: #231f1f;
+    width: 70%;
+    display: inline-block; }
+  .classroomlist__title {
+    padding: 50px 0; }
+  .classroomlist__wrapper {
+    width: 90%;
+    margin: 0 auto; }
+  .classroomlist__item {
+    min-height: 200px;
+    background-color: #ffffff;
+    box-shadow: 0 3px 15px 0 #00000021;
+    padding: 30px;
+    font-size: 2rem;
+    margin-bottom: 40px; }
+    .classroomlist__item__name {
+      padding-bottom: 13px; }
+    .classroomlist__item:hover {
+      box-shadow: 0 3px 15px 0 #0000003a; }
+    .classroomlist__item:hover .classroomlist__item__name {
+      color: #e40015; }
+  .classroomlist__addbutton {
+    width: 70px;
+    height: 70px;
+    border: none;
+    background-color: #e40015;
+    border-radius: 100%;
+    font-size: 3rem;
+    color: #ffffff;
+    position: fixed;
+    bottom: 60px;
+    right: 60px; }
+    .classroomlist__addbutton:hover {
+      background-color: #b10010; }
 
 .chat {
   display: block;
@@ -304,10 +340,13 @@ body {
   max-width: 1240px;
   margin: 0 auto; }
 
+h2 {
+  font-size: 6rem; }
+
 .userManagement {
-  background: #F6F7F9; }
+  background: #f6f7f9; }
   .userManagement p, .userManagement h4 {
-    color: #231F1F; }
+    color: #231f1f; }
 
 .users {
   padding: 20px 0; }
@@ -319,7 +358,7 @@ body {
   .users__panelTitle {
     font-size: 3rem;
     line-height: 2rem;
-    color: #231F1F; }
+    color: #231f1f; }
   .users__panelTitle--admin {
     text-align: right; }
 
@@ -331,19 +370,19 @@ body {
 .returnLink p {
   font-size: 1.8rem;
   float: left;
-  color: #231F1F; }
+  color: #231f1f; }
 
 .userList {
-  border: 1px solid #787E8B;
-  border-top: 10px solid #787E8B;
-  border-bottom: 10px solid #787E8B;
-  background: #787E8B;
+  border: 1px solid #787e8b;
+  border-top: 10px solid #787e8b;
+  border-bottom: 10px solid #787e8b;
+  background: #787e8b;
   padding: 0 9px;
   border-radius: 5px;
   max-height: 50vh;
   overflow-x: scroll; }
   .userList__user {
-    background: #F6F7F9;
+    background: #f6f7f9;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px; }
@@ -357,7 +396,7 @@ body {
     float: right; }
 
 .user__button {
-  background: #F6F7F9;
+  background: #f6f7f9;
   border: none;
   padding: 2px;
   cursor: pointer; }
