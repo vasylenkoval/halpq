@@ -21,20 +21,27 @@
   &__item {
     min-height: 200px;
     background-color: $white;
-    box-shadow: 0 3px 15px 0 #00000021;
+    box-shadow: 0 3px 15px 0 #00000028;
     padding: 30px;
     font-size: 2rem;
     margin-bottom: 40px;
     &__name {
       padding-bottom: 13px;
-      font-size: 2.4rem;
+      font-size: 2.6rem;
       transition: color 0.1s;
+      display: inline-block;
     }
     &:hover {
-      box-shadow: 0 3px 15px 0 #0000003a;
+      box-shadow: 0 3px 15px 0 #0000004f;
     }
     &:hover &__name {
       color: $primaryAccent;
+    }
+    &__password {
+      float: right;
+      span {
+        font-weight: bold;
+      }
     }
   }
   &__addbutton {
@@ -49,9 +56,46 @@
     bottom: 60px;
     right: 60px;
     transition: transform 0.5s;
+    box-shadow: 3px 3px 15px 0 #00000028;
+    cursor: pointer;
     &:hover {
       background-color: darken($primaryAccent, 2%);
       transform: rotateZ(90deg);
     }
   }
+  &__form {
+    width: 300px;
+    background: $white;
+    position: fixed;
+    bottom: 150px;
+    right: 60px;
+    box-shadow: 0 3px 15px 0 #00000021;
+    &__input,
+    &__submit {
+      height: 50px;
+      text-align: center;
+      display: block;
+      width: 100%;
+      border: 0;
+      outline: 0;
+    }
+    &__submit {
+      background-color: $primaryAccent;
+      color: $white;
+      &:hover {
+        background-color: darken($primaryAccent, 2%);
+        cursor: pointer;
+      }
+    }
+  }
+  &__disabled {
+    background-color: rgba(0, 0, 0, 0.151);
+    color: rgba(0, 0, 0, 0.63);
+  }
+}
+
+.disabled__text {
+  float: right;
+  font-weight: bold;
+  line-height: 40px;
 }

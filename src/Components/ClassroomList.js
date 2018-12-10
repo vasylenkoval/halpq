@@ -194,11 +194,19 @@ class ClassroomList extends Component {
           </button>
 
           {activateForm ? (
-            <form onSubmit={this.conditionalAction}>
-              <label htmlFor="conditional-input">
+            <form
+              className="classroomlist__form"
+              onSubmit={this.conditionalAction}
+              autoComplete="off"
+            >
+              <label
+                className="classroomlist__form__label visuallyhidden"
+                htmlFor="conditional-input"
+              >
                 {isAdmin ? 'Create new classroom' : 'Join Classroom'}
               </label>
               <input
+                className="classroomlist__form__input"
                 type="text"
                 min
                 placeholder={
@@ -209,7 +217,9 @@ class ClassroomList extends Component {
                 value={userInput}
                 minLength={8}
               />
-              <button type="submit">Submit</button>
+              <button className="classroomlist__form__submit" type="submit">
+                {isAdmin ? 'New classroom' : 'Join classroom'}
+              </button>
             </form>
           ) : null}
         </div>
