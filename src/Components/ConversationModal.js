@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../firebase';
+import closeIcon from '../assets/closeIcon.svg';
 
 const dbRef = firebase.database();
 
@@ -13,6 +14,7 @@ class ConversationModel extends Component {
       user: this.props.user,
       questionKey: this.props.questionKey,
       questionOwner: false,
+      index: 0,
     };
   }
 
@@ -27,7 +29,6 @@ class ConversationModel extends Component {
       dateCreated: +new Date(),
     });
     this.setState({ userInput: '' });
-    // console.log(dbRef.ref.parent.key);
   };
 
   handleChange = e => {
@@ -46,7 +47,6 @@ class ConversationModel extends Component {
             questionOwner: true,
           });
         }
-        // console.log(this.state.questionOwner, snapshot.val().uid)
       });
   }
 
@@ -58,73 +58,68 @@ class ConversationModel extends Component {
 
   render() {
     return (
-      <div style={modal}>
-        <div style={modalMain}>
+      <div className="chat">
+        <div className="chat__convo">
           <button type="button" id="close" onClick={this.props.closeModal}>
-            X
+            <div className="chat__closeIcon">
+              <img src={closeIcon} alt="" />
+            </div>
           </button>
           {this.props.chatArray.map(chat => (
-            <div className="" key={chat[0]}>
-              <div className="chat__messageContent">
-                <div
-                  className="chat__chatContent"
-                  style={{ textAlign: 'right' }}
-                >
-                  <p>{chat[1].content}</p>
-                </div>
-                <div
-                  className="chat__userInfo"
-                  style={{ textAlign: 'right', fontWeight: 'bold' }}
-                >
-                  <p>{chat[1].name}</p>
-                  {/* <img src={chat[1].photoURL} alt="" /> */}
-                </div>
+            <div className="chat__message" key={chat[0]}>
+              <div className="chat__userInfo">
+                <p>{chat[1].name}</p>
+                {/* <img src={chat[1].photoURL} alt="" /> */}
+              </div>
+              <div className="chat__chatContent">
+                <p>{chat[1].content}</p>
               </div>
             </div>
           ))}
-          {this.state.questionOwner ? (
-            <form action="" onSubmit={this.handleSubmit} className="chat__form">
-              <input
-                type="text"
-                name=""
-                onChange={this.handleChange}
-                value={this.state.userInput}
-                id="submitInput"
-                className="chat__messageInput"
-              />
-              <input
-                type="submit"
-                id="submitChatMessage"
-                style={{ display: 'inline-block', width: '10%' }}
-                className="chat_buttonSubmit"
-              />
-            </form>
-          ) : null}
         </div>
+        {/* <div className="chat__inputArea"> */}
+        {this.state.questionOwner ? (
+          <form action="" onSubmit={this.handleSubmit}>
+            <input
+              type="text"
+              name=""
+              onChange={this.handleChange}
+              value={this.state.userInput}
+              id="submitInput"
+              className="chat__messageInput"
+            />
+            <input
+              type="submit"
+              id="submitChatMessage"
+              className="chat__buttonSubmit"
+            />
+          </form>
+        ) : null}
       </div>
+      // </div>
     );
   }
 }
 
-const modal = {
-  position: 'fixed',
-  top: 0,
-  left: 0,
-  width: '100%',
-  display: 'block',
-  height: '100%',
-  background: 'rgba(35, 31, 31, 0.8)',
-};
+// const modal = {
+//   position: 'fixed',
+//   top: 0,
+//   left: 0,
+//   width: '100%',
+//   display: 'block',
+//   height: '100%',
+//   background: 'rgba(35, 31, 31, 0.8)',
+// };
 
-const modalMain = {
-  position: 'fixed',
-  display: 'block',
-  background: 'white',
-  width: '80%',
-  height: 'auto',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-};
+// const modalMain = {
+//   position: 'fixed',
+//   display: 'block',
+//   background: 'white',
+//   width: '80%',
+//   height: 'auto',
+//   top: '50%',
+//   left: '50%',
+//   transform: 'translate(-50%, -50%)',
+// };
 
 export default ConversationModel;
