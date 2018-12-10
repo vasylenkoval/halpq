@@ -1,10 +1,8 @@
 .userManagement {
   background: $lightColor;
+  height: 90vh;
   p, h4 {
     color: $darkColor;
-  }
-  h2 {
-    font-size: 4rem;
   }
 }
 
@@ -12,11 +10,10 @@
 
 .users {
   // border: 1px dashed black;
+  margin: 10px 0;
   padding: 20px 0;
   &__panel {
-    // border: 1px dashed red;
     width: calc(50% - 5px);
-    // margin: 0 10px;
     float: left;
   }
   &__panel:first-child {
@@ -24,15 +21,19 @@
   }
   &__panelTitle {
     font-size: 3rem;
-    line-height: 2rem;
+    padding-left: 5px;
     color: $darkColor;
+    
   }
   &__panelTitle--admin {
+    padding-right: 5px;
     text-align: right; 
   }
 }
 
 .returnLink {
+    width: 175px;
+
   // margin-top: 10px;
   // border: 1px solid green;
 
@@ -50,22 +51,23 @@
 }
 
 .userList {
-    border: 1px solid $darkNeutral;
-    border-top: 10px solid $darkNeutral;
-    border-bottom: 10px solid $darkNeutral;
-    background: $darkNeutral;
-    padding: 0 9px; //Yes. 9. to account for side borders 1px making it 10px. Not about to go for 11px.
-    border-radius: 5px;
-    max-height: 50vh;
+    // border: 1px solid $white;
+    // border-top: 10px solid $white;
+    // border-bottom: 10px solid $white;
+    // background: $white;
+    // box-shadow: 0 3px 15px 0 #0000003a;
+    padding: 5px; //Yes. 9. to account for side borders 1px making it 10px. Not about to go for 11px.
+    max-height: 60vh;
     overflow-x: scroll;
     &__user {
-      background: $lightColor;
-      border-radius: 5px;
+      background: $white;
+      box-shadow: 0px 2px 5px 0 #0000003a, 0px 2px 5px 0 #0000003a;
+      // border-radius: 5px;
       padding: 10px;
       margin-bottom: 10px; 
     }
     &__user:last-child {
-      margin-bottom: 0px; 
+      margin-bottom: 5px; 
     }
     .user__details {
       float: left;
@@ -78,7 +80,7 @@
     }
 }
 .user__button {
-  background: $lightColor;
+  background: transparent;
   border: none;
   padding: 2px;
   cursor: pointer;
@@ -88,10 +90,14 @@
     height: 35px;
     margin: 2px;
   }
-}
 
+}
+.noAdmin {
+  text-align: right;
+}
 //specific to Admin side. just aligning opposite to rest
 .admin {
+
   .user__details {
     float: right;
     text-align: right;
