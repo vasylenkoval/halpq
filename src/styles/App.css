@@ -270,7 +270,10 @@ p {
   display: inline-block; }
 
 .userManagementLink {
+  width: 40px;
   float: left; }
+  .userManagementLink:hover svg path {
+    fill: #e40015; }
 
 .userDetails {
   float: left; }
@@ -284,8 +287,33 @@ p {
   .userDetails .logOut {
     float: left;
     margin-left: 10px; }
+    .userDetails .logOut:hover svg path {
+      fill: #e40015; }
   .userDetails__text {
     float: left; }
+
+@media (max-width: 680px) {
+  .header__title {
+    margin-top: 8px; }
+    .header__title h4 {
+      display: none; } }
+
+@media (max-width: 530px) {
+  .header__logo {
+    width: 80px;
+    height: 80px; }
+  .header__title {
+    margin-top: 14px; }
+    .header__title h1 {
+      font-size: 3.2rem; }
+  .userDetails__text {
+    display: none; }
+  .userDetails__image {
+    width: 35px; }
+  .logOut__img {
+    width: 35px; }
+  .userManagementLink {
+    width: 35px; } }
 
 .userMgmt {
   width: '60px';
