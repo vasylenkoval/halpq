@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../firebase';
+import closeIcon from '../assets/closeIcon.svg'
 
 const dbRef = firebase.database();
 
@@ -27,7 +28,6 @@ class ConversationModel extends Component {
       dateCreated: +new Date(),
     });
     this.setState({ userInput: '' });
-    // console.log(dbRef.ref.parent.key);
   };
 
   handleChange = e => {
@@ -58,10 +58,10 @@ class ConversationModel extends Component {
 
   render() {
     return (
-      <div style={modal}>
-        <div style={modalMain}>
-          <button type="button" id="close" onClick={this.props.closeModal}>
-            X
+      <div className="chat">
+        <div className="chat__Main">
+          <button type="button" id="close" className="chat__closeButton" onClick={this.props.closeModal}>
+            <img src={closeIcon} alt=""/>
           </button>
           {this.props.chatArray.map(chat => (
             <div className="" key={chat[0]}>
