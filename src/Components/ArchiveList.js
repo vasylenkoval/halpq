@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import CompleteQuestion from './CompleteQuestion';
-import BeingHelped from './BeingHelped';
+import DeleteQuestion from './DeleteQuestion';
 import QuestionConversation from './QuestionConversation';
 
 class AchiveList extends Component {
@@ -39,10 +38,10 @@ class AchiveList extends Component {
     return (
       <div>
         <h2>
-          {this.props.classroomName} {'Completed Questions'}
+          {this.state.classroomName} {'Completed Questions'}
         </h2>
 
-        {this.props.questions.map(question => (
+        {this.state.questions.map(question => (
           <div
             style={{ border: `1px solid green` }}
             className="question"
@@ -58,7 +57,7 @@ class AchiveList extends Component {
               {/* <img src={question[1].photoURL} alt="" /> */}
             </div>
             <div className="question__actions__admins">
-              <BeingHelped
+              <DeleteQuestion
                 user={this.props.user}
                 isAdmin={this.props.isAdmin}
                 classKey={this.props.classKey}
