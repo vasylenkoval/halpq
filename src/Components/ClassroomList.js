@@ -22,12 +22,13 @@ class ClassroomList extends Component {
   }
 
   componentWillUnmount() {
+    const { user } = this.state;
     dbRef.ref(`/Classrooms/`).off();
-    dbRef.ref(`/Users/Students/${this.state.user.uid}/enrolledClasses/`).off();
+    dbRef.ref(`/Users/Students/${user.uid}/enrolledClasses/`).off();
   }
 
   classroomEnroll = enrollPassword => {
-    const dbRef = firebase.database();
+    const { user, isAdmin } = this.state;
     dbRef.ref(`/Classrooms`).once('value', snapshot => {
       const classroomMatch = Object.entries(snapshot.val()).filter(element =>
         element[0].includes(enrollPassword)
@@ -36,17 +37,15 @@ class ClassroomList extends Component {
         // If there is a match - record a student in classroom ref
         dbRef
           .ref(
-            `/Classrooms/${classroomMatch[0][0]}/enrolledStudents/${
-              this.state.user.uid
-            }`
+            `/Classrooms/${classroomMatch[0][0]}/enrolledStudents/${user.uid}`
           )
-          .set(this.state.user.displayName);
+          .set(user.displayName);
 
         // Also record a class key in student's own profile
         dbRef
           .ref(
-            `/Users/${this.state.isAdmin ? `Admins` : `Students`}/${
-              this.state.user.uid
+            `/Users/${isAdmin ? `Admins` : `Students`}/${
+              user.uid
             }/enrolledClasses/${classroomMatch[0][0]}`
           )
           .set(`${classroomMatch[0][1].classroomName}`);
@@ -58,12 +57,13 @@ class ClassroomList extends Component {
   };
 
   createClassList = () => {
+    const { isAdmin, user } = this.state;
     const studentClassList = [];
     let studentKeys = [];
     let adminKeys = [];
     let adminClassList = [];
 
-    if (this.state.isAdmin) {
+    if (isAdmin) {
       dbRef.ref('/Classrooms/').once('value', snapshot => {
         adminKeys = Object.keys(snapshot.val());
         adminClassList = Object.entries(snapshot.val()).map(
@@ -76,7 +76,7 @@ class ClassroomList extends Component {
       });
     } else {
       dbRef
-        .ref(`Users/Students/${this.state.user.uid}/enrolledClasses`)
+        .ref(`Users/Students/${user.uid}/enrolledClasses`)
         .once('value', snapshot => {
           if (snapshot.val()) {
             studentKeys = Object.entries(snapshot.val()).map(
@@ -103,7 +103,6 @@ class ClassroomList extends Component {
   };
 
   createClassroom = name => {
-    const dbRef = firebase.database();
     dbRef.ref(`/Classrooms/`).push({
       classroomName: name,
       enrolledStudents: 0,
@@ -112,7 +111,8 @@ class ClassroomList extends Component {
   };
 
   handleClick = e => {
-    if (this.state.activateForm) {
+    const { activateForm } = this.state;
+    if (activateForm) {
       this.setState({
         activateForm: false,
       });
@@ -130,11 +130,12 @@ class ClassroomList extends Component {
   };
 
   conditionalAction = e => {
+    const { userInput, isAdmin } = this.state;
     e.preventDefault();
-    if (/\S/.test(this.state.userInput)) {
-      this.state.isAdmin
-        ? this.createClassroom(this.state.userInput)
-        : this.classroomEnroll(this.state.userInput);
+    if (/\S/.test(userInput)) {
+      isAdmin
+        ? this.createClassroom(userInput)
+        : this.classroomEnroll(userInput);
       this.setState({
         activateForm: false,
       });
@@ -144,16 +145,24 @@ class ClassroomList extends Component {
   };
 
   render() {
+    const {
+      classKeys,
+      classList,
+      user,
+      isAdmin,
+      activateForm,
+      userInput,
+    } = this.state;
     return (
       <div className="classroomlist">
         <div className="Component--Title">
           <h2>Classroom List</h2>
         </div>
-        {this.state.classList.map((element, i) => (
+        {classList.map((element, i) => (
           <Link
-            to={`/classroom/${this.state.classKeys[i]}`}
-            key={this.state.classKeys[i]}
-            params={{ user: this.state.user }}
+            to={`/classroom/${classKeys[i]}`}
+            key={classKeys[i]}
+            params={{ user }}
           >
             <ClassroomListItem
               classroomName={element.classroomName}
@@ -162,8 +171,8 @@ class ClassroomList extends Component {
                   ? Object.keys(element.enrolledStudents).length
                   : 0
               }
-              key={this.state.classKeys[i]}
-              password={this.state.classKeys[i].slice(1, 9)}
+              key={classKeys[i]}
+              password={classKeys[i].slice(1, 9)}
             />
           </Link>
         ))}
@@ -171,31 +180,25 @@ class ClassroomList extends Component {
         <button
           type="button"
           onClick={this.handleClick}
-          name={
-            this.state.isAdmin
-              ? 'classroomBeingCreated'
-              : 'classroomBeingJoined'
-          }
+          name={isAdmin ? 'classroomBeingCreated' : 'classroomBeingJoined'}
         >
-          {this.state.isAdmin ? 'Add Classroom' : 'Join Classroom'}
+          {isAdmin ? 'Add Classroom' : 'Join Classroom'}
         </button>
 
-        {this.state.activateForm ? (
+        {activateForm ? (
           <div>
             <label htmlFor="conditional-input">
-              {this.state.isAdmin ? 'Create new classroom' : 'Join Classroom'}
+              {isAdmin ? 'Create new classroom' : 'Join Classroom'}
             </label>
             <input
               type="text"
               min
               placeholder={
-                this.state.isAdmin
-                  ? 'Enter classroom name'
-                  : 'Enter your classroom key'
+                isAdmin ? 'Enter classroom name' : 'Enter your classroom key'
               }
               id="conditional-input"
               onChange={this.handleChange}
-              value={this.state.userInput}
+              value={userInput}
               minLength={8}
             />
             <button type="button" onClick={this.conditionalAction}>
