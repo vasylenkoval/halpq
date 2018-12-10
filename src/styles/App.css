@@ -343,7 +343,7 @@ body {
   padding: 0 9px;
   border-radius: 5px;
   max-height: 50vh;
-  overflow: scroll; }
+  overflow-x: scroll; }
   .userList__user {
     background: #F6F7F9;
     border-radius: 5px;
