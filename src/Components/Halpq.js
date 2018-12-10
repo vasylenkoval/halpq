@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import QuestionForm from './QuestionForm';
 import QuestionList from './QuestionList';
+import ArchiveList from './ArchiveList';
 
 class Halpq extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class Halpq extends Component {
       questions: [],
       isAdmin: this.props.isAdmin,
       user: this.props.user,
+      archiveToggle: false,
     };
   }
 
@@ -19,16 +21,26 @@ class Halpq extends Component {
         <div className="returnLink">
           <Link to="/">Return to Classrooms</Link>
         </div>
-        <QuestionList
-          classKey={this.props.match.params.classroomid}
-          user={this.state.user}
-          isAdmin={this.state.isAdmin}
-        />
-        <QuestionForm
-          user={this.state.user}
-          isAdmin={this.state.isAdmin}
-          classKey={this.props.match.params.classroomid}
-        />
+        {!this.state.archiveToggle ? (
+          <div>
+            <QuestionList
+              classKey={this.props.match.params.classroomid}
+              user={this.state.user}
+              isAdmin={this.state.isAdmin}
+            />
+            <QuestionForm
+              user={this.state.user}
+              isAdmin={this.state.isAdmin}
+              classKey={this.props.match.params.classroomid}
+            />
+          </div>
+        ) : (
+          <ArchiveList
+            classKey={this.props.match.params.classroomid}
+            user={this.state.user}
+            isAdmin={this.state.isAdmin}
+          />
+        )}
       </div>
     );
   }
