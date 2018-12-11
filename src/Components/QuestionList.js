@@ -49,13 +49,15 @@ class QuestionList extends Component {
             key={question[0]}
             // questionKey={question[0]}
           >
-            <div className="question__questionContent">
+            <div className="question__userInfo">
+              <div className="question__userInfo__image">
+                <img src={question[1].photoURL} alt="" />
+                <p>{question[1].name}</p>
+              </div>
+            </div>
+            <div className="question__questionContent clearfix">
               <p>{question[1].location}</p>
               <p>{question[1].content}</p>
-            </div>
-            <div className="question__userInfo">
-              <p>{question[1].name}</p>
-              {/* <img src={question[1].photoURL} alt="" /> */}
             </div>
             <div className="question__actions__admins">
               {this.state.isAdmin ? (
