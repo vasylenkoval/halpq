@@ -45,6 +45,9 @@
   width: 40px;
   // border: 1px solid purple;
   float: left;
+  svg path {
+      transition: fill 0.1s;
+    }
   &:hover svg path {
     fill: $primaryAccent;
   }
@@ -67,6 +70,9 @@
     // border: 1px dashed black;
     float: left;
     margin-left: 10px;
+    svg path {
+      transition: fill 0.1s;
+    }
     &:hover svg path {
       fill: $primaryAccent;
     }
@@ -85,7 +91,7 @@
     }
   }
 }
-@media (max-width: 530px) {
+@media (max-width: 560px) {
   .header {
     &__logo {
       width: 80px;
