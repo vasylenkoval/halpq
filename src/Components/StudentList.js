@@ -15,7 +15,8 @@ class StudentList extends Component {
               <p>{student[1].email}</p>
             </div>
             <div className="user__action">
-              <button className="user__button clearfix"
+              <button
+                className="user__button clearfix"
                 type="button"
                 onClick={() => {
                   makeAdmin(`${student[0]}`);
