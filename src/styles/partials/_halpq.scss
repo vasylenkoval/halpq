@@ -4,7 +4,7 @@
   position: relative;
   &__title {
     margin-top: 50px;
-    border: 1px solid red;
+    // border: 1px solid red;
   }
   &__filter {
     background: $lightColor;
@@ -45,7 +45,6 @@
   padding: 10px;
   background: $darkNeutral;
   position: relative;
-  border: 1px solid red;
   &__title {
     padding: 50px 0;
     font-size: 4rem;
