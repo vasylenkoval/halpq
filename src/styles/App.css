@@ -770,6 +770,10 @@ button {
   .chat__convo {
     border-radius: 0; } }
 
+@supports (-moz-appearance: none) {
+  .chat__invisible {
+    margin-bottom: 45px; } }
+
 .userManagement {
   background: #f6f7f9; }
   .userManagement p, .userManagement h4 {

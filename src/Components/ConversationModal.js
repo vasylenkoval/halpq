@@ -100,6 +100,7 @@ class ConversationModel extends Component {
               </div>
             ))}
             <div
+              className="chat__invisible"
               style={{ float: 'left', clear: 'both' }}
               ref={el => {
                 this.messagesEnd = el;
@@ -124,6 +125,7 @@ class ConversationModel extends Component {
               />
               <input
                 type="submit"
+                value="Submit"
                 id="submitChatMessage"
                 className="chat__buttonSubmit"
               />
