@@ -7,12 +7,13 @@ class QuestionForm extends Component {
     this.state = {
       question: '',
       location: '',
+      activateForm: false,
     };
   }
 
-  createQuestion = (classroomRef, questionContent, userLocation) => {
+  createQuestion = (questionRef, questionContent, userLocation) => {
     const dbRef = firebase.database();
-    dbRef.ref(`/Questions/${classroomRef}`).push({
+    dbRef.ref(`/Questions/${questionRef}`).push({
       name: this.props.user.displayName,
       content: questionContent,
       uid: this.props.user.uid,
@@ -25,6 +26,19 @@ class QuestionForm extends Component {
       whoHelped: 0,
       isBeingHelped: false,
     });
+  };
+
+  handleClick = e => {
+    const { activateForm } = this.state;
+    if (activateForm) {
+      this.setState({
+        activateForm: false,
+      });
+    } else {
+      this.setState({
+        activateForm: true,
+      });
+    }
   };
 
   handleSubmit = e => {
@@ -58,19 +72,23 @@ class QuestionForm extends Component {
   render() {
     return (
       <div className="questionForm">
-        {/* <h3>---Ask your question---</h3> */}
         <form action="#" onSubmit={this.handleSubmit}>
-          <label htmlFor="question">Question</label>
+          <label htmlFor="question" className="visuallyhidden">
+            Question
+          </label>
           <textarea
             value={this.state.question}
             onChange={this.handleChange}
             name="question"
             id="question"
             placeholder="Enter your question here..."
-            cols="30"
+            cols="36"
             rows="6"
+            minLength={1}
           />
-          <label htmlFor="location">Location</label>
+          <label htmlFor="location" className="visuallyhidden">
+            >Location
+          </label>
           <input
             required
             value={this.state.location}
@@ -78,10 +96,54 @@ class QuestionForm extends Component {
             type="text"
             name="location"
             id="location"
+            minLength={1}
             placeholder="Enter your location at HackerYou"
           />
           <input type="submit" />
         </form>
+        {/* Show when window size is below 750px's */}
+        {this.state.activateForm ? (
+          <div className="question__form__backdrop" />
+        ) : null}
+        <button
+          type="button"
+          className="question__addbutton"
+          onClick={this.handleClick}
+          name="addQuestion"
+        >
+          ＋
+        </button>
+        {this.state.activateForm ? (
+          <form
+            className="question__form"
+            onSubmit={this.conditionalAction}
+            autoComplete="off"
+          >
+            <input
+              className="question__form__input"
+              type="text"
+              min
+              placeholder="Enter question here"
+              id="conditional-input"
+              onChange={this.handleChange}
+              value={this.state.question}
+              minLength={1}
+            />
+            <input
+              className="question__form__input"
+              type="text"
+              min
+              placeholder="Enter location"
+              id="conditional-input"
+              onChange={this.handleChange}
+              value={this.state.question}
+              minLength={1}
+            />
+            <button className="question__form__submit" type="submit">
+              {'New question'}
+            </button>
+          </form>
+        ) : null}
       </div>
     );
   }

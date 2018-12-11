@@ -1,0 +1,18 @@
+.logIn{
+     width: 90%;
+     margin: 0 auto;
+     &__button {
+     display: block;
+     width: 50%;
+     background: $secondaryAccent;
+     color: $white;
+     padding: 2%;
+     font-size: 3rem;
+     text-align: center;
+     margin: 150px auto;
+          &:hover {
+               background: $primaryAccent;
+          }
+     }
+
+}

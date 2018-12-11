@@ -112,7 +112,10 @@ class App extends Component {
                 />
               </div>
             ) : (
-              <button onClick={this.logIn}>LogIn</button>
+              <div className="logIn">
+                <button className="logIn__button" onClick={this.logIn}>LogIn</button>
+
+              </div>
             )}
           </div>
         </Router>
