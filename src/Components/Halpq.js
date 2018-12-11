@@ -246,8 +246,8 @@ class Halpq extends Component {
             <div className="question__list clearfix">
               <QuestionList classKey={classKey} user={user} isAdmin={isAdmin} />
               {isClassroomDisabled ? (
-                <p>
-                  <strong>This classroom is temporarily disabled 🙊</strong>
+                <p className="disabledClass__notify">
+                  <strong>This classroom is temporarily disabled </strong>
                 </p>
               ) : (
                 <QuestionForm
