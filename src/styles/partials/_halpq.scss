@@ -63,6 +63,13 @@
     font-size: 1.8rem;
     float: left;
     color: $darkColor;
+    transition: color 0.1s;
+    &:hover {
+      color: $primaryAccent;
+    }
+  }
+  img svg path {
+    fill: green;
   }
 }
 
