@@ -21,21 +21,23 @@ class ConversationModel extends Component {
     dbRef
       .ref(`/Questions/${this.state.classKey}/${this.state.questionKey}`)
       .once('value', snapshot => {
-        if (snapshot.exists() || snapshot.val === null) {
-          this.setState({
-            questionOwner: false,
-          });
-        } else if (
-          snapshot.val().uid === this.state.user.uid ||
-          this.state.isAdmin
-        ) {
-          this.setState({
-            questionOwner: true,
-          });
+        if (snapshot.exists()) {
+          if (
+            snapshot.val().uid === this.state.user.uid ||
+            this.state.isAdmin
+          ) {
+            this.setState({
+              questionOwner: true,
+            });
+          }
         }
       });
     this.scrollToBottom();
   }
+
+  // All admins are able to see all conversations
+  // All users can see all conversations but not respond
+  // Only the question owner can respond to a conversation on his question
 
   componentDidUpdate() {
     this.scrollToBottom();
@@ -93,12 +95,8 @@ class ConversationModel extends Component {
           >
             {this.props.chatArray.map(chat => (
               <div className="chat__message" key={chat[0]}>
-                <div className="chat__userInfo">
-                  <p>{chat[1].name}</p>
-                </div>
-                <div className="chat__chatContent">
-                  <p>{chat[1].content}</p>
-                </div>
+                <div className="chat__userInfo">{chat[1].name}</div>
+                <div className="chat__chatContent">{chat[1].content}</div>
               </div>
             ))}
             <div

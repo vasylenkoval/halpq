@@ -12,11 +12,12 @@ button {
   background: rgba($color: #231f1f, $alpha: 0.9);
   &__controls {
     background-color: $primaryAccent;
-    position: fixed;
+    position: absolute;
     padding: 10px 17px;
     color: $white;
-    z-index: 20;
+    z-index: 10;
     top: 0;
+    left: 0;
     transition: background-color 0.1s;
     &:hover {
       background: darken($primaryAccent, 2%);
@@ -43,12 +44,14 @@ button {
   }
   &__chatContent {
     font-size: 1.8rem;
+    text-align: left;
   }
 
   &__userInfo {
     font-weight: bold;
     color: $secondaryAccent;
     margin-bottom: 10px;
+    text-align: left;
   }
   &__inputArea {
     bottom: 0;
