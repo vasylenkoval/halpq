@@ -72,11 +72,19 @@ class QuestionForm extends Component {
   render() {
     return (
       <div className="questionForm">
-        <form action="#" onSubmit={this.handleSubmit}>
-          <label htmlFor="question" className="visuallyhidden">
+        <form
+          action="#"
+          onSubmit={this.handleSubmit}
+          className="questionForm__desktop"
+        >
+          <label
+            htmlFor="question"
+            className="questionForm__label visuallyhidden"
+          >
             Question
           </label>
           <textarea
+            className="questionForm__input questionForm__questionArea"
             value={this.state.question}
             onChange={this.handleChange}
             name="question"
@@ -85,12 +93,17 @@ class QuestionForm extends Component {
             cols="36"
             rows="6"
             minLength={1}
+            resize="false"
           />
-          <label htmlFor="location" className="visuallyhidden">
+          <label
+            htmlFor="location"
+            className="questionForm__label visuallyhidden"
+          >
             >Location
           </label>
           <input
             required
+            className="questionForm__input"
             value={this.state.location}
             onChange={this.handleChange}
             type="text"
@@ -99,50 +112,51 @@ class QuestionForm extends Component {
             minLength={1}
             placeholder="Enter your location at HackerYou"
           />
-          <input type="submit" />
+          <input type="submit" className="questionForm__submit" />
         </form>
         {/* Show when window size is below 750px's */}
-        {this.state.activateForm ? (
-          <div className="question__form__backdrop" />
-        ) : null}
         <button
           type="button"
-          className="question__addbutton"
+          className="questionForm__addbutton"
           onClick={this.handleClick}
           name="addQuestion"
         >
           ＋
         </button>
         {this.state.activateForm ? (
-          <form
-            className="question__form"
-            onSubmit={this.conditionalAction}
-            autoComplete="off"
-          >
-            <input
-              className="question__form__input"
-              type="text"
-              min
-              placeholder="Enter question here"
-              id="conditional-input"
-              onChange={this.handleChange}
-              value={this.state.question}
-              minLength={1}
-            />
-            <input
-              className="question__form__input"
-              type="text"
-              min
-              placeholder="Enter location"
-              id="conditional-input"
-              onChange={this.handleChange}
-              value={this.state.question}
-              minLength={1}
-            />
-            <button className="question__form__submit" type="submit">
-              {'New question'}
-            </button>
-          </form>
+          <div className="questionForm__mobileWrapper">
+            <form
+              className="questionForm__mobileInner"
+              onSubmit={this.conditionalAction}
+              autoComplete="off"
+            >
+              <textarea
+                className="questionForm__input questionForm__questionArea"
+                value={this.state.question}
+                onChange={this.handleChange}
+                name="question"
+                id="question"
+                placeholder="Enter your question here..."
+                cols="36"
+                rows="6"
+                minLength={1}
+                resize="false"
+              />
+              <input
+                className="questionForm__input"
+                type="text"
+                min
+                placeholder="Enter location"
+                id="location"
+                onChange={this.handleChange}
+                value={this.state.location}
+                minLength={1}
+              />
+              <button className="questionForm__submit" type="submit">
+                {'Submit Query'}
+              </button>
+            </form>
+          </div>
         ) : null}
       </div>
     );
