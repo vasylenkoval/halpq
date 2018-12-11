@@ -1,5 +1,10 @@
-import React, { Component } from "react";
-import Typist from "react-typist";
+import React, { Component } from 'react';
+import Typist from 'react-typist';
+
+const cursor = {
+  show: true,
+  blink: true,
+};
 
 class HeaderTitle extends Component {
   constructor() {
@@ -11,13 +16,73 @@ class HeaderTitle extends Component {
   render() {
     return (
       <div className="header__title">
-        <Typist>
-          <h1>HALPQ</h1>
-          <div className="container">
-            <Typist.Backspace count={0} typeSpeed={70} delay={1000} />
-            <h4> A place to ask your HackerYou questions. </h4>
-          </div>
-        </Typist>
+        <h1>HALPQ</h1>
+        <div className="header__titleContainer">
+          <Typist cursor={cursor} onTypingDone={this.typeLoop}>
+            <span>A place to ask your HackerYou questions. </span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions.</span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions. </span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions.</span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions. </span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions.</span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions. </span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions.</span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions. </span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions.</span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions. </span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions.</span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions. </span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions.</span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions. </span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions.</span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions. </span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions.</span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions. </span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions.</span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions. </span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions.</span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions. </span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions.</span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions. </span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions.</span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions. </span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions.</span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions. </span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions.</span>
+            <Typist.Backspace count={41} delay={3000} />
+            <span>A place to ask your HackerYou questions.</span>
+            
+          </Typist>
+        </div>
       </div>
     );
   }
