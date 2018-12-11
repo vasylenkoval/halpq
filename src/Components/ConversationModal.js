@@ -95,12 +95,8 @@ class ConversationModel extends Component {
           >
             {this.props.chatArray.map(chat => (
               <div className="chat__message" key={chat[0]}>
-                <div className="chat__userInfo">
-                  <p>{chat[1].name}</p>
-                </div>
-                <div className="chat__chatContent">
-                  <p>{chat[1].content}</p>
-                </div>
+                <div className="chat__userInfo">{chat[1].name}</div>
+                <div className="chat__chatContent">{chat[1].content}</div>
               </div>
             ))}
             <div

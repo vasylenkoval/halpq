@@ -550,28 +550,44 @@ span.highlighted {
   box-shadow: 0 3px 15px 0 #00000028;
   padding: 20px;
   font-size: 2rem;
-  margin-bottom: 20px; }
+  margin-bottom: 10px; }
   .question__questionContent {
     font-size: 2rem;
     float: left; }
+  .question__addbutton {
+    height: 70px;
+    width: 70px;
+    border: none;
+    background-color: #e40015;
+    border-radius: 100%;
+    font-size: 3rem;
+    color: #ffffff;
+    position: fixed;
+    bottom: 60px;
+    right: 60px;
+    transition: transform 0.5s;
+    box-shadow: 3px 3px 15px 0 #00000028;
+    cursor: pointer; }
+    .question__addbutton:hover {
+      background-color: #da0014;
+      transform: rotateZ(90deg); }
 
 .questionForm {
   width: 39%;
   float: right; }
+  .questionForm input,
+  .questionForm textarea {
+    height: 55px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 0;
+    letter-spacing: 1px;
+    padding: 5px;
+    font-family: inherit; }
   .questionForm textarea {
     display: block;
     resize: none;
-    width: 100%;
-    border: 0;
-    font-family: inherit;
-    letter-spacing: 1px;
-    padding: 5px; }
-  .questionForm input {
-    height: 40px;
-    width: 100%;
-    margin: 10px 0;
-    border: 0;
-    padding: 5px;
+    height: 200px;
     font-family: inherit; }
   .questionForm input[type='submit'] {
     display: block;
@@ -579,7 +595,7 @@ span.highlighted {
     border: 0;
     background: #e44e48; }
   .questionForm label {
-    display: block;
+    display: none;
     font-weight: bold;
     font-size: 2rem;
     margin-bottom: 10px; }
@@ -663,11 +679,12 @@ button {
   background: rgba(35, 31, 31, 0.9); }
   .chat__controls {
     background-color: #e40015;
-    position: fixed;
+    position: absolute;
     padding: 10px 17px;
     color: #ffffff;
-    z-index: 20;
+    z-index: 10;
     top: 0;
+    left: 0;
     transition: background-color 0.1s; }
     .chat__controls:hover {
       background: #da0014; }
@@ -689,11 +706,13 @@ button {
     padding: 15px;
     word-wrap: break-word; }
   .chat__chatContent {
-    font-size: 1.8rem; }
+    font-size: 1.8rem;
+    text-align: left; }
   .chat__userInfo {
     font-weight: bold;
     color: #e44e48;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    text-align: left; }
   .chat__inputArea {
     bottom: 0;
     left: 0;
