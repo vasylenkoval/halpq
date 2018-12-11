@@ -37,8 +37,8 @@ class QuestionList extends Component {
 
   render() {
     return (
-      <div className="question__list">
-        <h3 className="question__list__title">Active Questions</h3>
+      <div className="question__listing">
+        {/* <h3 className="question__list__title">Active Questions</h3> */}
         {this.state.questions.map((question) => (
           <div
             className={

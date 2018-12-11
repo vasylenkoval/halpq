@@ -1,10 +1,10 @@
 .questionConversation {
+  width: 100%;
+  float: right;
   .buttonImage {
-    width: 35px;
-    height: 35px;
+    width: 50px;
+    height: 50px;
     margin: 2px;
-    & svg path {
-    }
+    float: right;
   }
-
 }

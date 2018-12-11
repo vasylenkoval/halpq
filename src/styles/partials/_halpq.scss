@@ -1,34 +1,46 @@
 .halpq {
   color: $darkColor;
   background: $lightColor;
+  &__title {
+    margin-top: 50px;
+      border: 1px solid red;
+  }
   &__filter {
     background: $lightColor;
     color: $darkColor;
-    padding: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 20px;
     border: 0;
     font-size: 2rem;
     &__active {
-      background: $secondaryAccent;
+      background: $darkNeutral;
     }
   }
   &__toggleclassroom {
     float: right;
-    border: 0;
+    border: 1px solid red;
+    &__active  {
+      fill: $primaryAccent;
+    }
   }
-  &__toggleDisable svg {
-  }
+
   & .buttonImage {
     width: 55px;
     height: 55px;
     margin: 2px;
   }
-  
 }
 
-.halpq_toggleEnable svg path {
+.question__list {
+  color: $darkColor;
+  padding: 10px;
+  background: $darkNeutral;
+  &__title {
+    padding: 50px 0;
+    font-size: 4rem;
+  }
 }
-
-
 
 .returnLink {
   width: 175px;
