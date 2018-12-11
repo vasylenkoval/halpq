@@ -1,26 +1,11 @@
-import React, { Component } from 'react';
-import Typist from 'react-typist';
+import React, { Component } from "react";
+import Typist from "react-typist";
 
 class HeaderTitle extends Component {
   constructor() {
     // console.log('the constructor was called');
     super();
     this.state = {};
-  }
-
-  HeaderTitleStyle = {
-    fontSize: '45px',
-    float: 'left',
-    margin: '50px 50px 0 0',
-  };
-
-  componentDidMount() {
-    // const strings = ['HALPQ', 'Classroom List'];
-    // const options = {
-    //   strings,
-    //   typeSpeed: 50,
-    //   backSpeed: 50,
-    // };
   }
 
   render() {

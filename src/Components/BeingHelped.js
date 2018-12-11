@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import firebase from 'firebase';
-import beingHelpedIcon from '../assets/beingHelpedIcon.svg';
+import React, { Component } from "react";
+import firebase from "firebase";
+import beingHelped from "../assets/being-helped.svg";
 
 class BeingHelped extends Component {
   beingHelped = (classroomRef, questionRef) => {
@@ -19,7 +19,8 @@ class BeingHelped extends Component {
             this.beingHelped(this.props.classKey, this.props.questionKey);
           }}
         >
-          <img src="{beingHelpedIcon}" alt="" />
+          <div className="buttonImage beingHelped__active" />
+          <img src={beingHelped} alt="" />
         </button>
       </div>
     );

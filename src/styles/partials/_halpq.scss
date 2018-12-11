@@ -11,12 +11,24 @@
       background: $secondaryAccent;
     }
   }
-  &__title {
+  &__toggleclassroom {
+    float: right;
+    border: 0;
   }
-  button {
-    cursor: pointer;
+  &__toggleDisable svg {
   }
+  & .buttonImage {
+    width: 55px;
+    height: 55px;
+    margin: 2px;
+  }
+  
 }
+
+.halpq_toggleEnable svg path {
+}
+
+
 
 .returnLink {
   width: 175px;
