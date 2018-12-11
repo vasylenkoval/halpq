@@ -1,40 +1,54 @@
+button {
+  outline: 0;
+}
 .chat {
   position: fixed;
+  z-index: 10;
   display: block;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba($color: #231f1f, $alpha: 0.9);
+  &__controls {
+    background-color: $primaryAccent;
+    position: fixed;
+    padding: 10px 17px;
+    color: $white;
+    z-index: 20;
+    top: 0;
+    transition: background-color 0.1s;
+    &:hover {
+      background: darken($primaryAccent, 2%);
+    }
+  }
   &__convo {
     position: fixed;
-    // display: block;
-    background: $lightColor;
-    width: 70%;
-    height: 70%;
+    background: darken($lightColor, 5%);
+    width: 100%;
+    height: 100%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 10px;
     overflow-y: auto;
-  }
-  &__closeIcon {
-    position: fixed;
-    top: 2%;
-    left: 1%;
-    height: 100px;
-    width: 100px;
-    color: black;
+    padding-bottom: 45px;
   }
   &__message {
-    padding-right: 20px;
+    margin: 30px;
+    background: darken($white, 2%);
+    border-radius: 10px;
+    padding: 15px;
+    word-wrap: break-word;
   }
-  &__chatContent,
-  &__userInfo {
-    text-align: right;
+  &__chatContent {
+    font-size: 1.8rem;
   }
+
   &__userInfo {
     font-weight: bold;
+    color: $secondaryAccent;
+    margin-bottom: 10px;
   }
   &__inputArea {
     bottom: 0;
@@ -45,20 +59,61 @@
   &__buttonSubmit {
     height: 50px;
     display: inline-block;
-    bottom: 0;
-    left: 0;
     border: 0;
+    outline: 0;
+  }
+  &__wrapper {
+    position: fixed;
+    width: 70%;
+    height: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &__input__form {
+    position: absolute;
+    bottom: -5px;
+    width: 100%;
   }
   &__messageInput {
-    padding: 10px;
-    width: 90%;
-    border-top: 2px solid $secondaryAccent;
+    padding: 10px 10px 10px 20px;
+    width: 80%;
     border-bottom-left-radius: 10px;
   }
   &__buttonSubmit {
-    width: 10%;
-    background: $secondaryAccent;
+    width: 20%;
+    cursor: pointer;
+    background: $primaryAccent;
     color: #fff;
     border-bottom-right-radius: 10px;
+    transition: background 0.1s;
+    &:hover {
+      background: darken($primaryAccent, 2%);
+    }
+  }
+}
+
+.chat__convo--nopadding {
+  padding-bottom: 0;
+}
+
+@media (max-width: 800px) {
+  .chat {
+    &__wrapper {
+      height: 100%;
+      width: 100%;
+    }
+    &__controls {
+      width: 100%;
+      text-align: left;
+    }
+    &__messageInput,
+    &__buttonSubmit {
+      height: 60px;
+      border-radius: 0;
+    }
+    &__convo {
+      border-radius: 0;
+    }
   }
 }
