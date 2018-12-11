@@ -584,36 +584,27 @@ span.highlighted {
     font-size: 2rem;
     margin-bottom: 10px; }
 
-.question__actions__admins {
-  border: 1px solid blue; }
-  .question__actions__admins p {
-    float: right;
-    color: #231f1f;
-    padding-top: 8px;
-    padding-right: 4px;
-    font-size: 1.2rem;
-    font-weight: 400;
-    line-height: 2.7rem;
-    border: 1px solid red; }
+.question__actions__admins p {
+  float: right;
+  color: #231f1f;
+  padding-top: 8px;
+  padding-right: 4px;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 2rem; }
 
 .completeQuestion {
   width: 100%;
-  border: 1px solid red; }
-  .completeQuestion .buttonImage {
-    border: 1px solid red; }
-    .completeQuestion .buttonImage:hover svg path {
-      fill: #e40015; }
+  transition: fill 0.1s; }
   .completeQuestion:hover svg path {
     fill: #e40015; }
+  .completeQuestion .buttonImage {
+    margin: 0 4px 0 2px; }
 
 .beingHelped {
   width: 100%;
-  border: 1px solid red; }
-  .beingHelped .buttonImage {
-    border: 1px solid red; }
-    .beingHelped .buttonImage:hover svg path {
-      fill: #e40015; }
-  .beingHelped svg:hover path {
+  transition: fill 0.1s; }
+  .beingHelped:hover svg path {
     fill: #e40015; }
 
 .question__userInfo__image {
@@ -626,6 +617,12 @@ span.highlighted {
   .question__userInfo__image p {
     padding-top: 10px; }
 
+.question .completeQuestion .buttonImage {
+  margin: 0 4px 0 2px; }
+
+.question .beingHelped .buttonImage {
+  margin: 0 4px 0 2px; }
+
 .question__actions__admins {
   float: right; }
   .question__actions__admins .buttonImage {
@@ -637,12 +634,20 @@ span.highlighted {
 
 .questionConversation {
   width: 100%;
-  float: right; }
+  padding: 0;
+  margin: 0;
+  transition: fill 0.1s;
+  text-align: right; }
   .questionConversation .buttonImage {
-    width: 50px;
-    height: 50px;
-    margin: 2px;
+    width: 37px;
+    height: 37px;
     float: right; }
+  .questionConversation:hover svg path {
+    fill: #e40015; }
+
+@media (max-width: 900px) {
+  .question__actions__admins p {
+    display: none; } }
 
 button {
   outline: 0; }

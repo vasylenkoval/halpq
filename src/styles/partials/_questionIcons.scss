@@ -1,5 +1,6 @@
 .question__actions__admins {
-  border: 1px solid blue;
+  // border: 1px solid blue;
+
   p {
     float: right;
     color: $darkColor;
@@ -7,35 +8,27 @@
     padding-right: 4px;
     font-size: 1.2rem;
     font-weight: 400;
-    line-height: 2.7rem;
-    border: 1px solid red;
+    line-height: 2rem;
+    // border: 1px solid red;
   }
 }
 
 .completeQuestion {
   width: 100%;
-  border: 1px solid red;
-  .buttonImage {
-    border: 1px solid red;
-    &:hover svg path {
-      fill: $primaryAccent;
-    }
-  }
+  // border: 1px solid red;
+  transition: fill 0.1s;
   &:hover svg path {
     fill: $primaryAccent;
   }
+  .buttonImage {
+      margin: 0 4px 0 2px;
+    }
 }
 
 .beingHelped {
   width: 100%;
-  border: 1px solid red;
-  .buttonImage {
-    border: 1px solid red;
-    &:hover svg path {
-      fill: $primaryAccent;
-    }
-  }
-  svg:hover path {
+  transition: fill 0.1s;
+  &:hover svg path {
     fill: $primaryAccent;
   }
 }
@@ -53,6 +46,18 @@
       padding-top: 10px;
     }
   }
+
+  .completeQuestion {
+    .buttonImage {
+        margin: 0 4px 0 2px;
+     }
+  }
+  .beingHelped {
+    .buttonImage {
+        margin: 0 4px 0 2px;
+     }
+  }
+
   &__actions__admins {
     float: right;
     .buttonImage {
@@ -61,18 +66,32 @@
       height: 35px;
       margin: 0 2px;
       text-align: right;
-      & svg path {
-      }
     }
   }
 }
 .questionConversation {
   width: 100%;
-  float: right;
+  padding: 0;
+  margin: 0;
+  transition: fill 0.1s;
+  text-align: right;
   .buttonImage {
-    width: 50px;
-    height: 50px;
-    margin: 2px;
+    width: 37px;
+    height: 37px;
     float: right;
+
+  }
+  &:hover svg path {
+    fill: $primaryAccent;
+  }
+}
+
+
+@media (max-width: 900px) {
+  .question__actions__admins {
+
+    p {
+      display: none;
+    }
   }
 }
