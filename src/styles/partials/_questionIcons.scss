@@ -1,41 +1,36 @@
+.question__actions__admins {
+  border: 1px solid blue;
+  p {
+    float: right;
+    color: $darkColor;
+    padding-top: 8px;
+    padding-right: 4px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 2.7rem;
+    border: 1px solid red;
+  }
+}
+
 .completeQuestion {
   width: 100%;
+  border: 1px solid red;
   .buttonImage {
-    width: 35px;
-    height: 35px;
-    margin: 2px;
-    float: right;
+    border: 1px solid red;
     &:hover svg path {
       fill: $primaryAccent;
     }
   }
-  p {
-    float: right;
-    padding-top: 8px;
-    padding-right: 4px;
-    font-size: 1.6rem;
-    font-weight: 400;
-  }
-  svg:hover path {
+  &:hover svg path {
     fill: $primaryAccent;
   }
 }
 
 .beingHelped {
   width: 100%;
-  p {
-    float: right;
-    padding-top: 8px;
-    padding-right: 4px;
-    font-size: 1.6rem;
-    font-weight: 400;
-    border: 1px solid red;
-  }
+  border: 1px solid red;
   .buttonImage {
-    width: 35px;
-    height: 35px;
-    margin: 2px;
-    float: right;
+    border: 1px solid red;
     &:hover svg path {
       fill: $primaryAccent;
     }
@@ -61,9 +56,10 @@
   &__actions__admins {
     float: right;
     .buttonImage {
+      float: right;
       width: 35px;
       height: 35px;
-      margin: 2px;
+      margin: 0 2px;
       text-align: right;
       & svg path {
       }
