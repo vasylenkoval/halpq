@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from '../firebase';
 import ConversationModal from './ConversationModal';
+import startConversationIcon from '../assets/startConversationIcon.svg';
 
 class QuestionConversation extends Component {
   constructor(props) {
@@ -72,7 +73,9 @@ class QuestionConversation extends Component {
               onClick={this.handleChange}
               className={QuestionConversation}
             >
-              START CONVERATION
+              <div>
+                <img src={startConversationIcon} alt="" />
+              </div>
             </button>
           )
         ) : this.state.chatStarted ? (

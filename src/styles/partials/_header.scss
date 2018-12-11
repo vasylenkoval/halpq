@@ -2,14 +2,12 @@
   width: 100%;
   background: $white;
 
-
   &__logo {
     width: 94px;
     height: 94px;
     margin-right: 10px;
     float: left;
   }
-  
 }
 .logOut {
   padding: 0;
@@ -21,10 +19,9 @@
     width: 40px;
   }
 
-  img{
+  img {
     width: 100%;
   }
-
 }
 
 .header__heading {
@@ -51,7 +48,6 @@
   &:hover svg path {
     fill: $primaryAccent;
   }
-
 }
 .userDetails {
   // border: 1px solid blue;
@@ -72,17 +68,14 @@
     float: left;
     margin-left: 10px;
     &:hover svg path {
-    fill: $primaryAccent;
-  }
+      fill: $primaryAccent;
+    }
   }
 
   &__text {
     float: left;
   }
-
-
-} 
-
+}
 
 @media (max-width: 680px) {
   .header__title {
@@ -90,26 +83,22 @@
     h4 {
       display: none;
     }
-    
   }
-
-
 }
 @media (max-width: 530px) {
   .header {
     &__logo {
-    width: 80px;
-    height: 80px;
+      width: 80px;
+      height: 80px;
+    }
   }
-}
   .header__title {
     margin-top: 14px;
     h1 {
       font-size: 3.2rem;
-
     }
   }
-  .userDetails{
+  .userDetails {
     &__text {
       display: none;
     }
@@ -118,17 +107,14 @@
   .userDetails {
     &__image {
       width: 35px;
-
     }
   }
   .logOut {
-    &__img{
+    &__img {
       width: 35px;
     }
-
   }
   .userManagementLink {
     width: 35px;
   }
-  
 }
