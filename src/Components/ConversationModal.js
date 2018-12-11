@@ -42,7 +42,7 @@ class ConversationModel extends Component {
     dbRef
       .ref(`/Questions/${this.state.classKey}/${this.state.questionKey}`)
       .once('value', snapshot => {
-        if (snapshot.val().exists() || snapshot.val() === null) {
+        if (snapshot.exists() || snapshot.val === null) {
           this.setState({
             questionOwner: false,
           });
