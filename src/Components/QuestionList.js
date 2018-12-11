@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import firebase from 'firebase';
-import CompleteQuestion from './CompleteQuestion';
-import BeingHelped from './BeingHelped';
-import QuestionConversation from './QuestionConversation';
-import backChevron from '../assets/back-chevron.svg';
+import React, { Component } from "react";
+import firebase from "firebase";
+import CompleteQuestion from "./CompleteQuestion";
+import BeingHelped from "./BeingHelped";
+import QuestionConversation from "./QuestionConversation";
+import backChevron from "../assets/back-chevron.svg";
+import beingHelped from "../assets/being-helped.svg";
 
 const dbRef = firebase.database();
 
@@ -15,12 +16,12 @@ class QuestionList extends Component {
       isAdmin: this.props.isAdmin,
       user: this.props.user,
       classKey: this.props.classKey,
-      classroomName: '',
+      classroomName: ""
     };
   }
 
   componentDidMount() {
-    dbRef.ref(`/Questions/${this.state.classKey}`).on('value', snapshot => {
+    dbRef.ref(`/Questions/${this.state.classKey}`).on("value", (snapshot) => {
       if (!snapshot.exists()) {
         this.setState({ questions: [] });
       } else if (snapshot.val()) {
@@ -38,16 +39,14 @@ class QuestionList extends Component {
     return (
       <div className="question__list">
         <h3 className="question__list__title">Active Questions</h3>
-        {this.state.questions.map(question => (
+        {this.state.questions.map((question) => (
           <div
-            // style={{ border: `1px solid green` }}
             className={
               question[1].isBeingHelped
-                ? 'question question__beingHelped'
-                : 'question'
+                ? "question question__beingHelped"
+                : "question"
             }
             key={question[0]}
-            // questionKey={question[0]}
           >
             <div className="question__userInfo">
               <div className="question__userInfo__image">
@@ -86,7 +85,12 @@ class QuestionList extends Component {
                 questionKey={question[0]}
                 questionOwner
               />
-              {question[1].isBeingHelped ? <p>I'm being helped!</p> : null}
+
+              {question[1].isBeingHelped ? (
+                <div className="buttonImage beingHelped__active">
+                  <img src={beingHelped} alt="" />
+                </div>
+              ) : null}
               {/* Make being helped p tag into an icon or nicer thing to show they are currently being helped */}
             </div>
           </div>
