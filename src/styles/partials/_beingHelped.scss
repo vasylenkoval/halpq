@@ -1,5 +1,13 @@
-.completeQuestion {
+.beingHelped {
   width: 100%;
+  p {
+    float: right;
+    padding-top: 8px;
+    padding-right: 4px;
+    font-size: 1.6rem;
+    font-weight: 400;
+    border: 1px solid red;
+  }
   .buttonImage {
     width: 35px;
     height: 35px;
@@ -8,13 +16,6 @@
     &:hover svg path {
       fill: $primaryAccent;
     }
-  }
-  p {
-    float: right;
-    padding-top: 8px;
-    padding-right: 4px;
-    font-size: 1.6rem;
-    font-weight: 400;
   }
   svg:hover path {
     fill: $primaryAccent;

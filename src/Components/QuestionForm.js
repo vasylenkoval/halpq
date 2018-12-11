@@ -57,16 +57,16 @@ class QuestionForm extends Component {
 
   render() {
     return (
-      <div>
-        <h3>---Ask your question---</h3>
+      <div class="questionForm">
+        {/* <h3>---Ask your question---</h3> */}
         <form action="#" onSubmit={this.handleSubmit}>
           <label htmlFor="question">Question</label>
-          <input
+          <textarea
             value={this.state.question}
             onChange={this.handleChange}
-            type="text"
             name="question"
             id="question"
+            placeholder="Enter your question here" cols="30" rows="6"
           />
           <label htmlFor="location">Location</label>
           <input
