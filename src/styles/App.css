@@ -638,51 +638,76 @@ span.highlighted {
   width: 90%;
   margin: 0 auto; }
 
-.question__addbutton {
-  height: 70px;
-  width: 70px;
-  border: none;
-  background-color: #e40015;
-  border-radius: 100%;
-  font-size: 3rem;
-  color: #ffffff;
-  position: fixed;
-  bottom: 60px;
-  right: 60px;
-  transition: transform 0.5s;
-  box-shadow: 3px 3px 15px 0 #00000028;
-  cursor: pointer; }
-  .question__addbutton:hover {
-    background-color: #da0014;
-    transform: rotateZ(90deg); }
-
 .questionForm {
   width: 39%;
   float: right; }
-  .questionForm input,
-  .questionForm textarea {
+  .questionForm__input, .questionForm__submit {
     height: 55px;
     margin-bottom: 10px;
     width: 100%;
     border: 0;
     letter-spacing: 1px;
     padding: 5px;
-    font-family: inherit; }
-  .questionForm textarea {
+    font-family: inherit;
+    resize: none; }
+  .questionForm__questionArea {
     display: block;
-    resize: none;
     height: 200px;
-    font-family: inherit; }
-  .questionForm input[type='submit'] {
+    font-family: inherit;
+    width: 100%; }
+  .questionForm__addbutton {
+    display: none;
+    height: 70px;
+    width: 70px;
+    background-color: #e40015;
+    border-radius: 100%;
+    font-size: 3rem;
+    z-index: 10;
+    color: #ffffff;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    transition: transform 0.5s;
+    box-shadow: 3px 3px 15px 0 #00000028;
+    cursor: pointer; }
+    .questionForm__addbutton:hover {
+      background-color: #da0014;
+      transform: rotateZ(90deg); }
+  .questionForm__submit {
     display: block;
     width: 100%;
     border: 0;
     background: #e44e48; }
-  .questionForm label {
+  .questionForm__label {
     display: none;
     font-weight: bold;
     font-size: 2rem;
     margin-bottom: 10px; }
+  .questionForm__mobileWrapper {
+    position: fixed;
+    background: #151313;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .questionForm__mobileInner {
+    position: fixed;
+    background: #e7e9ef;
+    width: 80%;
+    height: auto;
+    padding: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+
+@media (max-width: 750px) {
+  .questionForm__addbutton {
+    display: block; }
+  .questionForm__desktop {
+    display: none; }
+  .question__listing {
+    width: 100%; } }
 
 button {
   outline: 0; }
