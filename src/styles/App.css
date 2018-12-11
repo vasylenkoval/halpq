@@ -623,38 +623,6 @@ span.highlighted {
   .beingHelped:hover svg path {
     fill: #e40015; }
 
-.question {
-  background: #ffffff;
-  margin: 0 0;
-  width: 100%;
-  min-height: 200px;
-  background-color: #ffffff;
-  box-shadow: 0 3px 15px 0 #00000028;
-  padding: 20px;
-  font-size: 2rem;
-  margin-bottom: 10px; }
-  .question__userInfo__image {
-    width: 90px;
-    float: left;
-    margin: 0 10px; }
-    .question__userInfo__image img {
-      border-radius: 50%;
-      filter: grayscale(10); }
-    .question__userInfo__image p {
-      padding-top: 10px; }
-  .question .completeQuestion .buttonImage {
-    margin: 0 4px 0 2px; }
-  .question .beingHelped .buttonImage {
-    margin: 0 4px 0 2px; }
-  .question__actions__admins {
-    float: right; }
-    .question__actions__admins .buttonImage {
-      float: right;
-      width: 35px;
-      height: 35px;
-      margin: 0 2px;
-      text-align: right; }
-
 .questionConversation {
   width: 100%;
   padding: 0;
@@ -686,11 +654,12 @@ button {
   background: rgba(35, 31, 31, 0.9); }
   .chat__controls {
     background-color: #e40015;
-    position: fixed;
+    position: absolute;
     padding: 10px 17px;
     color: #ffffff;
-    z-index: 20;
+    z-index: 10;
     top: 0;
+    left: 0;
     transition: background-color 0.1s; }
     .chat__controls:hover {
       background: #da0014; }
@@ -712,11 +681,13 @@ button {
     padding: 15px;
     word-wrap: break-word; }
   .chat__chatContent {
-    font-size: 1.8rem; }
+    font-size: 1.8rem;
+    text-align: left; }
   .chat__userInfo {
     font-weight: bold;
     color: #e44e48;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    text-align: left; }
   .chat__inputArea {
     bottom: 0;
     left: 0;
