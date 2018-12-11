@@ -346,6 +346,18 @@ button {
   .userManagementLink {
     width: 35px; } }
 
+@media (max-width: 400px) {
+  .header__title {
+    margin-top: 14px; }
+    .header__title h1 {
+      font-size: 2.5rem; }
+  .userDetails__image {
+    width: 30px; }
+  .logOut__img {
+    width: 30px; }
+  .userManagementLink {
+    width: 30px; } }
+
 .userMgmt {
   width: '60px';
   float: 'right'; }
@@ -572,41 +584,27 @@ span.highlighted {
     font-size: 2rem;
     margin-bottom: 10px; }
 
+.question__actions__admins p {
+  float: right;
+  color: #231f1f;
+  padding-top: 8px;
+  padding-right: 4px;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 2rem; }
+
 .completeQuestion {
-  width: 100%; }
-  .completeQuestion .buttonImage {
-    width: 35px;
-    height: 35px;
-    margin: 2px;
-    float: right; }
-    .completeQuestion .buttonImage:hover svg path {
-      fill: #e40015; }
-  .completeQuestion p {
-    float: right;
-    padding-top: 8px;
-    padding-right: 4px;
-    font-size: 1.6rem;
-    font-weight: 400; }
-  .completeQuestion svg:hover path {
+  width: 100%;
+  transition: fill 0.1s; }
+  .completeQuestion:hover svg path {
     fill: #e40015; }
+  .completeQuestion .buttonImage {
+    margin: 0 4px 0 2px; }
 
 .beingHelped {
-  width: 100%; }
-  .beingHelped p {
-    float: right;
-    padding-top: 8px;
-    padding-right: 4px;
-    font-size: 1.6rem;
-    font-weight: 400;
-    border: 1px solid red; }
-  .beingHelped .buttonImage {
-    width: 35px;
-    height: 35px;
-    margin: 2px;
-    float: right; }
-    .beingHelped .buttonImage:hover svg path {
-      fill: #e40015; }
-  .beingHelped svg:hover path {
+  width: 100%;
+  transition: fill 0.1s; }
+  .beingHelped:hover svg path {
     fill: #e40015; }
 
 .question__userInfo__image {
@@ -619,22 +617,37 @@ span.highlighted {
   .question__userInfo__image p {
     padding-top: 10px; }
 
+.question .completeQuestion .buttonImage {
+  margin: 0 4px 0 2px; }
+
+.question .beingHelped .buttonImage {
+  margin: 0 4px 0 2px; }
+
 .question__actions__admins {
   float: right; }
   .question__actions__admins .buttonImage {
+    float: right;
     width: 35px;
     height: 35px;
-    margin: 2px;
+    margin: 0 2px;
     text-align: right; }
 
 .questionConversation {
   width: 100%;
-  float: right; }
+  padding: 0;
+  margin: 0;
+  transition: fill 0.1s;
+  text-align: right; }
   .questionConversation .buttonImage {
-    width: 50px;
-    height: 50px;
-    margin: 2px;
+    width: 37px;
+    height: 37px;
     float: right; }
+  .questionConversation:hover svg path {
+    fill: #e40015; }
+
+@media (max-width: 900px) {
+  .question__actions__admins p {
+    display: none; } }
 
 button {
   outline: 0; }
