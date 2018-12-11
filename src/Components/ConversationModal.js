@@ -21,21 +21,23 @@ class ConversationModel extends Component {
     dbRef
       .ref(`/Questions/${this.state.classKey}/${this.state.questionKey}`)
       .once('value', snapshot => {
-        if (snapshot.exists() || snapshot.val === null) {
-          this.setState({
-            questionOwner: false,
-          });
-        } else if (
-          snapshot.val().uid === this.state.user.uid ||
-          this.state.isAdmin
-        ) {
-          this.setState({
-            questionOwner: true,
-          });
+        if (snapshot.exists()) {
+          if (
+            snapshot.val().uid === this.state.user.uid ||
+            this.state.isAdmin
+          ) {
+            this.setState({
+              questionOwner: true,
+            });
+          }
         }
       });
     this.scrollToBottom();
   }
+
+  // All admins are able to see all conversations
+  // All users can see all conversations but not respond
+  // Only the question owner can respond to a conversation on his question
 
   componentDidUpdate() {
     this.scrollToBottom();
