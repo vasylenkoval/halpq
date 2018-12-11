@@ -100,7 +100,7 @@ class ConversationModel extends Component {
               </div>
             ))}
             <div
-              className="chat__invisible"
+              className={this.state.questionOwner ? 'chat__invisible' : ''}
               style={{ float: 'left', clear: 'both' }}
               ref={el => {
                 this.messagesEnd = el;
