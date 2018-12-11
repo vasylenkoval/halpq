@@ -86,7 +86,7 @@
 @media (max-width: 680px) {
   .header__title {
     margin-top: 8px;
-    h4 {
+    &Container {
       display: none;
     }
   }

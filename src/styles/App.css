@@ -300,7 +300,7 @@ p {
 @media (max-width: 680px) {
   .header__title {
     margin-top: 8px; }
-    .header__title h4 {
+    .header__titleContainer {
       display: none; } }
 
 @media (max-width: 560px) {
