@@ -116,6 +116,7 @@ class ConversationModel extends Component {
             >
               <input
                 type="text"
+                minLength={1}
                 name=""
                 onChange={this.handleChange}
                 value={this.state.userInput}

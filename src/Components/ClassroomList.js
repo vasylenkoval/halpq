@@ -210,7 +210,6 @@ class ClassroomList extends Component {
               <input
                 className="classroomlist__form__input"
                 type="text"
-                min
                 placeholder={
                   isAdmin ? 'Enter classroom name' : 'Enter your classroom key'
                 }
