@@ -2,7 +2,13 @@ import React from 'react';
 
 // Classroom item inside of the Classroom List
 const ClassroomListItem = props => {
-  const { classroomName, password, studentCount, isDisabled } = props;
+  const {
+    classroomName,
+    password,
+    studentCount,
+    isDisabled,
+    questions,
+  } = props;
   return (
     <div
       className={
@@ -15,23 +21,17 @@ const ClassroomListItem = props => {
         <h3>{classroomName}</h3>
       </div>
 
-      {isDisabled ? <div className="disabled__text"> Disabled</div> : null}
-
-      <div className="classroomlist__item__questions">
-        <div className="classroomlist__item__questions__count">
-          <span className="highlighted">Active questions:</span> to be passed
-        </div>
-      </div>
-
       <div className="classroomlist__item__password">
         <div>
           <span className="highlighted">Code:</span> {password}
         </div>
       </div>
+      {isDisabled ? <div className="disabled__text"> Disabled</div> : null}
 
       <div className="classroomlist__item__studentsEnrolled">
-        <span className="highlighted">Students:</span>{' '}
-        <span className="number">{studentCount}</span>
+        <span className="highlighted">
+          {studentCount} people in this classroom
+        </span>
       </div>
     </div>
   );

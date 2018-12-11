@@ -184,6 +184,9 @@ class ClassroomList extends Component {
             </Link>
           ))}
 
+          {activateForm ? (
+            <div className="classroomlist__form__backdrop" />
+          ) : null}
           <button
             type="button"
             className="classroomlist__addbutton"
@@ -192,7 +195,6 @@ class ClassroomList extends Component {
           >
             ＋
           </button>
-
           {activateForm ? (
             <form
               className="classroomlist__form"

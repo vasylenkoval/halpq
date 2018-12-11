@@ -42,6 +42,7 @@
     }
     &__password {
       float: right;
+      line-height: 45px;
     }
   }
   &__addbutton {
@@ -96,7 +97,6 @@
 }
 
 .disabled__text {
-  float: right;
   font-weight: bold;
   line-height: 40px;
 }
@@ -129,7 +129,7 @@ span.highlighted {
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 650px) {
   .classroomlist {
     a {
       width: 100%;
@@ -138,5 +138,22 @@ span.highlighted {
   .classroomlist__addbutton {
     bottom: 20px;
     right: 20px;
+  }
+  .classroomlist__form__backdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.459);
+    z-index: 0;
+  }
+
+  .classroomlist__form {
+    position: fixed;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
+    z-index: 10;
   }
 }
