@@ -98,7 +98,7 @@ class Halpq extends Component {
             </button>
           ) : null}
           {!archiveToggle ? (
-            <div className="question__list">
+            <div className="question__list clearfix">
               
               <QuestionList classKey={classKey} user={user} isAdmin={isAdmin} />
               {isClassroomDisabled ? (

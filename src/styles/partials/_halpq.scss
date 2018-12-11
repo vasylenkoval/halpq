@@ -1,9 +1,10 @@
 .halpq {
   color: $darkColor;
   background: $lightColor;
+  position: relative;
   &__title {
     margin-top: 50px;
-      border: 1px solid red;
+    border: 1px solid red;
   }
   &__filter {
     background: $lightColor;
@@ -19,8 +20,8 @@
   }
   &__toggleclassroom {
     float: right;
-    border: 1px solid red;
-    &__active  {
+    // border: 1px solid red;
+    &__active {
       fill: $primaryAccent;
     }
   }
@@ -32,10 +33,19 @@
   }
 }
 
+.question__listing {
+  float: left;
+  width: calc(60% - 1px);
+  // overflow-y: auto;
+  // max-height: 600px;
+}
+
 .question__list {
   color: $darkColor;
   padding: 10px;
   background: $darkNeutral;
+  position: relative;
+  border: 1px solid red;
   &__title {
     padding: 50px 0;
     font-size: 4rem;

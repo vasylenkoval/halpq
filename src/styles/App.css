@@ -352,7 +352,8 @@ button {
 
 .halpq {
   color: #231f1f;
-  background: #f6f7f9; }
+  background: #f6f7f9;
+  position: relative; }
   .halpq__title {
     margin-top: 50px;
     border: 1px solid red; }
@@ -367,8 +368,7 @@ button {
     .halpq__filter__active {
       background: #787e8b; }
   .halpq__toggleclassroom {
-    float: right;
-    border: 1px solid red; }
+    float: right; }
     .halpq__toggleclassroom__active {
       fill: #e40015; }
   .halpq .buttonImage {
@@ -376,10 +376,16 @@ button {
     height: 55px;
     margin: 2px; }
 
+.question__listing {
+  float: left;
+  width: calc(60% - 1px); }
+
 .question__list {
   color: #231f1f;
   padding: 10px;
-  background: #787e8b; }
+  background: #787e8b;
+  position: relative;
+  border: 1px solid red; }
   .question__list__title {
     padding: 50px 0;
     font-size: 4rem; }
@@ -526,7 +532,7 @@ span.highlighted {
 .question {
   background: #ffffff;
   margin: 0 0;
-  width: 60%;
+  width: 100%;
   min-height: 200px;
   background-color: #ffffff;
   box-shadow: 0 3px 15px 0 #00000028;
@@ -536,39 +542,26 @@ span.highlighted {
   .question__questionContent {
     font-size: 2rem;
     float: left; }
-  .question__userInfo__image {
-    width: 90px;
-    float: left;
-    margin: 0 10px; }
-    .question__userInfo__image img {
-      border-radius: 50%;
-      filter: grayscale(10); }
-    .question__userInfo__image p {
-      padding-top: 10px; }
-  .question__actions__admins {
-    float: right; }
-    .question__actions__admins .buttonImage {
-      width: 35px;
-      height: 35px;
-      margin: 2px;
-      text-align: right; }
 
 .questionForm {
-  border: 1px solid red;
-  padding-top: 10px;
-  width: 40%;
+  width: 39%;
   float: right; }
   .questionForm textarea {
     display: block;
     resize: none;
     width: 100%;
-    border: 0; }
+    border: 0;
+    font-family: inherit;
+    letter-spacing: 1px;
+    padding: 5px; }
   .questionForm input {
     height: 40px;
     width: 100%;
     margin: 10px 0;
-    border: 0; }
-  .questionForm input[type="submit"] {
+    border: 0;
+    padding: 5px;
+    font-family: inherit; }
+  .questionForm input[type='submit'] {
     display: block;
     width: 100%;
     border: 0;
@@ -578,6 +571,24 @@ span.highlighted {
     font-weight: bold;
     font-size: 2rem;
     margin-bottom: 10px; }
+
+.completeQuestion {
+  width: 100%; }
+  .completeQuestion .buttonImage {
+    width: 35px;
+    height: 35px;
+    margin: 2px;
+    float: right; }
+    .completeQuestion .buttonImage:hover svg path {
+      fill: #e40015; }
+  .completeQuestion p {
+    float: right;
+    padding-top: 8px;
+    padding-right: 4px;
+    font-size: 1.6rem;
+    font-weight: 400; }
+  .completeQuestion svg:hover path {
+    fill: #e40015; }
 
 .beingHelped {
   width: 100%; }
@@ -598,23 +609,23 @@ span.highlighted {
   .beingHelped svg:hover path {
     fill: #e40015; }
 
-.completeQuestion {
-  width: 100%; }
-  .completeQuestion .buttonImage {
+.question__userInfo__image {
+  width: 90px;
+  float: left;
+  margin: 0 10px; }
+  .question__userInfo__image img {
+    border-radius: 50%;
+    filter: grayscale(10); }
+  .question__userInfo__image p {
+    padding-top: 10px; }
+
+.question__actions__admins {
+  float: right; }
+  .question__actions__admins .buttonImage {
     width: 35px;
     height: 35px;
     margin: 2px;
-    float: right; }
-    .completeQuestion .buttonImage:hover svg path {
-      fill: #e40015; }
-  .completeQuestion p {
-    float: right;
-    padding-top: 8px;
-    padding-right: 4px;
-    font-size: 1.6rem;
-    font-weight: 400; }
-  .completeQuestion svg:hover path {
-    fill: #e40015; }
+    text-align: right; }
 
 .questionConversation {
   width: 100%;
