@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import firebase from "firebase";
-import CompleteQuestion from "./CompleteQuestion";
-import BeingHelped from "./BeingHelped";
-import QuestionConversation from "./QuestionConversation";
-import backChevron from "../assets/back-chevron.svg";
-import beingHelped from "../assets/being-helped.svg";
+import React, { Component } from 'react';
+import firebase from 'firebase';
+import CompleteQuestion from './CompleteQuestion';
+import BeingHelped from './BeingHelped';
+import QuestionConversation from './QuestionConversation';
+import backChevron from '../assets/back-chevron.svg';
+import beingHelped from '../assets/being-helped.svg';
 
 const dbRef = firebase.database();
 
@@ -16,12 +16,12 @@ class QuestionList extends Component {
       isAdmin: this.props.isAdmin,
       user: this.props.user,
       classKey: this.props.classKey,
-      classroomName: ""
+      classroomName: '',
     };
   }
 
   componentDidMount() {
-    dbRef.ref(`/Questions/${this.state.classKey}`).on("value", (snapshot) => {
+    dbRef.ref(`/Questions/${this.state.classKey}`).on('value', snapshot => {
       if (!snapshot.exists()) {
         this.setState({ questions: [] });
       } else if (snapshot.val()) {
@@ -35,16 +35,23 @@ class QuestionList extends Component {
     dbRef.ref(`/Questions/${this.state.classKey}`).off();
   }
 
+  timeConverter = timestamp =>
+    new Date(timestamp).toLocaleTimeString([], {
+      weekday: 'long',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+
   render() {
     return (
       <div className="question__listing">
         {/* <h3 className="question__list__title">Active Questions</h3> */}
-        {this.state.questions.map((question) => (
+        {this.state.questions.map(question => (
           <div
             className={
               question[1].isBeingHelped
-                ? "question question__beingHelped"
-                : "question"
+                ? 'question question__beingHelped'
+                : 'question'
             }
             key={question[0]}
           >
@@ -57,6 +64,9 @@ class QuestionList extends Component {
             <div className="question__questionContent clearfix">
               <p>{question[1].location}</p>
               <p>{question[1].content}</p>
+            </div>
+            <div className="question_time">
+              {this.timeConverter(question[1].dateCreated)}
             </div>
             <div className="question__actions__admins">
               {this.state.isAdmin ? (
