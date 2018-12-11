@@ -364,7 +364,8 @@ button {
 
 .halpq {
   color: #231f1f;
-  background: #f6f7f9; }
+  background: #f6f7f9;
+  position: relative; }
   .halpq__title {
     margin-top: 50px;
     border: 1px solid red; }
@@ -379,8 +380,7 @@ button {
     .halpq__filter__active {
       background: #787e8b; }
   .halpq__toggleclassroom {
-    float: right;
-    border: 1px solid red; }
+    float: right; }
     .halpq__toggleclassroom__active {
       fill: #e40015; }
   .halpq .buttonImage {
@@ -388,10 +388,17 @@ button {
     height: 55px;
     margin: 2px; }
 
+.question__listing {
+  border: 5px solid green;
+  float: left;
+  width: calc(70% - 1px); }
+
 .question__list {
   color: #231f1f;
   padding: 10px;
-  background: #787e8b; }
+  background: #787e8b;
+  position: relative;
+  border: 1px solid red; }
   .question__list__title {
     padding: 50px 0;
     font-size: 4rem; }
@@ -537,7 +544,7 @@ span.highlighted {
 .question {
   background: #ffffff;
   margin: 0 0;
-  width: 60%;
+  width: 100%;
   min-height: 200px;
   background-color: #ffffff;
   box-shadow: 0 3px 15px 0 #00000028;
@@ -567,7 +574,7 @@ span.highlighted {
 .questionForm {
   border: 1px solid red;
   padding-top: 10px;
-  width: 40%;
+  width: 29%;
   float: right; }
   .questionForm textarea {
     display: block;
@@ -579,7 +586,7 @@ span.highlighted {
     width: 100%;
     margin: 10px 0;
     border: 0; }
-  .questionForm input[type="submit"] {
+  .questionForm input[type='submit'] {
     display: block;
     width: 100%;
     border: 0;
