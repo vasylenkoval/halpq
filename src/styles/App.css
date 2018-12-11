@@ -412,6 +412,10 @@ button {
     float: left;
     color: #231f1f; }
 
+@media (max-width: 500px) {
+  .halpq__filter {
+    font-size: 1.8rem; } }
+
 .classroomlist {
   color: #231f1f;
   background-color: #f6f7f9; }

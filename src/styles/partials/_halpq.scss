@@ -65,3 +65,9 @@
     color: $darkColor;
   }
 }
+
+@media (max-width: 500px) {
+  .halpq__filter {
+    font-size: 1.8rem;
+  }
+}
