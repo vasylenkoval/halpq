@@ -123,15 +123,15 @@ class Halpq extends Component {
                     x="0px"
                     y="0px"
                     viewBox="0 0 100 125"
-                    enable-background="new 0 0 100 100"
+                    enableBackground="new 0 0 100 100"
                     space="preserve"
                   >
                     <g display="none">
                       <g display="inline">
                         <g>
                           <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
+                            fillRule="evenodd"
+                            clipRule="evenodd"
                             fill="#000000"
                             d="M30,27C17.35,27,7,37.35,7,50l0,0c0,12.65,10.35,23,23,23h40     c12.65,0,23-10.35,23-23l0,0c0-12.65-10.35-23-23-23H30z M30,67c-9.389,0-17-7.61-17-17s7.611-17,17-17s17,7.61,17,17     S39.389,67,30,67z"
                           />
@@ -140,8 +140,8 @@ class Halpq extends Component {
                     </g>
                     <g>
                       <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
                         d="M30,27C17.35,27,7,37.35,7,50l0,0c0,12.65,10.35,23,23,23h40   c12.65,0,23-10.35,23-23l0,0c0-12.65-10.35-23-23-23H30z M30,67c-9.389,0-17-7.61-17-17s7.611-17,17-17s17,7.61,17,17   S39.389,67,30,67z"
                       />
                     </g>
@@ -150,19 +150,19 @@ class Halpq extends Component {
                         <path
                           fill="#000000"
                           stroke="#E00C02"
-                          stroke-width="4"
-                          stroke-miterlimit="10"
+                          strokeWidth="4"
+                          strokeMiterlimit="10"
                           d="M93,50c0,12.65-10.35,23-23,23H30    C17.35,73,7,62.65,7,50l0,0c0-12.65,10.35-23,23-23h40C82.65,27,93,37.35,93,50L93,50z"
                         />
                       </g>
                       <circle
                         display="inline"
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
                         fill="#000000"
                         stroke="#E00C02"
-                        stroke-width="4"
-                        stroke-miterlimit="10"
+                        strokeWidth="4"
+                        strokeMiterlimit="10"
                         cx="30"
                         cy="50"
                         r="17"
@@ -185,15 +185,15 @@ class Halpq extends Component {
                     x="0px"
                     y="0px"
                     viewBox="0 0 100 125"
-                    enable-background="new 0 0 100 100"
+                    enableBackground="new 0 0 100 100"
                     space="preserve"
                   >
                     <g display="none">
                       <g display="inline">
                         <g>
                           <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
+                            fillRule="evenodd"
+                            clipRule="evenodd"
                             fill="#000000"
                             d="M30,27C17.35,27,7,37.35,7,50l0,0c0,12.65,10.35,23,23,23h40     c12.65,0,23-10.35,23-23l0,0c0-12.65-10.35-23-23-23H30z M70,67c-9.389,0-17-7.61-17-17s7.611-17,17-17s17,7.61,17,17     S79.389,67,70,67z"
                           />
@@ -202,8 +202,8 @@ class Halpq extends Component {
                     </g>
                     <g>
                       <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
                         d="M30,27C17.35,27,7,37.35,7,50l0,0c0,12.65,10.35,23,23,23h40   c12.65,0,23-10.35,23-23l0,0c0-12.65-10.35-23-23-23H30z M70,67c-9.389,0-17-7.61-17-17s7.611-17,17-17s17,7.61,17,17   S79.389,67,70,67z"
                       />
                     </g>
@@ -212,19 +212,19 @@ class Halpq extends Component {
                         <path
                           fill="#00000"
                           stroke="#E00C02"
-                          stroke-width="4"
-                          stroke-miterlimit="10"
+                          strokeWidth="4"
+                          strokeMiterlimit="10"
                           d="M7,50c0,12.65,10.35,23,23,23h40    c12.65,0,23-10.35,23-23l0,0c0-12.65-10.35-23-23-23H30C17.35,27,7,37.35,7,50L7,50z"
                         />
                       </g>
                       <circle
                         display="inline"
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
                         fill="#000000"
                         stroke="#E00C02"
-                        stroke-width="4"
-                        stroke-miterlimit="10"
+                        strokeWidth="4"
+                        strokeMiterlimit="10"
                         cx="70"
                         cy="50"
                         r="17"
