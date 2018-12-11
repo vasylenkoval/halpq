@@ -46,7 +46,8 @@ class UserManagement extends Component {
   }
 
   render() {
-    return <div className="userManagement">
+    return (
+      <div className="userManagement">
         <div className="wrapper">
           <div className="Component__Title">
             <h2>User Management</h2>
@@ -61,22 +62,27 @@ class UserManagement extends Component {
           </Link>
           <div className="users clearfix">
             <div className="users__panel">
-              <h3 className="users__panelTitle">Students</h3>
-              {this.state.studentList[0] ? <StudentList students={this.state.studentList} /> : <p>
-                  There are no students
-                </p>}
-            </div>
-            <div className="users__panel">
               <h3 className="users__panelTitle users__panelTitle--admin">
                 Admins
               </h3>
-              {this.state.adminList[0] ? <AdminList admins={this.state.adminList} /> : <p className="noAdmin">
-                  There are no admins
-                </p>}
+              {this.state.adminList[0] ? (
+                <AdminList admins={this.state.adminList} />
+              ) : (
+                <p className="noAdmin">There are no admins</p>
+              )}
+            </div>
+            <div className="users__panel">
+              <h3 className="users__panelTitle">Students</h3>
+              {this.state.studentList[0] ? (
+                <StudentList students={this.state.studentList} />
+              ) : (
+                <p>There are no students</p>
+              )}
             </div>
           </div>
         </div>
-      </div>;
+      </div>
+    );
   }
 }
 
