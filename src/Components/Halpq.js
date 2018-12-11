@@ -94,7 +94,7 @@ class Halpq extends Component {
             }
             name="Active"
           >
-            Active Questions
+            Active
           </button>
           <button
             type="button"
@@ -106,7 +106,7 @@ class Halpq extends Component {
             }
             name="Completed"
           >
-            Completed Questions
+            Completed
           </button>
           {isAdmin ? (
             <button
