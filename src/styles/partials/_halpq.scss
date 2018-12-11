@@ -34,9 +34,10 @@
 }
 
 .question__listing {
-  border: 5px solid green;
   float: left;
-  width: calc(70% - 1px);
+  width: calc(60% - 1px);
+  // overflow-y: auto;
+  // max-height: 600px;
 }
 
 .question__list {
