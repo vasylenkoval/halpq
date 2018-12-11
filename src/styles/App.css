@@ -238,6 +238,21 @@ p {
   clip: rect(0 0 0 0);
   overflow: hidden; }
 
+.logIn {
+  width: 90%;
+  margin: 0 auto; }
+  .logIn__button {
+    display: block;
+    width: 50%;
+    background: #e44e48;
+    color: #ffffff;
+    padding: 2%;
+    font-size: 3rem;
+    text-align: center;
+    margin: 150px auto; }
+    .logIn__button:hover {
+      background: #e40015; }
+
 .header {
   width: 100%;
   background: #ffffff; }
@@ -319,6 +334,18 @@ p {
     width: 35px; }
   .userManagementLink {
     width: 35px; } }
+
+@media (max-width: 400px) {
+  .header__title {
+    margin-top: 14px; }
+    .header__title h1 {
+      font-size: 2.5rem; }
+  .userDetails__image {
+    width: 30px; }
+  .logOut__img {
+    width: 30px; }
+  .userManagementLink {
+    width: 30px; } }
 
 .userMgmt {
   width: '60px';
