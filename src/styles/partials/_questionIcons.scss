@@ -1,8 +1,9 @@
 
 .completeQuestion {
   width: 100%;
-  // border: 1px solid red;
-  transition: fill 0.1s;
+  svg path {
+    transition: fill 0.1s;
+  }
   &:hover svg path {
     fill: $primaryAccent;
   }
@@ -13,7 +14,9 @@
 
 .beingHelped {
   width: 100%;
-  transition: fill 0.1s;
+  svg path {
+    transition: fill 0.1s;
+  }
   &:hover svg path {
     fill: $primaryAccent;
   }
@@ -57,7 +60,6 @@
     font-size: 1.4rem;
     text-align: center;
     img {
-      border-radius: 50%;
       filter: grayscale(10);
       padding-bottom: 10px;
     }
@@ -116,7 +118,9 @@
     width: 37px;
     height: 37px;
     float: right;
-
+  }
+  svg path {
+    transition: fill 0.1s;
   }
   &:hover svg path {
     fill: $primaryAccent;
