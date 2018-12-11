@@ -1,19 +1,26 @@
 .questionForm {
-  border: 1px solid red;
-  padding-top: 10px;
-  width: 29%;
+  // border: 1px solid red;
+  // padding-top: 10px;
+  width: 39%;
   float: right;
+  // position: sticky;
+
   textarea {
     display: block;
     resize: none;
     width: 100%;
     border: 0;
+    font-family: inherit;
+    letter-spacing: 1px;
+    padding: 5px;
   }
   input {
     height: 40px;
     width: 100%;
     margin: 10px 0;
     border: 0;
+    padding: 5px;
+    font-family: inherit;
   }
   input[type='submit'] {
     display: block;

@@ -158,7 +158,7 @@ class ClassroomList extends Component {
       <div className="classroomlist">
         <div className="classroomlist__wrapper">
           <div className="classroomlist__title">
-            <h2>Classroom List</h2>
+            <h2>Classrooms</h2>
           </div>
           {classList.map((element, i) => (
             <Link
