@@ -2,13 +2,7 @@ import React from 'react';
 
 // Classroom item inside of the Classroom List
 const ClassroomListItem = props => {
-  const {
-    classroomName,
-    password,
-    studentCount,
-    isDisabled,
-    questions,
-  } = props;
+  const { classroomName, password, studentCount, isDisabled } = props;
   return (
     <div
       className={
