@@ -406,15 +406,11 @@ p {
   background: #f6f7f9;
   color: #231f1f;
   padding: 10px;
-  margin: 10px 0;
   border: 0;
   font-size: 2rem;
 }
 .halpq__filter__active {
   background: #e44e48;
-}
-.halpq__title {
-  padding: 50px 0 10px 0;
 }
 .halpq button {
   cursor: pointer;
@@ -600,6 +596,22 @@ span.highlighted {
 }
 .question__questionContent {
   font-size: 2rem;
+  float: left;
+}
+.question__userInfo__image {
+  width: 90px;
+  float: left;
+  margin: 0 10px;
+}
+.question__userInfo__image img {
+  border-radius: 50%;
+  filter: grayscale(10);
+}
+.question__userInfo__image p {
+  padding-top: 10px;
+}
+.question__actions__admins {
+  float: right;
 }
 
 .chat {
