@@ -367,8 +367,7 @@ button {
   background: #f6f7f9;
   position: relative; }
   .halpq__title {
-    margin-top: 50px;
-    border: 1px solid red; }
+    margin-top: 50px; }
   .halpq__filter {
     background: #f6f7f9;
     color: #231f1f;
@@ -396,8 +395,7 @@ button {
   color: #231f1f;
   padding: 10px;
   background: #787e8b;
-  position: relative;
-  border: 1px solid red; }
+  position: relative; }
   .question__list__title {
     padding: 50px 0;
     font-size: 4rem; }
@@ -537,78 +535,6 @@ span.highlighted {
     transform: translate(50%, 50%);
     z-index: 10; } }
 
-.question__wrapper {
-  width: 90%;
-  margin: 0 auto; }
-
-.question {
-  background: #ffffff;
-  margin: 0 0;
-  width: 100%;
-  min-height: 200px;
-  background-color: #ffffff;
-  box-shadow: 0 3px 15px 0 #00000028;
-  padding: 20px;
-  font-size: 2rem;
-  margin-bottom: 10px; }
-  .question__questionContent {
-    font-size: 2rem;
-    float: left; }
-  .question__addbutton {
-    height: 70px;
-    width: 70px;
-    border: none;
-    background-color: #e40015;
-    border-radius: 100%;
-    font-size: 3rem;
-    color: #ffffff;
-    position: fixed;
-    bottom: 60px;
-    right: 60px;
-    transition: transform 0.5s;
-    box-shadow: 3px 3px 15px 0 #00000028;
-    cursor: pointer; }
-    .question__addbutton:hover {
-      background-color: #da0014;
-      transform: rotateZ(90deg); }
-
-.questionForm {
-  width: 39%;
-  float: right; }
-  .questionForm input,
-  .questionForm textarea {
-    height: 55px;
-    margin-bottom: 10px;
-    width: 100%;
-    border: 0;
-    letter-spacing: 1px;
-    padding: 5px;
-    font-family: inherit; }
-  .questionForm textarea {
-    display: block;
-    resize: none;
-    height: 200px;
-    font-family: inherit; }
-  .questionForm input[type='submit'] {
-    display: block;
-    width: 100%;
-    border: 0;
-    background: #e44e48; }
-  .questionForm label {
-    display: none;
-    font-weight: bold;
-    font-size: 2rem;
-    margin-bottom: 10px; }
-
-.question__actions__admins p {
-  float: right;
-  color: #231f1f;
-  padding-top: 8px;
-  padding-right: 4px;
-  font-size: 1.2rem;
-  font-weight: 400;
-  line-height: 2rem; }
-
 .completeQuestion {
   width: 100%;
   transition: fill 0.1s; }
@@ -625,23 +551,48 @@ span.highlighted {
 
 .question {
   background: #ffffff;
-  margin: 0 0;
+  margin: 0;
   width: 100%;
   min-height: 200px;
   background-color: #ffffff;
-  box-shadow: 0 3px 15px 0 #00000028;
-  padding: 20px;
-  font-size: 2rem;
+  box-shadow: 0 3px 15px 0 #00000099;
+  padding: 10px;
+  font-size: 1.6rem;
   margin-bottom: 10px; }
-  .question__userInfo__image {
-    width: 90px;
+  .question__questionContent {
     float: left;
-    margin: 0 10px; }
+    width: calc(100% - 15% - 170px - 10px);
+    padding: 10px;
+    padding-right: 0; }
+    .question__questionContent--infoContainer {
+      font-weight: 700; }
+      .question__questionContent--infoContainer .question__questionContent--name {
+        font-size: 2rem;
+        color: #e40015; }
+    .question__questionContent--contentContainer {
+      padding-top: 10px; }
+  .question__userInfo__image {
+    width: 15%;
+    float: left;
+    margin: 0 10px 0 0;
+    font-size: 1.4rem;
+    text-align: center; }
     .question__userInfo__image img {
       border-radius: 50%;
-      filter: grayscale(10); }
-    .question__userInfo__image p {
-      padding-top: 10px; }
+      filter: grayscale(10);
+      padding-bottom: 10px; }
+  .question__actions__admins {
+    width: 170px;
+    text-align: right; }
+    .question__actions__admins p {
+      float: right;
+      color: #231f1f;
+      padding-top: 8px;
+      padding-right: 4px;
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 2rem;
+      font-family: "Raleway", sans-serif; }
   .question .completeQuestion .buttonImage {
     margin: 0 4px 0 2px; }
   .question .beingHelped .buttonImage {
@@ -669,8 +620,94 @@ span.highlighted {
     fill: #e40015; }
 
 @media (max-width: 900px) {
-  .question__actions__admins p {
-    display: none; } }
+  .question__userInfo__image {
+    float: none;
+    width: 50%;
+    text-align: left;
+    font-size: 1.6rem; }
+    .question__userInfo__image img {
+      display: none; }
+  .question__questionContent {
+    width: calc(100% - 50px - 10px); }
+  .question .question__actions__admins {
+    width: 50px; }
+    .question .question__actions__admins p {
+      display: none; } }
+
+.question__wrapper {
+  width: 90%;
+  margin: 0 auto; }
+
+.questionForm {
+  width: 39%;
+  float: right; }
+  .questionForm__input, .questionForm__submit {
+    height: 55px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 0;
+    letter-spacing: 1px;
+    padding: 5px;
+    font-family: inherit;
+    resize: none; }
+  .questionForm__questionArea {
+    display: block;
+    height: 200px;
+    font-family: inherit;
+    width: 100%; }
+  .questionForm__addbutton {
+    display: none;
+    height: 70px;
+    width: 70px;
+    background-color: #e40015;
+    border-radius: 100%;
+    font-size: 3rem;
+    z-index: 10;
+    color: #ffffff;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    transition: transform 0.5s;
+    box-shadow: 3px 3px 15px 0 #00000028;
+    cursor: pointer; }
+    .questionForm__addbutton:hover {
+      background-color: #da0014;
+      transform: rotateZ(90deg); }
+  .questionForm__submit {
+    display: block;
+    width: 100%;
+    border: 0;
+    background: #e44e48; }
+  .questionForm__label {
+    display: none;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 10px; }
+  .questionForm__mobileWrapper {
+    position: fixed;
+    background: #151313;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .questionForm__mobileInner {
+    position: fixed;
+    background: #e7e9ef;
+    width: 80%;
+    height: auto;
+    padding: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+
+@media (max-width: 750px) {
+  .questionForm__addbutton {
+    display: block; }
+  .questionForm__desktop {
+    display: none; }
+  .question__listing {
+    width: 100%; } }
 
 button {
   outline: 0; }
