@@ -42,7 +42,14 @@ class ConversationModel extends Component {
     dbRef
       .ref(`/Questions/${this.state.classKey}/${this.state.questionKey}`)
       .once('value', snapshot => {
-        if (snapshot.val().uid === this.state.user.uid || this.state.isAdmin) {
+        if (snapshot.exists() || snapshot.val === null) {
+          this.setState({
+            questionOwner: false,
+          });
+        } else if (
+          snapshot.val().uid === this.state.user.uid ||
+          this.state.isAdmin
+        ) {
           this.setState({
             questionOwner: true,
           });
