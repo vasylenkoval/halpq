@@ -8,11 +8,11 @@ class ConversationModel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // classKey: this.props.classKey,
+      classKey: this.props.classKey,
       userInput: '',
-      // isAdmin: this.props.isAdmin,
-      // user: this.props.user,
-      // questionKey: this.props.questionKey,
+      isAdmin: this.props.isAdmin,
+      user: this.props.user,
+      questionKey: this.props.questionKey,
       questionOwner: false,
       index: 0,
     };
@@ -22,10 +22,10 @@ class ConversationModel extends Component {
     e.preventDefault();
     // post this new book to firebase
     dbRef.ref(`/Chat/${this.state.classKey}/${this.state.questionKey}/`).push({
-      name: this.props.user.displayName,
-      content: this.props.userInput,
-      uid: this.props.user.uid,
-      photoURL: this.props.user.photoURL,
+      name: this.state.user.displayName,
+      content: this.state.userInput,
+      uid: this.state.user.uid,
+      photoURL: this.state.user.photoURL,
       dateCreated: +new Date(),
     });
     this.setState({ userInput: '' });
@@ -40,15 +40,15 @@ class ConversationModel extends Component {
 
   componentDidMount() {
     dbRef
-      .ref(`/Questions/${this.props.classKey}/${this.props.questionKey}`)
+      .ref(`/Questions/${this.state.classKey}/${this.state.questionKey}`)
       .once('value', snapshot => {
-        if (!snapshot.exists() || snapshot.val() === null) {
+        if (snapshot.exists() || snapshot.val === null) {
           this.setState({
             questionOwner: false,
           });
         } else if (
-          snapshot.val().uid === this.props.user.uid ||
-          this.props.isAdmin
+          snapshot.val().uid === this.state.user.uid ||
+          this.state.isAdmin
         ) {
           this.setState({
             questionOwner: true,
@@ -59,7 +59,7 @@ class ConversationModel extends Component {
 
   componentWillUnmount() {
     dbRef
-      .ref(`/Questions/${this.props.classKey}/${this.prosp.questionKey}`)
+      .ref(`/Questions/${this.state.classKey}/${this.state.questionKey}`)
       .off();
   }
 
