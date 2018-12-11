@@ -215,7 +215,7 @@ class ClassroomList extends Component {
                 id="conditional-input"
                 onChange={this.handleChange}
                 value={userInput}
-                minLength={8}
+                minLength={isAdmin ? 3 : 8}
               />
               <button className="classroomlist__form__submit" type="submit">
                 {isAdmin ? 'New classroom' : 'Join classroom'}
