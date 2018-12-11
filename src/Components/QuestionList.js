@@ -43,30 +43,37 @@ class QuestionList extends Component {
     });
 
   render() {
-    return (
-      <div className="question__listing">
+    return <div className="question__listing">
         {/* <h3 className="question__list__title">Active Questions</h3> */}
         {this.state.questions.map(question => (
           <div
             className={
               question[1].isBeingHelped
-                ? 'question question__beingHelped'
-                : 'question'
+                ? "question question__beingHelped"
+                : "question"
             }
             key={question[0]}
           >
             <div className="question__userInfo">
               <div className="question__userInfo__image">
                 <img src={question[1].photoURL} alt="" />
-                <p>{question[1].name}</p>
+                <div className="question__time">
+                  {this.timeConverter(question[1].dateCreated)}
+                </div>
               </div>
             </div>
             <div className="question__questionContent clearfix">
-              <p>{question[1].location}</p>
-              <p>{question[1].content}</p>
-            </div>
-            <div className="question_time">
-              {this.timeConverter(question[1].dateCreated)}
+              <div className="question__questionContent--container">
+                <p className="question__questionContent--name">
+                  {question[1].name}
+                </p>
+                <p className="question__questionContent--location">
+                  Location: {question[1].location}
+                </p>
+              </div>
+              <p className="question__questionContent--content">
+                {question[1].content}
+              </p>
             </div>
             <div className="question__actions__admins">
               {this.state.isAdmin ? (
@@ -105,8 +112,7 @@ class QuestionList extends Component {
             </div>
           </div>
         ))}
-      </div>
-    );
+      </div>;
   }
 }
 
