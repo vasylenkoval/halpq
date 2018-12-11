@@ -44,7 +44,12 @@
     display: block;
     width: 100%;
     border: 0;
-    background: $secondaryAccent;
+    background: $primaryAccent;
+    color: $white;
+    transition: background 0.1s;
+    &:hover {
+      background: $secondaryAccent;
+    }
   }
   &__label {
     display: none;
@@ -55,8 +60,6 @@
   &__mobileWrapper {
     position: fixed;
     background: darken($darkColor, 5%);
-    // background-color: rgba(0, 0, 0, 0.459);
-
     width: 100%;
     height: 100%;
     top: 50%;
@@ -82,6 +85,15 @@
 //   }
 //
 // }
+
+@supports (-moz-appearance: none) {
+  .questionForm__addbutton {
+    padding: 19px;
+    line-height: 38px;
+    height: 70px;
+    width: 70px;
+  }
+}
 
 @media (max-width: 750px) {
   .questionForm__addbutton {
