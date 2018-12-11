@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import firebase from 'firebase';
-import DeleteQuestion from './DeleteQuestion';
-import QuestionConversation from './QuestionConversation';
+import React, { Component } from "react";
+import firebase from "firebase";
+import DeleteQuestion from "./DeleteQuestion";
+import QuestionConversation from "./QuestionConversation";
 
 class AchiveList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       questions: [],
-      classroomName: '',
+      classroomName: ""
     };
   }
 
@@ -21,7 +21,7 @@ class AchiveList extends Component {
     //     });
     //   }
     // });
-    dbRef.ref(`/Archive/${this.props.classKey}`).on('value', snapshot => {
+    dbRef.ref(`/Archive/${this.props.classKey}`).on("value", (snapshot) => {
       if (!snapshot.exists()) {
         this.setState({ questions: [] });
       } else if (snapshot.val()) {
@@ -41,20 +41,19 @@ class AchiveList extends Component {
       <div>
         <h3 className="question__list__title">Completed Questions</h3>
 
-        {this.state.questions.map(question => (
+        {this.state.questions.map((question) => (
           <div
-            style={{ border: `1px solid green` }}
             className="question"
             key={question[0]}
             // questionKey={question[0]}
           >
+            <div className="question__userInfo">
+              <img src={question[1].photoURL} alt="" />
+              <p>{question[1].name}</p>
+            </div>
             <div className="question__questionContent">
               <p>{question[1].location}</p>
               <p>{question[1].content}</p>
-            </div>
-            <div className="question__userInfo">
-              <p>{question[1].name}</p>
-              {/* <img src={question[1].photoURL} alt="" /> */}
             </div>
             <div className="question__actions__admins">
               <DeleteQuestion

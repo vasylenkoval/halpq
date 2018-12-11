@@ -5,6 +5,8 @@ import QuestionForm from './QuestionForm';
 import QuestionList from './QuestionList';
 import ArchiveList from './ArchiveList';
 import backChevron from '../assets/back-chevron.svg';
+import toggleLeft from '../assets/toggle-left.svg';
+import toggleRight from '../assets/toggle-right.svg';
 
 const dbRef = firebase.database();
 
@@ -90,7 +92,9 @@ class Halpq extends Component {
           </button>
           {isAdmin ? (
             <button type="button" onClick={this.disableClassroom}>
-              {isClassroomDisabled ? 'Enable classroom' : 'Disable classroom'}
+              <div className="buttonImage halpq__toggleclassroom">{isClassroomDisabled ? 
+              <img src={toggleLeft} className="halpq__toggleDisable" alt="disable classroom" />  : 
+              <img src={toggleRight} className="halpq__toggleEnable" alt="enable classroom" />}</div>
             </button>
           ) : null}
           {!archiveToggle ? (

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import firebase from '../firebase';
-import ConversationModal from './ConversationModal';
-import startConversationIcon from '../assets/startConversationIcon.svg';
+import React, { Component } from "react";
+import firebase from "../firebase";
+import ConversationModal from "./ConversationModal";
+import startConversation from "../assets/start-conversation.svg";
 
 class QuestionConversation extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class QuestionConversation extends Component {
       classKey: this.props.classKey,
       questionKey: this.props.questionKey,
       chatStarted: false,
-      chatArray: [],
+      chatArray: []
     };
   }
 
@@ -28,7 +28,7 @@ class QuestionConversation extends Component {
     // console.log(dbRef.ref.parent);
     dbRef
       .ref(`/Chat/${this.state.classKey}/${this.state.questionKey}/`)
-      .on('value', snapshot => {
+      .on("value", (snapshot) => {
         if (!snapshot.exists()) {
           this.setState({ chatArray: [] });
         } else if (snapshot.val()) {
@@ -36,7 +36,7 @@ class QuestionConversation extends Component {
           this.setState({ chatArray }, () => {
             if (this.state.chatArray[0]) {
               this.setState({
-                chatStarted: true,
+                chatStarted: true
               });
             }
           });
@@ -44,37 +44,34 @@ class QuestionConversation extends Component {
       });
   }
 
-  handleChange = e => {
+  handleChange = (e) => {
     e.preventDefault();
     !this.state.isOpen
       ? this.setState({
-          isOpen: true,
+          isOpen: true
         })
       : this.setState({
-          isOpen: false,
+          isOpen: false
         });
   };
 
   render() {
     return (
-      <div>
+      <div className="questionConversation">
         {this.state.isAdmin ? (
           this.state.chatStarted ? (
-            <button
-              type="button"
-              onClick={this.handleChange}
-              className={QuestionConversation}
-            >
-              VIEW CONVERATION
+            <button type="button" onClick={this.handleChange} className="">
+              <div className="buttonImage buttonImage__started">
+                <img
+                  src={startConversation}
+                  alt="click to start a conversation about this question"
+                />
+              </div>
             </button>
           ) : (
-            <button
-              type="button"
-              onClick={this.handleChange}
-              className={QuestionConversation}
-            >
-              <div>
-                <img src={startConversationIcon} alt="" />
+            <button type="button" onClick={this.handleChange}>
+              <div className="buttonImage buttonImage__view">
+                <img src={startConversation} alt="" />
               </div>
             </button>
           )
