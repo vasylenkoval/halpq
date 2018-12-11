@@ -1,5 +1,6 @@
-import React, { Component } from "react";
-import firebase from "firebase";
+import React, { Component } from 'react';
+import firebase from 'firebase';
+import beingHelpedIcon from '../assets/beingHelpedIcon.svg';
 
 class BeingHelped extends Component {
   beingHelped = (classroomRef, questionRef) => {
@@ -18,7 +19,7 @@ class BeingHelped extends Component {
             this.beingHelped(this.props.classKey, this.props.questionKey);
           }}
         >
-          MARKE AS BEING HELPED
+          <img src="{beingHelpedIcon}" alt="" />
         </button>
       </div>
     );

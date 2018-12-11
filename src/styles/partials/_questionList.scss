@@ -22,9 +22,25 @@
   padding: 20px;
   font-size: 2rem;
   margin-bottom: 20px;
-
   &__questionContent {
     font-size: 2rem;
+    float: left;
+  }
+
+  &__userInfo__image {
+    width: 90px;
+    float: left;
+    margin: 0 10px;
+    img {
+      border-radius: 50%;
+      filter: grayscale(10);
+    }
+    p {
+      padding-top: 10px;
+    }
+  }
+  &__actions__admins {
+    float: right;
   }
 }
 //  .question {
