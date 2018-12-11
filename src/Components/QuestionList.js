@@ -49,8 +49,8 @@ class QuestionList extends Component {
           <div
             className={
               question[1].isBeingHelped
-                ? "question question__beingHelped"
-                : "question"
+                ? "clearfix question question__beingHelped"
+                : "clearfix question"
             }
             key={question[0]}
           >
@@ -63,17 +63,19 @@ class QuestionList extends Component {
               </div>
             </div>
             <div className="question__questionContent clearfix">
-              <div className="question__questionContent--container">
+              <div className="question__questionContent--infoContainer">
                 <p className="question__questionContent--name">
                   {question[1].name}
                 </p>
                 <p className="question__questionContent--location">
-                  Location: {question[1].location}
+                  {question[1].location}
                 </p>
               </div>
+              <div className="question__questionContent--contentContainer">
               <p className="question__questionContent--content">
                 {question[1].content}
               </p>
+              </div>
             </div>
             <div className="question__actions__admins">
               {this.state.isAdmin ? (
