@@ -423,7 +423,8 @@ button {
     box-shadow: 0 3px 15px 0 #00000028;
     padding: 30px;
     font-size: 2rem;
-    margin-bottom: 45px; }
+    margin-bottom: 45px;
+    transition: box-shadow 0.1s; }
     .classroomlist__item__questions__count {
       padding-bottom: 4px; }
     .classroomlist__item__name {
@@ -635,37 +636,51 @@ span.highlighted {
     margin: 2px;
     float: right; }
 
+button {
+  outline: 0; }
+
 .chat {
   position: fixed;
+  z-index: 10;
   display: block;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba(35, 31, 31, 0.9); }
+  .chat__controls {
+    background-color: #e40015;
+    position: fixed;
+    padding: 10px 17px;
+    color: #ffffff;
+    z-index: 20;
+    top: 0;
+    transition: background-color 0.1s; }
+    .chat__controls:hover {
+      background: #da0014; }
   .chat__convo {
     position: fixed;
-    background: #f6f7f9;
-    width: 70%;
-    height: 70%;
+    background: #e7e9ef;
+    width: 100%;
+    height: 100%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 10px;
-    overflow-y: auto; }
-  .chat__closeIcon {
-    position: fixed;
-    top: 2%;
-    left: 1%;
-    height: 100px;
-    width: 100px;
-    color: black; }
+    overflow-y: auto;
+    padding-bottom: 45px; }
   .chat__message {
-    padding-right: 20px; }
-  .chat__chatContent, .chat__userInfo {
-    text-align: right; }
+    margin: 30px;
+    background: #fafafa;
+    border-radius: 10px;
+    padding: 15px;
+    word-wrap: break-word; }
+  .chat__chatContent {
+    font-size: 1.8rem; }
   .chat__userInfo {
-    font-weight: bold; }
+    font-weight: bold;
+    color: #e44e48;
+    margin-bottom: 10px; }
   .chat__inputArea {
     bottom: 0;
     left: 0;
@@ -673,19 +688,48 @@ span.highlighted {
   .chat__messageInput, .chat__buttonSubmit {
     height: 50px;
     display: inline-block;
-    bottom: 0;
-    left: 0;
-    border: 0; }
+    border: 0;
+    outline: 0; }
+  .chat__wrapper {
+    position: fixed;
+    width: 70%;
+    height: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  .chat__input__form {
+    position: absolute;
+    bottom: -5px;
+    width: 100%; }
   .chat__messageInput {
-    padding: 10px;
-    width: 90%;
-    border-top: 2px solid #e44e48;
+    padding: 10px 10px 10px 20px;
+    width: 80%;
     border-bottom-left-radius: 10px; }
   .chat__buttonSubmit {
-    width: 10%;
-    background: #e44e48;
+    width: 20%;
+    cursor: pointer;
+    background: #e40015;
     color: #fff;
-    border-bottom-right-radius: 10px; }
+    border-bottom-right-radius: 10px;
+    transition: background 0.1s; }
+    .chat__buttonSubmit:hover {
+      background: #da0014; }
+
+.chat__convo--nopadding {
+  padding-bottom: 0; }
+
+@media (max-width: 800px) {
+  .chat__wrapper {
+    height: 100%;
+    width: 100%; }
+  .chat__controls {
+    width: 100%;
+    text-align: left; }
+  .chat__messageInput, .chat__buttonSubmit {
+    height: 60px;
+    border-radius: 0; }
+  .chat__convo {
+    border-radius: 0; } }
 
 .userManagement {
   background: #f6f7f9; }
