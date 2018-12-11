@@ -49,8 +49,8 @@ class QuestionList extends Component {
           <div
             className={
               question[1].isBeingHelped
-                ? "question question__beingHelped"
-                : "question"
+                ? "clearfix question question__beingHelped"
+                : "clearfix question"
             }
             key={question[0]}
           >

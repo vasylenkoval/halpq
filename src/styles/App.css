@@ -600,15 +600,6 @@ span.highlighted {
     font-size: 2rem;
     margin-bottom: 10px; }
 
-.question__actions__admins p {
-  float: right;
-  color: #231f1f;
-  padding-top: 8px;
-  padding-right: 4px;
-  font-size: 1.2rem;
-  font-weight: 400;
-  line-height: 2rem; }
-
 .completeQuestion {
   width: 100%;
   transition: fill 0.1s; }
@@ -625,16 +616,17 @@ span.highlighted {
 
 .question {
   background: #ffffff;
-  margin: 0 0;
+  margin: 0;
   width: 100%;
   min-height: 200px;
   background-color: #ffffff;
-  box-shadow: 0 3px 15px 0 #00000028;
+  box-shadow: 0 3px 15px 0 #00000099;
   padding: 20px;
   font-size: 2rem;
   margin-bottom: 10px; }
   .question__userInfo__image {
-    width: 90px;
+    border: 1px solid blue;
+    width: 70px;
     float: left;
     margin: 0 10px; }
     .question__userInfo__image img {
@@ -642,6 +634,18 @@ span.highlighted {
       filter: grayscale(10); }
     .question__userInfo__image p {
       padding-top: 10px; }
+  .question__actions__admins {
+    border: 1px solid blue; }
+    .question__actions__admins p {
+      float: right;
+      color: #231f1f;
+      padding-top: 8px;
+      padding-right: 4px;
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 2rem; }
+    .question__actions__admins .question__questionContent {
+      border: 1px solid blue; }
   .question .completeQuestion .buttonImage {
     margin: 0 4px 0 2px; }
   .question .beingHelped .buttonImage {
