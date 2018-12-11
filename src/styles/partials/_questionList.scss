@@ -41,6 +41,14 @@
   }
   &__actions__admins {
     float: right;
+    .buttonImage {
+      width: 35px;
+      height: 35px;
+      margin: 2px;
+      text-align: right;
+      & svg path {
+      }
+    }
   }
 }
 //  .question {

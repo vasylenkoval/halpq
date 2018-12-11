@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import firebase from 'firebase';
+import React, { Component } from "react";
+import firebase from "firebase";
+import markComplete from "../assets/mark-complete.svg";
 
 class CompleteQuestion extends Component {
   archiveQuestion = (classroomRef, questionRef) => {
@@ -9,7 +10,7 @@ class CompleteQuestion extends Component {
     const archiveRef = firebase
       .database()
       .ref(`Archive/${classroomRef}/${questionRef}`);
-    currRef.once('value', snapshot => {
+    currRef.once("value", (snapshot) => {
       archiveRef.set(snapshot.val());
       currRef.remove();
     });
@@ -17,14 +18,16 @@ class CompleteQuestion extends Component {
 
   render() {
     return (
-      <div>
+      <div className="CompleteQuestion">
         <button
           type="button"
           onClick={() => {
             this.archiveQuestion(this.props.classKey, this.props.questionKey);
           }}
         >
-          MARK AS COMPLETE
+          <div className="buttonImage">
+            <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" space="preserve" version="1.1" viewBox="0 0 326 407.5" x="0px" y="0px" fill-rule="evenodd" clip-rule="evenodd"><defs></defs><g><path class="fil0" fill="black" d="M163 0c90,0 163,73 163,163 0,90 -73,163 -163,163 -90,0 -163,-73 -163,-163 0,-90 73,-163 163,-163zm-5 237c-11,11 -27,9 -37,-3l-64 -64c-23,-23 12,-58 35,-35l49 48 93 -93c23,-23 59,12 35,35l-111 112z"/></g></svg>
+          </div>
         </button>
       </div>
     );

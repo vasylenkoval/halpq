@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import HeaderTitle from './HeaderTitle';
-import UserManagementLink from './UserManagementLink';
-import UserDetails from './UserDetails';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import HeaderTitle from "./HeaderTitle";
+import UserManagementLink from "./UserManagementLink";
+import UserDetails from "./UserDetails";
 // import Context from './Components/Context';
 
 class Header extends Component {
   constructor() {
-    console.log('the constructor was called');
+    console.log("the constructor was called");
     super();
     this.state = {};
   }
@@ -38,18 +38,11 @@ class Header extends Component {
               photoURL={this.props.user.photoURL}
               displayName={this.props.user.displayName}
             />
-            
           </div>
         ) : null}
-
       </div>
     );
   }
 }
-
-const HeaderLogoStyle = {
-  width: '94px',
-  // display: 'inline-block',
-};
 
 export default Header;
