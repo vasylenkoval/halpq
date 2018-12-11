@@ -126,7 +126,10 @@
     fill: $primaryAccent;
   }
 }
-
+.disabledClass__notify {
+  margin-top: 10px;
+  text-align: center;
+}
 
 @media (max-width: 900px) {
 

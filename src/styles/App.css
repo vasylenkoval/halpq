@@ -651,6 +651,10 @@ span.highlighted {
   .questionConversation:hover svg path {
     fill: #e40015; }
 
+.disabledClass__notify {
+  margin-top: 10px;
+  text-align: center; }
+
 @media (max-width: 900px) {
   .question__userInfo__image {
     float: none;
