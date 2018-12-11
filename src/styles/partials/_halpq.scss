@@ -63,5 +63,18 @@
     font-size: 1.8rem;
     float: left;
     color: $darkColor;
+    transition: color 0.1s;
+    &:hover {
+      color: $primaryAccent;
+    }
+  }
+  img svg path {
+    fill: green;
+  }
+}
+
+@media (max-width: 500px) {
+  .halpq__filter {
+    font-size: 1.8rem;
   }
 }

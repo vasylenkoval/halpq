@@ -113,8 +113,10 @@ class App extends Component {
               </div>
             ) : (
               <div className="logIn">
-                <button className="logIn__button" onClick={this.logIn}>LogIn</button>
-
+              <div className="filter">
+                <button className="logIn__button" onClick={this.logIn}>Login with Google</button>
+              
+              </div>
               </div>
             )}
           </div>

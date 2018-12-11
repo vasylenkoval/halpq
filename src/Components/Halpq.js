@@ -94,7 +94,7 @@ class Halpq extends Component {
             }
             name="Active"
           >
-            Active Questions
+            Active
           </button>
           <button
             type="button"
@@ -106,7 +106,7 @@ class Halpq extends Component {
             }
             name="Completed"
           >
-            Completed Questions
+            Completed
           </button>
           {isAdmin ? (
             <button
@@ -246,8 +246,8 @@ class Halpq extends Component {
             <div className="question__list clearfix">
               <QuestionList classKey={classKey} user={user} isAdmin={isAdmin} />
               {isClassroomDisabled ? (
-                <p>
-                  <strong>This classroom is temporarily disabled 🙊</strong>
+                <p className="disabledClass__notify">
+                  <strong>This classroom is temporarily disabled </strong>
                 </p>
               ) : (
                 <QuestionForm

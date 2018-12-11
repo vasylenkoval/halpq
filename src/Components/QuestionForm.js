@@ -112,7 +112,13 @@ class QuestionForm extends Component {
             minLength={1}
             placeholder="Enter your location at HackerYou"
           />
-          <input type="submit" className="questionForm__submit" />
+          <label
+            htmlFor="submit"
+            className="questionForm__label visuallyhidden"
+          >
+            Submit
+          </label>
+          <input type="submit" id="submit" className="questionForm__submit" />
         </form>
         {/* Show when window size is below 750px's */}
         <button
@@ -152,7 +158,11 @@ class QuestionForm extends Component {
                 value={this.state.location}
                 minLength={1}
               />
-              <button className="questionForm__submit" type="submit">
+              <button
+                className="questionForm__submit"
+                id="submit"
+                type="submit"
+              >
                 {'Submit Query'}
               </button>
             </form>
