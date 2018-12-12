@@ -1,7 +1,10 @@
 .header {
   width: 100%;
   background: $white;
-
+  .subtitle--red {
+    font-weight: 700;
+    color: $primaryAccent;
+  }
   &__logo {
     width: 94px;
     height: 94px;
@@ -108,6 +111,8 @@
       display: none;
     }
   }
+
+
 
   .userDetails {
     &__image {
