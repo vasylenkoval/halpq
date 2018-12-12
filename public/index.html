@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+  <script>
+    // before React is loaded
+    if (typeof window.__REACT_DEVTOOLS_GLOBAL_HOOK__ === 'object') {
+      __REACT_DEVTOOLS_GLOBAL_HOOK__.inject = function() {};
+    }
+  </script>
   <head>
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
@@ -33,8 +39,10 @@
     />
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="theme-color" content="#ffffff" />
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
-
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:400,700"
+      rel="stylesheet"
+    />
 
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
