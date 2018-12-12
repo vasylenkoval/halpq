@@ -476,6 +476,8 @@ button {
     display: none; } }
 
 .classroomlist {
+  max-width: 1600px;
+  margin: 0 auto;
   color: #231f1f;
   background-color: #f6f7f9; }
   .classroomlist button {
@@ -625,11 +627,11 @@ span.highlighted {
   min-height: 200px;
   background-color: #ffffff;
   box-shadow: 0 3px 15px 0 #0000005e;
-  padding: 10px;
+  padding: 20px;
   font-size: 1.6rem;
   margin-bottom: 10px; }
   .question__completed {
-    color: #e40015;
+    color: #231f1f;
     margin: 15px;
     font-weight: bold; }
   .question__delete {
@@ -655,13 +657,15 @@ span.highlighted {
   .question__questionContent {
     float: left;
     width: calc(100% - 15% - 170px - 10px);
-    padding: 10px;
     padding-right: 0; }
     .question__questionContent--infoContainer {
       font-weight: 700; }
       .question__questionContent--infoContainer .question__questionContent--name {
         font-size: 2rem;
-        color: #e40015; }
+        color: #e40015;
+        margin-bottom: 10px; }
+      .question__questionContent--infoContainer .question__questionContent--location {
+        margin-bottom: 10px; }
     .question__questionContent--contentContainer {
       padding-top: 10px; }
   .question__userInfo__image {
@@ -720,9 +724,15 @@ span.highlighted {
 .beinghelped__indicator {
   font-weight: bold;
   color: #e40015;
-  margin: 10px; }
+  margin: 10px;
+  transition: color 2s; }
+  .beinghelped__indicator:hover {
+    color: black; }
 
 @media (max-width: 900px) {
+  .beinghelped__indicator {
+    position: relative;
+    left: -20px; }
   .question__userInfo__image {
     float: none;
     width: 50%;
@@ -730,6 +740,9 @@ span.highlighted {
     font-size: 1.6rem; }
     .question__userInfo__image img {
       display: none; }
+  .question__completed {
+    position: relative;
+    left: -60px; }
   .question__time {
     padding-left: 10px; }
   .question__questionContent {
