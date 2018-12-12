@@ -399,7 +399,7 @@ button {
   background: #f6f7f9;
   position: relative; }
   .halpq__title {
-    margin-top: 50px; }
+    margin-top: 80px; }
   .halpq__filter {
     background: #f6f7f9;
     color: #231f1f;
@@ -960,7 +960,7 @@ button {
     color: #231f1f; }
 
 .Component__Title {
-  padding: 50px 0 0 0; }
+  padding: 80px 0 0 0; }
 
 .users {
   margin: 10px 0;
