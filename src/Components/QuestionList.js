@@ -55,7 +55,7 @@ class QuestionList extends Component {
           >
             <div className="question__userInfo">
               <div className="question__userInfo__image">
-                <img src={question[1].photoURL} alt="" />
+                <img src={question[1].photoURL} alt={`${question[1].name}'s display photo`} />
                 <div className="question__time">
                   {this.timeConverter(question[1].dateCreated)}
                 </div>
