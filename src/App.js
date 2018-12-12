@@ -101,7 +101,7 @@ class App extends Component {
                 {isAdmin ? (
                   <Route path="/usermanagement" component={UserManagement} />
                 ) : (
-                  <Route path="/usermanagement" component={UserManagement} />
+                  <Route path="/usermanagement" component={NotFound} />
                   // switch it back to 404 pls
                 )}
                 <Route
