@@ -104,7 +104,14 @@ class QuestionList extends Component {
                 questionOwner
               />
               {question[1].isBeingHelped && !this.state.isAdmin ? (
-                <div className="beinghelped__indicator">Being helped</div>
+                <div className="beinghelped__indicator">
+                  Being helped
+                  <div id="wave">
+                    <span class="dot" />
+                    <span class="dot" />
+                    <span class="dot" />
+                  </div>
+                </div>
               ) : null}
 
               {question[1].isBeingHelped ? (
