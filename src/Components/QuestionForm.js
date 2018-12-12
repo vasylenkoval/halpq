@@ -136,9 +136,9 @@ class QuestionForm extends Component {
         </button>
         {this.state.activateForm ? (
           <div className="questionForm__mobileWrapper">
-            <form
+            <form method="#"
               className="questionForm__mobileInner"
-              onSubmit={this.conditionalAction}
+              onSubmit={this.handleSubmit}
               autoComplete="off"
             >
               <textarea
@@ -169,7 +169,7 @@ class QuestionForm extends Component {
                 type="submit"
               >
                 {'Submit'}
-              </button>
+                </button>
             </form>
           </div>
         ) : null}
