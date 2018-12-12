@@ -109,6 +109,12 @@ class Halpq extends Component {
             Completed
           </button>
           {isAdmin ? (
+            <div className="classroomkey">
+              <span>Classroom key:</span>{' '}
+              {this.props.match.params.classroomid.slice(1, 9)}
+            </div>
+          ) : null}
+          {isAdmin ? (
             <button
               type="button"
               className="halpq__toggleclassroom"

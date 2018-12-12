@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import firebase from "firebase";
-import DeleteQuestion from "./DeleteQuestion";
-import QuestionConversation from "./QuestionConversation";
+import React, { Component } from 'react';
+import firebase from 'firebase';
+import DeleteQuestion from './DeleteQuestion';
+import QuestionConversation from './QuestionConversation';
 
 class AchiveList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       questions: [],
-      classroomName: ""
+      classroomName: '',
     };
   }
 
@@ -21,7 +21,7 @@ class AchiveList extends Component {
     //     });
     //   }
     // });
-    dbRef.ref(`/Archive/${this.props.classKey}`).on("value", (snapshot) => {
+    dbRef.ref(`/Archive/${this.props.classKey}`).on('value', snapshot => {
       if (!snapshot.exists()) {
         this.setState({ questions: [] });
       } else if (snapshot.val()) {
@@ -38,10 +38,8 @@ class AchiveList extends Component {
 
   render() {
     return (
-      <div>
-        <h3 className="question__list__title">Completed Questions</h3>
-
-        {this.state.questions.map((question) => (
+      <div className="question__listing">
+        {this.state.questions.map(question => (
           <div
             className="question"
             key={question[0]}

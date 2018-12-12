@@ -80,13 +80,16 @@ button {
   &__messageInput {
     padding: 10px 10px 10px 20px;
     width: 80%;
+    &::placeholder {
+      font-family: $font;
+    }
   }
   &__buttonSubmit {
     width: 20%;
     cursor: pointer;
     background: $primaryAccent;
     color: #fff;
-
+    font-family: $font;
     transition: background 0.1s;
     &:hover {
       background: darken($primaryAccent, 2%);

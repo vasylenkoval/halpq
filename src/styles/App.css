@@ -406,9 +406,20 @@ button {
     border: 0;
     font-size: 2rem; }
     .halpq__filter__active {
-      background: #787e8b; }
+      background: #787e8b25; }
   .halpq__toggleclassroom {
-    float: right; }
+    float: right;
+    max-height: 60px;
+    width: 55px;
+    position: relative; }
+    .halpq__toggleclassroom::after {
+      content: "Enable/Disable";
+      position: absolute;
+      font-family: "Raleway", sans-serif;
+      font-weight: bold;
+      top: 18px;
+      left: -125px;
+      width: 0; }
     .halpq__toggleclassroom__active {
       fill: #e40015; }
   .halpq .buttonImage {
@@ -423,7 +434,7 @@ button {
 .question__list {
   color: #231f1f;
   padding: 10px;
-  background: #787e8b;
+  background: #787e8b25;
   position: relative; }
   .question__list__title {
     padding: 50px 0;
@@ -446,9 +457,23 @@ button {
   .returnLink img svg path {
     fill: green; }
 
+.classroomkey {
+  display: inline;
+  font-size: 2rem;
+  margin-left: 12px; }
+  .classroomkey span {
+    font-weight: bold;
+    color: #e40015; }
+
+@media (max-width: 750px) {
+  .classroomkey {
+    display: none; } }
+
 @media (max-width: 500px) {
   .halpq__filter {
-    font-size: 1.8rem; } }
+    font-size: 1.8rem; }
+  .halpq__toggleclassroom::after {
+    display: none; } }
 
 .classroomlist {
   color: #231f1f;
@@ -564,7 +589,7 @@ span.highlighted {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.459);
+    background-color: #151313;
     z-index: 0; }
   .classroomlist__form {
     position: fixed;
@@ -595,10 +620,12 @@ span.highlighted {
   width: 100%;
   min-height: 200px;
   background-color: #ffffff;
-  box-shadow: 0 3px 15px 0 #00000099;
+  box-shadow: 0 3px 15px 0 #0000005e;
   padding: 10px;
   font-size: 1.6rem;
   margin-bottom: 10px; }
+  .question__time {
+    font-weight: bold; }
   .question__questionContent {
     float: left;
     width: calc(100% - 15% - 170px - 10px);
@@ -664,6 +691,11 @@ span.highlighted {
   margin-top: 10px;
   text-align: center; }
 
+.beinghelped__indicator {
+  font-weight: bold;
+  color: #e40015;
+  margin-top: 10px; }
+
 @media (max-width: 900px) {
   .question__userInfo__image {
     float: none;
@@ -672,6 +704,8 @@ span.highlighted {
     font-size: 1.6rem; }
     .question__userInfo__image img {
       display: none; }
+  .question__time {
+    padding-left: 10px; }
   .question__questionContent {
     width: calc(100% - 50px - 10px); }
   .question .question__actions__admins {
@@ -836,11 +870,14 @@ button {
   .chat__messageInput {
     padding: 10px 10px 10px 20px;
     width: 80%; }
+    .chat__messageInput::placeholder {
+      font-family: "Raleway", sans-serif; }
   .chat__buttonSubmit {
     width: 20%;
     cursor: pointer;
     background: #e40015;
     color: #fff;
+    font-family: "Raleway", sans-serif;
     transition: background 0.1s; }
     .chat__buttonSubmit:hover {
       background: #da0014; }
