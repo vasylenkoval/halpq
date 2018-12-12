@@ -63,6 +63,30 @@ class QuestionForm extends Component {
     }
   };
 
+  mobileHandleSubmit = e => {
+    e.preventDefault();
+    const question = this.state.question;
+    const location = this.state.location;
+    const classKey = this.props.classKey;
+    if (
+      /^\s+$/.test(this.state.question) ||
+      /^\s+$/.test(this.state.location)
+    ) {
+      this.setState({
+        question: '',
+        location: '',
+        activateForm: false,
+      });
+    } else {
+      this.createQuestion(classKey, question, location);
+      this.setState({
+        question: '',
+        location: '',
+        activateForm: false,
+      });
+    }
+  };
+
   handleChange = e => {
     this.setState({
       [e.target.id]: e.target.value,
@@ -136,9 +160,10 @@ class QuestionForm extends Component {
         </button>
         {this.state.activateForm ? (
           <div className="questionForm__mobileWrapper">
-            <form method="#"
+            <form
+              method="#"
               className="questionForm__mobileInner"
-              onSubmit={this.handleSubmit}
+              onSubmit={this.mobileHandleSubmit}
               autoComplete="off"
             >
               <textarea
@@ -169,7 +194,7 @@ class QuestionForm extends Component {
                 type="submit"
               >
                 {'Submit'}
-                </button>
+              </button>
             </form>
           </div>
         ) : null}
