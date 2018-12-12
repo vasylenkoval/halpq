@@ -160,6 +160,11 @@ class ClassroomList extends Component {
           <div className="classroomlist__title">
             <h2>Classrooms</h2>
           </div>
+          {classList.length === 0 ? (
+            <div className="classroomlist__empty">
+              You're not enrolled in any classrooms
+            </div>
+          ) : null}
           {classList.map((element, i) => (
             <Link
               to={`/classroom/${classKeys[i]}`}

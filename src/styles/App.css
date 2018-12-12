@@ -553,6 +553,10 @@ button {
     background-color: rgba(0, 0, 0, 0.151);
     color: rgba(0, 0, 0, 0.63); }
 
+.classroomlist__empty {
+  font-size: 3rem;
+  padding-left: 8px; }
+
 .disabled__text {
   font-weight: bold;
   line-height: 40px; }
@@ -1019,3 +1023,13 @@ button {
 @media (max-width: 600px) {
   h2 {
     font-size: 3.8rem; } }
+
+.permission {
+  font-size: 3rem;
+  font-weight: bold;
+  padding: 100px 80px; }
+
+.permission__access {
+  color: #e40015;
+  font-size: 4rem;
+  margin-bottom: 20px; }
