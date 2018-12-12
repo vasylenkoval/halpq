@@ -960,23 +960,23 @@ button {
     color: #231f1f; }
 
 .Component__Title {
-  padding: 80px 0 0 0; }
+  padding-top: 80px; }
 
-.users {
-  margin: 10px 0;
-  padding: 20px 0; }
-  .users__panel {
-    width: calc(50% - 5px);
-    float: right; }
-  .users__panel:first-child {
-    margin-right: 10px; }
-  .users__panelTitle {
-    font-size: 3rem;
-    padding-left: 5px;
-    color: #231f1f; }
-  .users__panelTitle--admin {
-    padding-right: 5px;
-    text-align: right; }
+.users__panel {
+  width: calc(50% - 5px);
+  float: right; }
+
+.users__panel:first-child {
+  margin-right: 10px; }
+
+.users__panelTitle {
+  font-size: 3rem;
+  padding-left: 5px;
+  color: #231f1f; }
+
+.users__panelTitle--admin {
+  padding-right: 5px;
+  text-align: right; }
 
 .returnLink {
   width: 175px; }
