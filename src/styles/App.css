@@ -802,6 +802,8 @@ span.highlighted {
     .questionForm__addbutton:hover {
       background-color: #da0014;
       transform: rotateZ(90deg); }
+    .questionForm__addbutton:focus {
+      transform: rotateZ(45deg); }
   .questionForm__submit {
     display: block;
     width: 100%;
