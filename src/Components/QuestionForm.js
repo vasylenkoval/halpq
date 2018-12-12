@@ -118,7 +118,12 @@ class QuestionForm extends Component {
           >
             Submit
           </label>
-          <input type="submit" id="submit" className="questionForm__submit" />
+          <input
+            type="submit"
+            id="submit"
+            value="Submit"
+            className="questionForm__submit"
+          />
         </form>
         {/* Show when window size is below 750px's */}
         <button
@@ -163,7 +168,7 @@ class QuestionForm extends Component {
                 id="submit"
                 type="submit"
               >
-                {'Submit Query'}
+                {'Submit'}
               </button>
             </form>
           </div>

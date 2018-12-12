@@ -31,7 +31,6 @@ button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 10px;
     overflow-y: auto;
     padding-bottom: 45px;
   }
@@ -81,14 +80,13 @@ button {
   &__messageInput {
     padding: 10px 10px 10px 20px;
     width: 80%;
-    border-bottom-left-radius: 10px;
   }
   &__buttonSubmit {
     width: 20%;
     cursor: pointer;
     background: $primaryAccent;
     color: #fff;
-    border-bottom-right-radius: 10px;
+
     transition: background 0.1s;
     &:hover {
       background: darken($primaryAccent, 2%);

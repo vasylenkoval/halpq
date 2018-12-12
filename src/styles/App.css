@@ -722,6 +722,7 @@ span.highlighted {
     display: block;
     width: 100%;
     border: 0;
+    cursor: pointer;
     background: #e40015;
     color: #ffffff;
     transition: background 0.1s; }
@@ -796,7 +797,6 @@ button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 10px;
     overflow-y: auto;
     padding-bottom: 45px; }
   .chat__message {
@@ -835,14 +835,12 @@ button {
     width: 100%; }
   .chat__messageInput {
     padding: 10px 10px 10px 20px;
-    width: 80%;
-    border-bottom-left-radius: 10px; }
+    width: 80%; }
   .chat__buttonSubmit {
     width: 20%;
     cursor: pointer;
     background: #e40015;
     color: #fff;
-    border-bottom-right-radius: 10px;
     transition: background 0.1s; }
     .chat__buttonSubmit:hover {
       background: #da0014; }
