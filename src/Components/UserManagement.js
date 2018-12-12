@@ -55,7 +55,7 @@ class UserManagement extends Component {
           <Link className="backLink" to="/">
             <div className="returnLink clearfix">
               <div className="returnLink__img">
-                <img src={backChevron} alt="" />
+                <img src={backChevron} alt="back arrow" />
               </div>
               <p>Back to Classlist</p>
             </div>
