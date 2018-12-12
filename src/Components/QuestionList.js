@@ -96,6 +96,9 @@ class QuestionList extends Component {
                   />
                 )
               ) : null}
+              {question[1].isBeingHelped && !this.state.isAdmin ? (
+                <div className="beinghelped__indicator">Being helped</div>
+              ) : null}
               <QuestionConversation
                 user={this.state.user}
                 isAdmin={this.state.isAdmin}
@@ -103,16 +106,6 @@ class QuestionList extends Component {
                 questionKey={question[0]}
                 questionOwner
               />
-              {question[1].isBeingHelped && !this.state.isAdmin ? (
-                <div className="beinghelped__indicator">
-                  Being helped
-                  <div id="wave">
-                    <span class="dot" />
-                    <span class="dot" />
-                    <span class="dot" />
-                  </div>
-                </div>
-              ) : null}
 
               {question[1].isBeingHelped ? (
                 <div className="buttonImage beingHelped__active">

@@ -80,7 +80,7 @@ class AchiveList extends Component {
                 )}
                 <QuestionConversation
                   user={this.props.user}
-                  isAdmin={this.props.isAdmin}
+                  isAdmin={null}
                   classKey={this.props.classKey}
                   questionKey={question[0]}
                 />
