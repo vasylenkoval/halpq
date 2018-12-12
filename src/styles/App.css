@@ -657,7 +657,7 @@ span.highlighted {
   .question__questionContent {
     float: left;
     width: calc(100% - 15% - 170px - 10px);
-    padding-right: 0; }
+    padding-left: 10px; }
     .question__questionContent--infoContainer {
       font-weight: 700; }
       .question__questionContent--infoContainer .question__questionContent--name {
