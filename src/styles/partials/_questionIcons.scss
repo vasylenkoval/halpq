@@ -31,8 +31,36 @@
   padding: 10px;
   font-size: 1.6rem;
   margin-bottom: 10px;
+  &__completed {
+    color: $primaryAccent;
+    margin: 15px;
+    font-weight: bold;
+  }
+  &__delete {
+    background-color: $primaryAccent;
+    color: white;
+    padding: 7px;
+    margin-bottom: 10px;
+    &:hover {
+      background-color: darken($primaryAccent, 5%);
+    }
+  }
+  &--archive {
+    width: 60%;
+    margin: 10px;
+  }
   &__time {
     font-weight: bold;
+  }
+  &__listing__archive {
+    width: 100%;
+    background-color: #787e8b25;
+    padding-top: 1px;
+    padding-bottom: 5px;
+    &--none {
+      font-size: 4rem;
+      padding: 100px 50px;
+    }
   }
   &__questionContent {
     // border: 1px solid blue;
@@ -132,7 +160,7 @@
 .beinghelped__indicator {
   font-weight: bold;
   color: $primaryAccent;
-  margin-top: 10px;
+  margin: 10px;
 }
 
 @media (max-width: 900px) {
@@ -151,6 +179,14 @@
     }
     &__questionContent {
       width: calc(100% - 50px - 10px);
+    }
+    &--archive {
+      width: 97%;
+    }
+    &__delete {
+      position: relative;
+      left: -35px;
+      font-size: 1.3rem;
     }
     .question__actions__admins {
       width: 50px;

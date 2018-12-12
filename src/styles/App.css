@@ -624,8 +624,30 @@ span.highlighted {
   padding: 10px;
   font-size: 1.6rem;
   margin-bottom: 10px; }
+  .question__completed {
+    color: #e40015;
+    margin: 15px;
+    font-weight: bold; }
+  .question__delete {
+    background-color: #e40015;
+    color: white;
+    padding: 7px;
+    margin-bottom: 10px; }
+    .question__delete:hover {
+      background-color: #cb0013; }
+  .question--archive {
+    width: 60%;
+    margin: 10px; }
   .question__time {
     font-weight: bold; }
+  .question__listing__archive {
+    width: 100%;
+    background-color: #787e8b25;
+    padding-top: 1px;
+    padding-bottom: 5px; }
+    .question__listing__archive--none {
+      font-size: 4rem;
+      padding: 100px 50px; }
   .question__questionContent {
     float: left;
     width: calc(100% - 15% - 170px - 10px);
@@ -694,7 +716,7 @@ span.highlighted {
 .beinghelped__indicator {
   font-weight: bold;
   color: #e40015;
-  margin-top: 10px; }
+  margin: 10px; }
 
 @media (max-width: 900px) {
   .question__userInfo__image {
@@ -708,6 +730,12 @@ span.highlighted {
     padding-left: 10px; }
   .question__questionContent {
     width: calc(100% - 50px - 10px); }
+  .question--archive {
+    width: 97%; }
+  .question__delete {
+    position: relative;
+    left: -35px;
+    font-size: 1.3rem; }
   .question .question__actions__admins {
     width: 50px; }
     .question .question__actions__admins p {

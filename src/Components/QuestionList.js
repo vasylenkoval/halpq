@@ -37,7 +37,6 @@ class QuestionList extends Component {
 
   timeConverter = timestamp =>
     new Date(timestamp).toLocaleTimeString([], {
-      weekday: 'long',
       hour: '2-digit',
       minute: '2-digit',
     });

@@ -38,38 +38,60 @@ class AchiveList extends Component {
 
   render() {
     return (
-      <div className="question__listing">
-        {this.state.questions.map(question => (
-          <div
-            className="question"
-            key={question[0]}
-            // questionKey={question[0]}
-          >
-            <div className="question__userInfo">
-              <img src={question[1].photoURL} alt="" />
-              <p>{question[1].name}</p>
+      <div className="question__listing__archive">
+        {this.state.questions.length > 0 ? (
+          this.state.questions.map(question => (
+            <div
+              className="clearfix question question--archive"
+              key={question[0]}
+              // questionKey={question[0]}
+            >
+              <div className="question__userInfo">
+                <div className="question__userInfo__image">
+                  <img src={question[1].photoURL} alt="" />
+                </div>
+              </div>
+              <div className="question__questionContent clearfix">
+                <div className="question__questionContent--infoContainer">
+                  <p className="question__questionContent--name">
+                    {question[1].name}
+                  </p>
+                  <p className="question__questionContent--location">
+                    {question[1].location}
+                  </p>
+                </div>
+                <div className="question__questionContent--contentContainer">
+                  <p className="question__questionContent--content">
+                    {question[1].content}
+                  </p>
+                </div>
+              </div>
+              <div className="question__actions__admins">
+                {this.props.isAdmin ? (
+                  <DeleteQuestion
+                    user={this.props.user}
+                    isAdmin={this.props.isAdmin}
+                    classKey={this.props.classKey}
+                    questionKey={question[0]}
+                    questionOwner
+                  />
+                ) : (
+                  <div className="question__completed">Completed</div>
+                )}
+                <QuestionConversation
+                  user={this.props.user}
+                  isAdmin={this.props.isAdmin}
+                  classKey={this.props.classKey}
+                  questionKey={question[0]}
+                />
+              </div>
             </div>
-            <div className="question__questionContent">
-              <p>{question[1].location}</p>
-              <p>{question[1].content}</p>
-            </div>
-            <div className="question__actions__admins">
-              <DeleteQuestion
-                user={this.props.user}
-                isAdmin={this.props.isAdmin}
-                classKey={this.props.classKey}
-                questionKey={question[0]}
-                questionOwner
-              />
-              <QuestionConversation
-                user={this.props.user}
-                isAdmin={this.props.isAdmin}
-                classKey={this.props.classKey}
-                questionKey={question[0]}
-              />
-            </div>
+          ))
+        ) : (
+          <div className="question__listing__archive--none">
+            No completed questions
           </div>
-        ))}
+        )}
       </div>
     );
   }
