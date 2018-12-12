@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const UserDetails = props => (
   <div className="userDetails">
     <button className="logOut" type="button" onClick={props.logOut}>
@@ -24,7 +23,7 @@ const UserDetails = props => (
       <img src={props.photoURL} alt="user photo" />
     </div>
     <div className="userDetails__text">
-      <p>Welcome</p>
+      <p>Welcome,</p>
       <p className="clearfix">{props.displayName}</p>
     </div>
   </div>

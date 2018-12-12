@@ -1,33 +1,32 @@
-.logIn{
-     background: url(https://ucbee0db4118559c97d229c53311.previews.dropboxusercontent.com/p/thumb/AAS8EOtJi7c0y4XLL0p1r-cjn18y0D1o6eN1U8DtIJ0hu3hixck7YBBvqb3v-C2D3d6ZVOQDCU_OpYzYkxcdne2WPZne0bEd6K2stwm9k3PjNSP_fTZJEU2AUYTtjVlBll3wXmynurqG0DHZiMxLA756y48PFEGPc019g2qk5QK0PKndKKehXSTXnRQO4mjbmk3wjpKXsMHjqoI9wCjUFf0J2E5DD2UbydQYbJdlcxon48GN_zLJ7CQhhJYhK3QR6HGkS6w16IT3BFRCMJo9lNkVIDy2y8IlBZBoNCUc5XfHF1vA4zuaZ-aoLvt1ELNo1Kw/p.jpeg?size=2048x1536&size_mode=3);
-     width: 100%;
-     height: 86.9vh;
-     padding: 1px;
-     background-attachment: cover;
-     background-position: left center;
-     margin: 0 auto;
-     position: relative;
-     .filter {
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          background: rgba(0, 0, 0, 0.4); 
-     }
-     &__button {
-     font-family: $font;
-     display: block;
-     width: 50%;
-     background: $primaryAccent;
-     color: $white;
-     padding: 2%;
-     font-size: 3rem;
-     text-align: center;
-     margin: 150px auto;
-          &:hover {
-               background: $secondaryAccent;
-          }
-     }
-
+.logIn {
+  background: url(https://ucbee0db4118559c97d229c53311.previews.dropboxusercontent.com/p/thumb/AAS8EOtJi7c0y4XLL0p1r-cjn18y0D1o6eN1U8DtIJ0hu3hixck7YBBvqb3v-C2D3d6ZVOQDCU_OpYzYkxcdne2WPZne0bEd6K2stwm9k3PjNSP_fTZJEU2AUYTtjVlBll3wXmynurqG0DHZiMxLA756y48PFEGPc019g2qk5QK0PKndKKehXSTXnRQO4mjbmk3wjpKXsMHjqoI9wCjUFf0J2E5DD2UbydQYbJdlcxon48GN_zLJ7CQhhJYhK3QR6HGkS6w16IT3BFRCMJo9lNkVIDy2y8IlBZBoNCUc5XfHF1vA4zuaZ-aoLvt1ELNo1Kw/p.jpeg?size=2048x1536&size_mode=3);
+  width: 100%;
+  height: 86.9vh;
+  padding: 1px;
+  background-attachment: cover;
+  background-position: left center;
+  margin: 0 auto;
+  position: relative;
+  .filter {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.4);
+  }
+  &__button {
+    font-family: $font;
+    display: block;
+    width: 50%;
+    background: $primaryAccent;
+    color: $white;
+    padding: 2%;
+    font-size: 3rem;
+    text-align: center;
+    margin: 150px auto;
+    &:hover {
+      background: $secondaryAccent;
+    }
+  }
 }

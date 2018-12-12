@@ -15,11 +15,23 @@
     border: 0;
     font-size: 2rem;
     &__active {
-      background: $darkNeutral;
+      background: #787e8b25;
     }
   }
   &__toggleclassroom {
     float: right;
+    max-height: 60px;
+    width: 55px;
+    position: relative;
+    &::after {
+      content: "Enable/Disable";
+      position: absolute;
+      font-family: $font;
+      font-weight: bold;
+      top: 18px;
+      left: -125px;
+      width: 0;
+    }
     // border: 1px solid red;
     &__active {
       fill: $primaryAccent;
@@ -43,7 +55,7 @@
 .question__list {
   color: $darkColor;
   padding: 10px;
-  background: $darkNeutral;
+  background: #787e8b25;
   position: relative;
   &__title {
     padding: 50px 0;
@@ -73,8 +85,27 @@
   }
 }
 
+.classroomkey {
+  display: inline;
+  font-size: 2rem;
+  margin-left: 12px;
+  span {
+    font-weight: bold;
+    color: $primaryAccent;
+  }
+}
+
+@media (max-width: 750px) {
+  .classroomkey {
+    display: none;
+  }
+}
+
 @media (max-width: 500px) {
   .halpq__filter {
     font-size: 1.8rem;
+  }
+  .halpq__toggleclassroom::after {
+    display: none;
   }
 }

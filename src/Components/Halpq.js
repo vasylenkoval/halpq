@@ -101,13 +101,19 @@ class Halpq extends Component {
             onClick={this.handleClick}
             className={
               this.state.archiveToggle
-                ? 'halpq__filter halpq__filter'
+                ? 'halpq__filter halpq__filter__active'
                 : 'halpq__filter'
             }
             name="Completed"
           >
             Completed
           </button>
+          {isAdmin ? (
+            <div className="classroomkey">
+              <span>Classroom key:</span>{' '}
+              {this.props.match.params.classroomid.slice(1, 9)}
+            </div>
+          ) : null}
           {isAdmin ? (
             <button
               type="button"

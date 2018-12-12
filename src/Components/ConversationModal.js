@@ -100,6 +100,7 @@ class ConversationModel extends Component {
               </div>
             ))}
             <div
+              className={this.state.questionOwner ? 'chat__invisible' : ''}
               style={{ float: 'left', clear: 'both' }}
               ref={el => {
                 this.messagesEnd = el;
@@ -115,6 +116,7 @@ class ConversationModel extends Component {
             >
               <input
                 type="text"
+                minLength={1}
                 name=""
                 onChange={this.handleChange}
                 value={this.state.userInput}
@@ -124,6 +126,7 @@ class ConversationModel extends Component {
               />
               <input
                 type="submit"
+                value="Submit"
                 id="submitChatMessage"
                 className="chat__buttonSubmit"
               />

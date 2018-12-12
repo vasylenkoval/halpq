@@ -13,6 +13,7 @@ class DeleteQuestion extends Component {
     return (
       <div>
         <button
+          className="question__delete"
           type="button"
           onClick={() => {
             this.deleteQuestion(this.props.classKey, this.props.questionKey);

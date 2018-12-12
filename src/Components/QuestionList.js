@@ -37,20 +37,19 @@ class QuestionList extends Component {
 
   timeConverter = timestamp =>
     new Date(timestamp).toLocaleTimeString([], {
-      weekday: 'long',
       hour: '2-digit',
       minute: '2-digit',
     });
 
   render() {
-    return <div className="question__listing">
-        {/* <h3 className="question__list__title">Active Questions</h3> */}
+    return (
+      <div className="question__listing">
         {this.state.questions.map(question => (
           <div
             className={
               question[1].isBeingHelped
-                ? "clearfix question question__beingHelped"
-                : "clearfix question"
+                ? 'clearfix question question__beingHelped'
+                : 'clearfix question'
             }
             key={question[0]}
           >
@@ -72,9 +71,9 @@ class QuestionList extends Component {
                 </p>
               </div>
               <div className="question__questionContent--contentContainer">
-              <p className="question__questionContent--content">
-                {question[1].content}
-              </p>
+                <p className="question__questionContent--content">
+                  {question[1].content}
+                </p>
               </div>
             </div>
             <div className="question__actions__admins">
@@ -104,6 +103,16 @@ class QuestionList extends Component {
                 questionKey={question[0]}
                 questionOwner
               />
+              {question[1].isBeingHelped && !this.state.isAdmin ? (
+                <div className="beinghelped__indicator">
+                  Being helped
+                  <div id="wave">
+                    <span class="dot" />
+                    <span class="dot" />
+                    <span class="dot" />
+                  </div>
+                </div>
+              ) : null}
 
               {question[1].isBeingHelped ? (
                 <div className="buttonImage beingHelped__active">
@@ -114,7 +123,8 @@ class QuestionList extends Component {
             </div>
           </div>
         ))}
-      </div>;
+      </div>
+    );
   }
 }
 

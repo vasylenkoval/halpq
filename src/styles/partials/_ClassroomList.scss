@@ -1,4 +1,6 @@
 .classroomlist {
+  max-width: 1600px;
+  margin: 0 auto;
   color: $darkColor;
   button {
     outline: 0;
@@ -98,6 +100,11 @@
   }
 }
 
+.classroomlist__empty {
+  font-size: 3rem;
+  padding-left: 8px;
+}
+
 .disabled__text {
   font-weight: bold;
   line-height: 40px;
@@ -147,7 +154,7 @@ span.highlighted {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.459);
+    background-color: darken($darkColor, 5%);
     z-index: 0;
   }
 

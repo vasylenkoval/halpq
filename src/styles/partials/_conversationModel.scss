@@ -3,7 +3,7 @@ button {
 }
 .chat {
   position: fixed;
-  z-index: 10;
+  z-index: 30;
   display: block;
   top: 0;
   left: 0;
@@ -31,7 +31,6 @@ button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 10px;
     overflow-y: auto;
     padding-bottom: 45px;
   }
@@ -81,14 +80,16 @@ button {
   &__messageInput {
     padding: 10px 10px 10px 20px;
     width: 80%;
-    border-bottom-left-radius: 10px;
+    &::placeholder {
+      font-family: $font;
+    }
   }
   &__buttonSubmit {
     width: 20%;
     cursor: pointer;
     background: $primaryAccent;
     color: #fff;
-    border-bottom-right-radius: 10px;
+    font-family: $font;
     transition: background 0.1s;
     &:hover {
       background: darken($primaryAccent, 2%);
@@ -118,5 +119,11 @@ button {
     &__convo {
       border-radius: 0;
     }
+  }
+}
+
+@supports (-moz-appearance: none) {
+  .chat__invisible {
+    margin-bottom: 45px;
   }
 }
