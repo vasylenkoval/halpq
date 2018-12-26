@@ -13,11 +13,16 @@ class UserManagement extends Component {
       studentList: [],
       adminList: [],
       studentCount: 0,
-      adminCount: 0
+      adminCount: 0,
+      userInput: ""
     };
   }
 
-  componentDidUpdate() {}
+  handleChange = (e) => {
+    this.setState({
+      userInput: e.target.value
+    });
+  };
 
   componentDidMount() {
     const dbRef = firebase.database();
@@ -57,6 +62,9 @@ class UserManagement extends Component {
         <div className="wrapper">
           <div className="Component__Title">
             <h2>User Management</h2>
+          </div>
+          <div className="users__search">
+            <input type="search" name="" id="" onChange={this.handleChange} />
           </div>
           <Link className="backLink" to="/">
             <div className="returnLink clearfix">
