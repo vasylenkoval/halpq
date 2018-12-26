@@ -1,39 +1,45 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import firebase from 'firebase';
-import StudentList from './StudentList';
-import AdminList from './AdminList';
-import backChevron from '../assets/back-chevron.svg';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import firebase from "firebase";
+import StudentList from "./StudentList";
+import AdminList from "./AdminList";
+import backChevron from "../assets/back-chevron.svg";
 
 class UserManagement extends Component {
   constructor(props) {
-    console.log('the constructor in User Management was called');
+    console.log("the constructor in User Management was called");
     super(props);
     this.state = {
       studentList: [],
       adminList: [],
+      studentCount: 0,
+      adminCount: 0
     };
   }
 
+  componentDidUpdate() {}
+
   componentDidMount() {
     const dbRef = firebase.database();
-    dbRef.ref(`/Users`).on('value', () => {});
-    dbRef.ref(`/Users/Students/`).on('value', snapshot => {
+    dbRef.ref(`/Users`).on("value", () => {});
+    dbRef.ref(`/Users/Students/`).on("value", (snapshot) => {
       if (!snapshot.exists()) {
         this.setState({ studentList: [] });
       } else if (snapshot.val()) {
         const newstudentList = snapshot.val();
-        const studentList = Object.entries(newstudentList);
-        this.setState({ studentList });
+        const studentList = Object.entries(newstudentList).sort();
+        const studentCount = Object.entries(newstudentList).length;
+        this.setState({ studentList, studentCount });
       }
     });
-    dbRef.ref(`/Users/Admins/`).on('value', snapshot => {
+    dbRef.ref(`/Users/Admins/`).on("value", (snapshot) => {
       if (!snapshot.exists()) {
         this.setState({ adminList: [] });
       } else if (snapshot.val()) {
         const myadminList = snapshot.val();
-        const adminList = Object.entries(myadminList);
-        this.setState({ adminList });
+        const adminList = Object.entries(myadminList).sort();
+        const adminCount = Object.entries(myadminList).length;
+        this.setState({ adminList, adminCount });
       }
     });
   }
@@ -65,6 +71,7 @@ class UserManagement extends Component {
               <h3 className="users__panelTitle users__panelTitle--admin">
                 Admins
               </h3>
+              <span className="users__count">({this.state.adminCount})</span>
               {this.state.adminList[0] ? (
                 <AdminList admins={this.state.adminList} />
               ) : (
@@ -73,6 +80,7 @@ class UserManagement extends Component {
             </div>
             <div className="users__panel">
               <h3 className="users__panelTitle">Students</h3>
+              <span className="users__count">({this.state.studentCount})</span>
               {this.state.studentList[0] ? (
                 <StudentList students={this.state.studentList} />
               ) : (

@@ -2,7 +2,8 @@
   background: $lightColor;
   padding: 1px 0;
   min-height: 83vh;
-  p, h4 {
+  p,
+  h4 {
     color: $darkColor;
   }
 }
@@ -11,29 +12,31 @@
   padding-top: 80px;
 }
 
-
 .users {
   &__panel {
     width: calc(50% - 5px);
     float: right;
   }
   &__panel:first-child {
-    margin-right: 10px
+    margin-right: 10px;
   }
   &__panelTitle {
     font-size: 3rem;
     padding-left: 5px;
     color: $darkColor;
-    
+    display: inline-block;
   }
   &__panelTitle--admin {
     padding-right: 5px;
-    text-align: right; 
+    text-align: right;
+  }
+  &__count {
+    margin-left: 10px;
   }
 }
 
 .returnLink {
-    width: 175px;
+  width: 175px;
 
   // margin-top: 10px;
   // border: 1px solid green;
@@ -42,7 +45,6 @@
     width: 20px;
     margin: 0 5px 0 0;
     float: left;
-
   }
   p {
     font-size: 1.8rem;
@@ -52,27 +54,27 @@
 }
 
 .userList {
-    padding: 5px;
-    max-height: 60vh;
-    overflow-x: scroll;
-    &__user {
-      background: $white;
-      box-shadow: 0px 2px 5px 0 #0000003a, 0px 2px 5px 0 #0000003a;
-      padding: 10px;
-      margin-bottom: 10px; 
+  padding: 5px;
+  max-height: 60vh;
+  overflow-x: scroll;
+  &__user {
+    background: $white;
+    box-shadow: 0px 2px 5px 0 #0000003a, 0px 2px 5px 0 #0000003a;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  &__user:last-child {
+    margin-bottom: 5px;
+  }
+  .user__details {
+    float: left;
+    p {
+      font-size: 1.4rem;
     }
-    &__user:last-child {
-      margin-bottom: 5px; 
-    }
-    .user__details {
-      float: left;
-      p {
-        font-size: 1.4rem;
-      }
-    }
-    .user__action {
-      float: right;
-    }
+  }
+  .user__action {
+    float: right;
+  }
 }
 .user__button {
   background: transparent;
@@ -84,17 +86,13 @@
     width: 35px;
     height: 35px;
     margin: 2px;
-    
   }
-
-
 }
 .noAdmin {
   text-align: right;
 }
 //specific to Admin side. just aligning opposite to rest
 .admin {
-
   .user__details {
     float: right;
     text-align: right;
@@ -114,7 +112,7 @@
       // max-height: 30vh;
     }
     &__panel:first-child {
-    margin-right: 0px
+      margin-right: 0px;
     }
   }
   .userList {

@@ -959,7 +959,8 @@ button {
   background: #f6f7f9;
   padding: 1px 0;
   min-height: 83vh; }
-  .userManagement p, .userManagement h4 {
+  .userManagement p,
+  .userManagement h4 {
     color: #231f1f; }
 
 .Component__Title {
@@ -975,11 +976,15 @@ button {
 .users__panelTitle {
   font-size: 3rem;
   padding-left: 5px;
-  color: #231f1f; }
+  color: #231f1f;
+  display: inline-block; }
 
 .users__panelTitle--admin {
   padding-right: 5px;
   text-align: right; }
+
+.users__count {
+  margin-left: 10px; }
 
 .returnLink {
   width: 175px; }
