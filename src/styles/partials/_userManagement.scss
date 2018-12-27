@@ -33,6 +33,15 @@
   &__count {
     margin-left: 10px;
   }
+  &__searchTitle {
+    margin-right: 5px;
+  }
+  &__searchInput {
+    border: 1px solid black;
+    // border-radius: 10px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 20px;
+  }
 }
 
 .returnLink {

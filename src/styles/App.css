@@ -986,6 +986,14 @@ button {
 .users__count {
   margin-left: 10px; }
 
+.users__searchTitle {
+  margin-right: 5px; }
+
+.users__searchInput {
+  border: 1px solid black;
+  padding: 0.5rem 1rem;
+  margin-bottom: 20px; }
+
 .returnLink {
   width: 175px; }
   .returnLink__img {

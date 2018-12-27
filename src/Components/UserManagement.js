@@ -64,6 +64,7 @@ class UserManagement extends Component {
           .indexOf(this.state.search.toLowerCase()) !== -1
       );
     });
+
     let filteredStudentUserList = this.state.studentList.filter((user) => {
       return (
         user[1].displayName
@@ -86,11 +87,14 @@ class UserManagement extends Component {
             </div>
           </Link>
           <div className="users__search">
-            <label htmlFor="userSearch">User Search: </label>
+            <label htmlFor="userSearch" class="users__searchTitle">
+              User Search:{" "}
+            </label>
             <input
               type="search"
               name="userSearch"
               id="userSearch"
+              class="users__searchInput"
               placeholder="Search for a user"
               results={5}
               onChange={this.handleChange}
