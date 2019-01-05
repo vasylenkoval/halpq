@@ -23,18 +23,22 @@
 
 ### Desktop screenshots
 
-<img width="720" alt="Halpq Screenshot" src="https://user-images.githubusercontent.com/28285782/50721755-93a75f00-1092-11e9-8222-ca0be0878b33.png">
+<img width="720" alt="Halpq desktop screenshot" src="https://user-images.githubusercontent.com/28285782/50721755-93a75f00-1092-11e9-8222-ca0be0878b33.png">
 
-<img width="720" alt="Halpq Screenshot" src="https://user-images.githubusercontent.com/28285782/50721756-9609b900-1092-11e9-96e9-35b328d0029a.png">
+<img width="720" alt="Halpq desktop screenshot" src="https://user-images.githubusercontent.com/28285782/50721756-9609b900-1092-11e9-96e9-35b328d0029a.png">
 
-<img width="720" alt="Halpq Screenshot" src="https://user-images.githubusercontent.com/28285782/50721758-97d37c80-1092-11e9-8dc2-5cf167134224.png">
+<img width="720" alt="Halpq desktop screenshot" src="https://user-images.githubusercontent.com/28285782/50721758-97d37c80-1092-11e9-8dc2-5cf167134224.png">
 
-<img width="720" alt="Halpq Screenshot" src="https://user-images.githubusercontent.com/28285782/50721759-9a35d680-1092-11e9-8e3f-4bb9f8609488.png">
+<img width="720" alt="Halpq desktop screenshot" src="https://user-images.githubusercontent.com/28285782/50721759-9a35d680-1092-11e9-8e3f-4bb9f8609488.png">
 
 ### Mobile Screenshots
 
-![halpq-mobile-1](https://user-images.githubusercontent.com/28285782/50721494-65278500-108e-11e9-88ea-fe1de394c17a.png)
-![halpq-mobile-2](https://user-images.githubusercontent.com/28285782/50721495-6658b200-108e-11e9-9fdf-a3363a464a3e.png)
-![halpq-mobile-3](https://user-images.githubusercontent.com/28285782/50721497-6789df00-108e-11e9-9e84-b8ca9a29f963.png)
-![halpq-mobile-4](https://user-images.githubusercontent.com/28285782/50721498-68bb0c00-108e-11e9-88ec-1bc4e8362caa.png)
-![halpq-mobile-5](https://user-images.githubusercontent.com/28285782/50721499-6b1d6600-108e-11e9-8598-18145ea7dd65.png)
+<img width="352" alt="Halpq mobile screenshots" src="https://user-images.githubusercontent.com/28285782/50721781-16c8b500-1093-11e9-8edb-35c066ca4c4c.png">
+
+<img width="352" alt="Halpq mobile screenshots" src="https://user-images.githubusercontent.com/28285782/50721782-1b8d6900-1093-11e9-8921-0e11adfa4dc2.png">
+
+<img width="352" alt="Halpq mobile screenshots" src="https://user-images.githubusercontent.com/28285782/50721783-1e885980-1093-11e9-9ce8-1af91aa05fdc.png">
+
+<img width="352" alt="Halpq mobile screenshots" src="https://user-images.githubusercontent.com/28285782/50721786-21834a00-1093-11e9-8cd6-cd52a238cfd9.png">
+
+<img width="352" alt="Halpq mobile screenshots" src="https://user-images.githubusercontent.com/28285782/50721787-23e5a400-1093-11e9-865b-448f89135333.png">
