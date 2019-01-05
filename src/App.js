@@ -12,7 +12,6 @@ import NotFound from './Components/NotFound';
 const provider = new firebase.auth.GoogleAuthProvider();
 const auth = firebase.auth();
 const dbRef = firebase.database();
-
 class App extends Component {
   constructor() {
     super();
