@@ -1,44 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# HALPQ
 
-## Available Scripts
+- Ticketing system that helps bootcamp students ask instructors for help in real-time
+- Has two kinds of user account with different privileges
+- Has user-management page where admins can assign admin privileges to users
+- Admins can create classrooms, which will also generate classroom keys
+- Students can enroll in classrooms using keys distributed to them by admins in order to be able to post questions
+- Admins can enable/disable classrooms (students cannot post questions when classroom is disabled)
+- Any admin can start a chat with any student, but students can only reply to chats started with them
+- Admins have an ability to mark student questions as “Being helped” and later as “Complete” which will send the question to the Archive
+- Uses firebase real-time database as a back-end and React on the front-end
+- Fully responsive
 
-In the project directory, you can run:
+[Check it out live](https://thehalpq.ca)
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Run `npm install` in the project directory to install required dependencies.
+2. Start a local server by running `npm start`.
+3. Visit `http://localhost:3000/`
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Final Product
 
-### `npm test`
+### Desktop screenshots
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![halpq-desktop-1](https://user-images.githubusercontent.com/28285782/50721449-e7637980-108d-11e9-9316-7d2cd0c8c805.png)
+![halpq-desktop-2](https://user-images.githubusercontent.com/28285782/50721450-e92d3d00-108d-11e9-8e1a-2c9a3ffacd0f.png)
+![halpq-desktop-3](https://user-images.githubusercontent.com/28285782/50721451-eaf70080-108d-11e9-9a8c-067f935e20ff.png)
+![halpq-desktop-4](https://user-images.githubusercontent.com/28285782/50721452-ed595a80-108d-11e9-811d-b1b300e2f357.png)
+![halpq-desktop-5](https://user-images.githubusercontent.com/28285782/50721455-f1857800-108d-11e9-92f0-b788e2f41865.png)
 
-### `npm run build`
+### Mobile Screenshots
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![halpq-mobile-1](https://user-images.githubusercontent.com/28285782/50721494-65278500-108e-11e9-88ea-fe1de394c17a.png)
+![halpq-mobile-2](https://user-images.githubusercontent.com/28285782/50721495-6658b200-108e-11e9-9fdf-a3363a464a3e.png)
+![halpq-mobile-3](https://user-images.githubusercontent.com/28285782/50721497-6789df00-108e-11e9-9e84-b8ca9a29f963.png)
+![halpq-mobile-4](https://user-images.githubusercontent.com/28285782/50721498-68bb0c00-108e-11e9-88ec-1bc4e8362caa.png)
+![halpq-mobile-5](https://user-images.githubusercontent.com/28285782/50721499-6b1d6600-108e-11e9-8598-18145ea7dd65.png)

@@ -15,7 +15,6 @@ const dbRef = firebase.database();
 class App extends Component {
   constructor() {
     super();
-
     this.state = {
       user: null,
     };
