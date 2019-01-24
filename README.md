@@ -11,7 +11,7 @@
 - Uses firebase real-time database as a back-end and React on the front-end
 - Fully responsive
 
-[Check it out live](https://thehalpq.ca)
+[Check it out live](https://thehalpq.ca) Use the code `LTEEjNet` to enroll in a classroom.
 
 ## Getting Started
 
